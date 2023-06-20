@@ -18,20 +18,16 @@ node *insertBST(node *root, int val)
     if (root == NULL)
         return new node(val);
     if (val < root->data)
-    {
         root->left = insertBST(root->left, val);
-    }
     else
-    {
         root->right = insertBST(root->right, val);
-    }
     return root;
 }
 
 void inorder(node *root)
 {
-    if(root==NULL)
-    return;
+    if (root == NULL)
+        return;
     inorder(root->left);
     cout << root->data << " ";
     inorder(root->right);

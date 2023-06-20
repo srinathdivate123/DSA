@@ -13,7 +13,7 @@ int main()
             cout << ch << " ";
         cout << endl;
     }
-
+    
     cout << endl;
     cout << "Pattern - 15" << endl
          << endl;
