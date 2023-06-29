@@ -3,6 +3,8 @@
 // TC = The dfs function is called for every node so it is N
 // The dfs function is also called for every neighbour node which is equal to 2*Edges.
 // So TC = N + 2*E
+// TC is not N*2*E
+
 #include <bits/stdc++.h>
 using namespace std;
 void dfs(int node, int visited[], vector<int> &ans, vector<int> adj[]);
@@ -21,11 +23,10 @@ void dfs(int node, int visited[], vector<int> &ans, vector<int> adj[])
 {
     visited[node] = 1;
     ans.push_back(node);
-
     for (auto it : adj[node]) // Traverse all its degrees (neighbours)
         if (!visited[it])
             dfs(it, visited, ans, adj);
-    return;
+    return; // Writing this return isn't necessary
 }
 
 void addEdge(vector<int> adj[], int u, int v)

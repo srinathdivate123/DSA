@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/number-of-provinces/
+// Problem Statement: Given an undirected graph with V vertices. We say two vertices u and v belong to a single province if there is a path from u to v or v to u. Your task is to find the number of provinces.
+
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
@@ -16,6 +19,7 @@ public:
     {
         int V = isConnected.size();
         vector<int> adj[V];
+        // Making adjacency list out of adjacency matrix.
         for (int i = 0; i < V; i++)
             for (int j = 0; j < V; j++)
                 if (isConnected[i][j] == 1 && i != j)
@@ -26,13 +30,11 @@ public:
         vector<int> vis(V, 0);
         int cnt = 0;
         for (int i = 0; i < V; i++)
-        {
             if (!vis[i])
             {
                 cnt++;
                 dfs(i, adj, vis);
             }
-        }
         return cnt;
     }
 };
@@ -40,5 +42,9 @@ public:
 int main()
 {
     Solution obj;
-    return 0;
+    vector<vector<int>> isConnected = {
+        {1, 0, 1},
+        {0, 1, 0},
+        {1, 0, 1}};
+    std::cout << obj.findCircleNum(isConnected);
 }

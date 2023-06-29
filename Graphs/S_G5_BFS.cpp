@@ -3,10 +3,11 @@
 #include <typeinfo>
 using namespace std;
 
-// SC = Queue, visited array ~ N SC
-// TC = A node goes once into the stack and the while loop runs for all it's degrees (for all the nodes connected to it)
-// So it is N for queue
+// SC = Queue, visited array ~ 2N SC
+// TC = A node goes once into the queue and the while loop runs for all it's degrees (for all the nodes connected to it)
+// So it is N for queue because each node (total N) goes into it
 // And it is 2E for running on all the degrees of all the nodes because the total num of degrees in a graph is 2E
+// So TC = N + 2E
 vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
 {
     int visited[numberOfNodes] = {0};
@@ -22,15 +23,13 @@ vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
         ans.push_back(node);
         // traverse for all its neighbours
         for (auto it : adj[node])
-        {
             // if the neighbour has previously not been visited,
-            // store in Q and mark as visited
+            // store in q and mark as visited
             if (!visited[it])
             {
                 visited[it] = 1;
                 q.push(it);
             }
-        }
     }
     return ans;
 }
@@ -49,7 +48,7 @@ void printAns(vector<int> &ans)
 
 int main()
 {
-    vector<int> adj[11]; // declaring an array named adj consisting of 6 elements, where each element is a vector<int>.
+    vector<int> adj[10]; // declaring an array named adj consisting of 10 elements (because there are nodes upto number 9), where each element is a vector<int>.
     addEdge(adj, 1, 2);
     addEdge(adj, 1, 6);
     addEdge(adj, 2, 3);
