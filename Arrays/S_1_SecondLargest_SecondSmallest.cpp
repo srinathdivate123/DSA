@@ -7,17 +7,8 @@ using namespace std;
 
 int main()
 {
-    int n;
-    cout << "Enter number of elements in array - ";
-    cin >> n;
-    vector<int> arr;
-    cout << "Enter array - ";
-    int a;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a;
-        arr.push_back(a);
-    }
+    vector<int> arr = {3, 4, 6, 2, 8, 67, 65};
+    int n = arr.size();
     int largest = arr[0], slargest = INT_MIN; // We put INT_MIN so that our code will be fool proof if the array has negative numbers also.
     int smallest = arr[0], ssmallest = INT_MAX;
     for (int i = 1; i < n; i++)
@@ -39,8 +30,9 @@ int main()
             ssmallest = arr[i];
     }
 
-    cout << " Second smallest - " << ssmallest << endl;
     cout << " Smallest - " << smallest << endl;
+    cout << " Second smallest - " << ssmallest << endl
+         << endl;
     cout << " Second largest - " << slargest << endl;
     cout << " Largest - " << largest << endl;
     return 0;

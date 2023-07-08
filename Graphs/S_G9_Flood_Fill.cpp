@@ -2,7 +2,6 @@
 
 // To perform a “flood fill”, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same colour as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same colour as the starting pixel), and so on. Replace the colour of all of the aforementioned pixels with the newColor.
 
-
 // TC = P*4 where P is he total number of nodes that end up being new-colored. 4 because we travel for 4 neighbour nodes for each node.
 // Sc = N*M external matrix for storing answer + N*M for recursion stack space in worst case where are the elements are of the initial given color
 #include <bits/stdc++.h>
@@ -30,8 +29,8 @@ public:
     {
         int initialColor = image[sr][sc];
         vector<vector<int>> ans = image; // We do not flood fill the original image. We make a copy and then do because in industry it is a good practice to not tamper with the original data.
-        int delRow[] = {-1, 0, +1, 0}; // This is the difference of row for 4 neighbours
-        int delCol[] = {0, +1, 0, -1}; // This is the difference of col for 4 neighbours
+        int delRow[] = {-1, 0, +1, 0};   // This is the difference of row for 4 neighbours
+        int delCol[] = {0, +1, 0, -1};   // This is the difference of col for 4 neighbours
         dfs(sr, sc, ans, image, newColor, delRow, delCol, initialColor);
         return ans;
     }

@@ -22,7 +22,7 @@ public:
         // Making adjacency list out of adjacency matrix.
         for (int i = 0; i < V; i++)
             for (int j = 0; j < V; j++)
-                if (isConnected[i][j] == 1 && i != j)
+                if (isConnected[i][j] == 1 && i != j) // We put i!=j so that there are no self-nodes in our adjacency list. Self nodes are those nodes that are connected with themselves
                 {
                     adj[i].push_back(j);
                     adj[j].push_back(i);

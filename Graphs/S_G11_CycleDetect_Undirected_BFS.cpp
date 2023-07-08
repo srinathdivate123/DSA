@@ -1,17 +1,18 @@
 // The cycle in a graph starts from a node and ends at the same node.
 // We say that the graph has a cycle if any of the components (may be connected or not connected) have a cycle.
 
-// TC =
+// TC = N + 2E (for BFS) + N (for the for loop in isCycle())
+// SC = N (for visited array) + N (for queue in worst case)
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
 {
 private:
-    bool detect(int source, vector<int> adj[], int vis[])
+    bool detect_the_BFS_way(int start, vector<int> adj[], int vis[])
     {
-        vis[source] = 1;
-        queue<pair<int, int>> q;
-        q.push({source, -1});
+        vis[start] = 1;
+        queue<pair<int, int>> q; // To store node, source from where it came
+        q.push({start, -1});     // Store -1 because start came from nowhere
         while (!q.empty())
         {
             int node = q.front().first;
@@ -19,12 +20,12 @@ private:
             q.pop();
             for (auto adjacentNode : adj[node])
             {
-                if (!vis[adjacentNode])
+                if (vis[adjacentNode] == 0)
                 {
                     vis[adjacentNode] = 1;
                     q.push({adjacentNode, node});
                 }
-                else if (parent != adjacentNode)
+                if (vis[adjacentNode] == 1 && parent != adjacentNode)
                     return true;
             }
         }
@@ -35,9 +36,10 @@ public:
     bool isCycle(int V, vector<int> adj[]) // V is number of nodes
     {
         int vis[V] = {0};
+        // We write like this if the graph has many non-connected components and one of them may be a cycle and some of them may not be a cycle
         for (int i = 0; i < V; i++)
             if (!vis[i])
-                if (detect(i, adj, vis) == true)
+                if (detect_the_BFS_way(i, adj, vis))
                     return true;
         return false;
     }

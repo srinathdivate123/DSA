@@ -13,7 +13,7 @@ public:
     {
         int n = grid.size();
         int m = grid[0].size();
-        queue<pair<pair<int, int>, int>> q; // {{row, col}, time}
+        queue<pair<pair<int, int>, int>> q; // {{row, col}, time} --> Storing the row, col, time of the rotting oranges
         vector<vector<int>> vis;
         int cntFresh = 0;
         for (int i = 0; i < n; i++)
@@ -31,7 +31,6 @@ public:
                 if (grid[i][j] == 1)
                     cntFresh++;
             }
-        
         int time = 0;
         int delRow[] = {-1, 0, +1, 0}; // This is the difference of row for 4 neighbours
         int delCol[] = {0, +1, 0, -1}; // This is the difference of col for 4 neighbours
