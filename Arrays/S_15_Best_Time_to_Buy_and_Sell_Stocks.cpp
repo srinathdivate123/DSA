@@ -1,4 +1,4 @@
-// Say you jave an array for which the ith element is the price of a given stock on day i.
+// Say you have an array for which the ith element is the price of a given stock on day i.
 // If you were only permitted to complete at most one transaction (i.e buy one and sell one share of stock), design an algo to find maximum profit
 // Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 #include <bits/stdc++.h>

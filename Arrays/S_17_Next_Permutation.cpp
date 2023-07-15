@@ -21,7 +21,7 @@ void brute() {}
 // Tell this solution to the interviewer because it tells that you hv knowledge of STL
 void better() {}
 
-// Find the breakpoint in the array i.e. where the previous element is small and the next element is larger where arr[i]<arr[i+1]. The ith element is the breakpoint
+// Find the breakpoint in the array.  Break-point means the first index i from the back of the given array where arr[i] becomes smaller than arr[i+1].
 // Then the find the element in the right side of the breakpoint that is just larger than it
 // Replace the breakpoint with that element
 // Place the remaining elements of the array in a sorted order

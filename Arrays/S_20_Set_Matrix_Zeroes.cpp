@@ -6,9 +6,7 @@ void printArray(int (*arr)[4])
     for (int i = 0; i < 4; ++i)
     {
         for (int j = 0; j < 4; ++j)
-        {
             cout << arr[i][j] << " ";
-        }
         cout << std::endl;
     }
 }
@@ -26,7 +24,8 @@ void brute() {}
 // SC = n + m for declaring arrays
 void better(int (*arr)[4], int m, int n) // Here 4 is the cols
 {
-    int col[m] = {0}, row[n] = {0};
+    int col[m] = {0};
+    int row[n] = {0};
     for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
             if (arr[i][j] == 0)
@@ -34,6 +33,7 @@ void better(int (*arr)[4], int m, int n) // Here 4 is the cols
                 row[i] = 1;
                 col[j] = 1;
             }
+
     for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
             if (row[i] || col[j] == 1)
@@ -63,14 +63,10 @@ void best(int (*arr)[4], int n, int m) // Here 4 is the cols
     // TC of all below code summed up is N*M
     for (int i = 1; i < n; i++)
         for (int j = 1; j < m; j++)
-        {
             if (arr[i][j] != 0)
-            {
                 // check for column and row
                 if (arr[0][j] || arr[i][0] == 0)
                     arr[i][j] = 0;
-            }
-        }
 
     if (arr[0][0] == 0)
         for (int j = 0; j < m; j++)
@@ -81,8 +77,6 @@ void best(int (*arr)[4], int n, int m) // Here 4 is the cols
             arr[i][0] = 0;
     printArray(arr);
 }
-
-
 
 int main()
 {

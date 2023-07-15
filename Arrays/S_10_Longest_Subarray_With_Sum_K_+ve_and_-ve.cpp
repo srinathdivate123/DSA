@@ -1,11 +1,8 @@
-// In case the array has only positive integers then the 'optimised' function is only the optimal solution.
+// In case the array has only positive integers then the 'optimised' function is the optimal solution.
 // But if the array has positive and negative integers, the 'betterHashing' function is only the optimal solution.
-
-
 
 #include <bits/stdc++.h>
 using namespace std;
-
 void brute(int arr[], int target, int n)
 {
     int len = 0;
@@ -23,12 +20,13 @@ void brute(int arr[], int target, int n)
     cout << len;
 }
 
+// This will work for +ves & -ves also in array
 void betterHashing(int arr[], int target, int n)
 {
     // arr[] = {a,b,c,d,e,f,g}
-    // If there exists a subarray having summation K with e as the last element.
-    // The sum of c,d,e=k and a,b=x-k; Thus sum of a to e = k.
-    // So if anywhere we get a su of x-k then it means that we will get a sum of k ahead.
+    // Let the sum of all elements upto e be SUM.
+    // If sum of c+d+e=K then sum of a+b=SUM-K
+    // Let's say we are standing at e and we get sum upto there as SUM. If anywhere previously we got a sum of SUM-K, which we got from a,b; then the sum of next element after b upto e will be K i.e. sum of c+d+e=K
 
     map<long long, int> preSumMap;
     long long sum = 0;
@@ -46,28 +44,28 @@ void betterHashing(int arr[], int target, int n)
         }
         // if array = {2, 0, 0, 3};
         // Here if the target=3, then it should give us the longest subarray as {0, 0, 3} and not just {3}, that's why we are checking below condition that if even after going to next element (i.e. 0), the sum remains same, we shouldn't update the index at which the sum was found!
-        if (preSumMap.find(sum) == preSumMap.end())
+        if (preSumMap.find(sum) == preSumMap.end()) // Checking if the sum was previously not there. If it was previously not there, then enter into map. If it was previously there, then don't enter into map.
             preSumMap[sum] = i;
     }
-
     cout << maxLen;
 }
 
+// Only for +ves
+// This is the optimal solution for +ves
+// TC = 2N (N for the outer while loop and N for the inner while loop)
 void optimised(int arr[], int target, int n)
 {
     int left = 0, right = 0, maxLen = 0;
-    long long sum = arr[0];
+    long long sum = arr[0]; // Because both left and right are at 0, so the sum is the first element.
     while (right < n)
     {
         while (left <= right && sum > target)
         {
-            sum -= arr[left];
+            sum = sum - arr[left];
             left++;
         }
-        if (sum==target)
-        {
-            maxLen = max(maxLen, right-left+1);
-        }
+        if (sum == target)
+            maxLen = max(maxLen, right - left + 1);
         right++;
         if (right < n)
             sum += arr[right];

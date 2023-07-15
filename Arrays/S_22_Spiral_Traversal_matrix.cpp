@@ -16,7 +16,7 @@ void best(vector<vector<int>> arr)
 
     while (top <= bottom && left <= right)
     {
-        // From left to right keping top constant
+        // From left to right keeping top constant
         for (int i = left; i <= right; i++)
             ans.push_back(arr[top][i]);
         top++;
@@ -26,16 +26,16 @@ void best(vector<vector<int>> arr)
             ans.push_back(arr[i][right]);
         right--;
 
-        // From right to left keeping bottm constant
-        if (top <= bottom)
+        // From right to left keeping bottom constant
+        if (top <= bottom) // Check if you have a row to print
         {
             for (int i = right; i >= left; i--)
                 ans.push_back(arr[bottom][i]);
             bottom--;
         }
 
-        // From bottom to top keping left constant
-        if (left <= right)
+        // From bottom to top keeping left constant
+        if (left <= right) // Check if you have a column to print
         {
             for (int i = bottom; i >= top; i--)
                 ans.push_back(arr[i][left]);

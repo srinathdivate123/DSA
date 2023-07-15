@@ -7,6 +7,7 @@ void printArray(int arr[], int n)
         cout << arr[i] << " ";
     cout << "\n\n";
 }
+
 // The Dutch National Flag Algorithm
 // Use three pointers: low, mid & high and follow below rules.
 // From 0 to low-1 we have only 0's
@@ -20,11 +21,11 @@ void printArray(int arr[], int n)
 // When arr[mid] == 2 -> swap(arr[mid], arr[high]); high--;
 // TC = N because if arr[mid] == 0, 1, 2 we are sorting one element. Thus we're sorting one element every iteration and we need N iterations!
 // SC = 1
+
 void Dutch_National_Flag_Algorithm(int arr[], int n)
 {
     int low = 0, mid = 0, high = n - 1;
     while (mid <= high)
-    {
         if (arr[mid] == 0)
         {
             swap(arr[mid], arr[low]);
@@ -38,7 +39,6 @@ void Dutch_National_Flag_Algorithm(int arr[], int n)
             swap(arr[mid], arr[high]);
             high--;
         }
-    }
 }
 
 int main()

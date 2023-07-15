@@ -1,11 +1,15 @@
-// Brute is to loop over every element and to check with for the sum of every element in a nested for loop.
+// Problem Statement: Given an array of integers arr[] and an integer target.
+// 1st variant: Return YES if there exist two numbers such that their sum is equal to the target. Otherwise, return NO
+// 2nd variant: Return indices of the two numbers such that their sum is equal to the target. Otherwise, we will return {-1, -1}.
+
+// Brute is to loop over every element and to check with every other element in a nested for loop.
 
 #include <bits/stdc++.h>
 using namespace std;
 
 // TC = N x log(N)
 // SC = N (Space taken by map in worst case)
-array<int, 2> better(int arr[], int n, int target)
+array <int, 2> better(int arr[], int n, int target)
 {
     map<int, int> mpp; // Map will store the element-key.
     for (int i = 0; i < n; i++)
@@ -20,8 +24,8 @@ array<int, 2> better(int arr[], int n, int target)
 }
 
 // Greedy two pointer approach
-// After sorting array, if sum<target means you should increment the left pointer so that you get the next element which is larger and the hence the sum would be larger.
-// Likewise, if sum>target, then you should decrement the right pointer so that you get smaller element and hence the sum will be smaller.
+// After sorting array, if sum < target means you should increment the left pointer so that you get the next element which is larger and the hence the sum would be larger.
+// Likewise, if sum > target, then you should decrement the right pointer so that you get smaller element and hence the sum will be smaller.
 // This function can't be used to return the indices of the array elements as indices will change after sorting.
 // TC = N + N*log(N)   (For iterating the array amd for sorting)
 string best(int arr[], int n, int target)

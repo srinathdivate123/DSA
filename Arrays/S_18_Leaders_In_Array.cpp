@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-// Leader is defined as an element towards the right of which only smaller elements are present
+// A Leader is an element that is greater than all of the elements on its right side in the array.
 // The last element will always be a leader because there are no elements on the right to it
 // Return the leaders array in which they occour in the array
 
@@ -15,7 +15,7 @@ void best(vector<int> arr, int n)
     {
         lastLargest = max(arr[i], lastLargest);
         if (arr[i] >= lastLargest)
-            leaders.insert( leaders.begin(),arr[i]); // Note that we're inserting in the beginning of the vector because we are iterating from back and we want the elements to be in the leaders array in the same order that they were in the arr array
+            leaders.insert(leaders.begin(), arr[i]); // Note that we're inserting in the beginning of the vector because we are iterating from back and we want the elements to be in the leaders array in the same order that they were in the arr array
     }
     for (int it : leaders)
         cout << it << " ";

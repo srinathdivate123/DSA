@@ -29,13 +29,12 @@ void Kadnes_Algo(int arr[], int n)
             sum = 0;
     }
 
-
-    cout << "The maximum subarray sum is " << maxi << " and the subarray indices are (" << ansStart << ", " <<ansEnd << ")" ;
+    cout << "The maximum subarray sum is " << maxi << " and the subarray indices are (" << ansStart << ", " << ansEnd << ")";
 }
 
 int main()
 {
     int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-Kadnes_Algo(arr, sizeof(arr) / sizeof(arr[0]));
+    Kadnes_Algo(arr, sizeof(arr) / sizeof(arr[0]));
     return 0;
 }

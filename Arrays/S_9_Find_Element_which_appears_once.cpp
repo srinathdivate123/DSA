@@ -1,6 +1,6 @@
+// Given a non-empty array of integers arr, every element appears twice except for one. Find that single one.
 // You're given an array arr = {1,1,2,3,3,4,4}
-// The answer is 2, as it is the only element which appears once.
-// For this you can use the XOR concept!
+// The answer is 2.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,7 +19,6 @@ int func(int arr[], int n)
 int main()
 {
     int arr[] = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6};
-
     cout << func(arr, sizeof(arr) / sizeof(arr[0]));
     return 0;
 }

@@ -7,7 +7,6 @@ void RearrangebySign_Variety_1(vector<int> arr)
     int n = arr.size(), posIndex = 0, negIndex = 1;
     vector<int> answer(n, 0); // Declaring vector with size n and all elements to be 0.
     for (int i = 0; i < n; i++)
-    {
         if (arr[i] > 0)
         {
             answer[posIndex] = arr[i];
@@ -18,15 +17,15 @@ void RearrangebySign_Variety_1(vector<int> arr)
             answer[negIndex] = arr[i];
             negIndex += 2;
         }
-    }
-    for (int i = 0; i < answer.size(); i++)
-        cout << answer[i] << " ";
+
+    for (int i : answer)
+        cout << i << " ";
 }
 
 // Here the number of +ve and -ve elements are not same. If any of the +ve or -ve elements are left, add them at the end without altering the order.
 // The only way is to use an array to store +ve and -ve seperately. There is no more optimal for this.
 // So this follow up Qn is one of the favourite for interviewer as we think that we can optimise it just like the above one, but actually we can't optimise and waste time thinking about it.
-// 
+
 void RearrangebySign_Variety_2(vector<int> arr)
 {
     int n = arr.size();
@@ -42,7 +41,7 @@ void RearrangebySign_Variety_2(vector<int> arr)
 
     if (posSize > negSize)
     {
-        // First, fill array alternatively till the point where positives and negatives ar equal in number.
+        // First, fill array alternatively till the point where positives and negatives are equal in number.
         for (int i = 0; i < negSize; i++)
         {
             arr[2 * i] = pos[i];
@@ -58,8 +57,8 @@ void RearrangebySign_Variety_2(vector<int> arr)
     }
     else
     {
-        // First, fill array alternatively till the point where positives and negatives ar equal in number.
-        for (int i = 0; i < pos.size(); i++)
+        // First, fill array alternatively till the point where positives and negatives are equal in number.
+        for (int i = 0; i < posSize; i++)
         {
 
             arr[2 * i] = pos[i];

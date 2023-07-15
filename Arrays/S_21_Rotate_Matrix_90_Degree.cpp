@@ -1,15 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void reverseArray(vector<vector<int>> &arr);
 void printArray(vector<vector<int>> &arr);
 void printArray(vector<vector<int>> &arr)
 {
     for (int i = 0; i < arr.size(); ++i)
     {
         for (int j = 0; j < arr.size(); ++j)
-        {
             cout << arr[i][j] << " ";
-        }
         cout << std::endl;
     }
 }
@@ -28,18 +27,28 @@ void best(vector<vector<int>> &arr)
 {
     // Transpose
     // TC = (N/2)*(N/2)  {N/2 for each of the loops}
-    for (int i = 0; i < 4 - 1; i++)
-        for (int j = i + 1; j < 4; j++)
+    int n = arr.size();
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < i; j++)
             swap(arr[i][j], arr[j][i]);
 
     // Reverse every row
-    // TC = N*(N/2)  {N for traversing the first for loop and N/2 for eversing the array using two pointer approach, if you would have written the code to reverse}
-    for (int i = 0; i < 4; i++)
-        reverse(arr[i].begin(), arr[i].end());
-
+    // TC = N*(N/2)  {N for traversing the first for loop and N/2 for reversing the array using two pointer approach, if you would have written the code to reverse}
+    reverseArray(arr);
     printArray(arr);
 }
 
+void reverseArray(vector<vector<int>> &arr)
+{
+    int n = arr.size();
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n / 2; j++)
+        {
+            int temp = arr[i][j];
+            arr[i][j] = arr[i][n - j - 1];
+            arr[i][n - j - 1] = temp;
+        }
+}
 int main()
 {
     vector<vector<int>> arr = {
