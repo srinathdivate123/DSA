@@ -16,6 +16,13 @@ void pairs()
 
 void vectors()
 {
+    // push_back() is used to add elements to the vector by copying the provided value or object into the vector's storage.
+    // It makes a copy of the given element and inserts that copy into the vector.
+    // This means that the element must be copy-constructible and incur a copy operation.
+    
+    // emplace_back() is used to add elements to the vector by constructing them directly in the vector's storage without making any unnecessary copies.
+    // It forwards the arguments directly to the constructor of the element being inserted, effectively constructing the element in-place inside the vector.
+    // This means that the element must be constructible with the given arguments, but it avoids a copy operation and is generally more efficient.
     vector<int> v1;     // creates an empty container
     v1.push_back(1);    // Slower
     v1.emplace_back(2); // faster

@@ -11,7 +11,6 @@ void Kadnes_Algo(int arr[], int n)
     int ansStart = 0, ansEnd = 0, start = 0;
     for (int i = 0; i < n; i++)
     {
-
         if (sum == 0)
             start = i; // starting index
 

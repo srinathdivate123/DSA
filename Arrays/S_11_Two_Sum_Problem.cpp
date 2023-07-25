@@ -27,7 +27,7 @@ array <int, 2> better(int arr[], int n, int target)
 // After sorting array, if sum < target means you should increment the left pointer so that you get the next element which is larger and the hence the sum would be larger.
 // Likewise, if sum > target, then you should decrement the right pointer so that you get smaller element and hence the sum will be smaller.
 // This function can't be used to return the indices of the array elements as indices will change after sorting.
-// TC = N + N*log(N)   (For iterating the array amd for sorting)
+// TC = N + N*log(N)   (For iterating the array and for sorting)
 string best(int arr[], int n, int target)
 {
     int left = 0, right = n - 1;

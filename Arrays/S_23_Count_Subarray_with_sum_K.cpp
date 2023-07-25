@@ -7,12 +7,12 @@ using namespace std;
 // Brute is to find all sub-arrays and find their sums
 // Better is to calculate the sums of sub-arrays by adding the next element to the sum of the previous sub-array
 
-// TC = N (assuming there are no colisions in unordered_map and the TC of map is O(1))
+// TC = N (assuming there are no colisions in unordered_map and the TC of map is 1)
 // SC = N in worst case for map
 int bestUsingHashMap(vector<int> arr, int target)
 {
-    unordered_map<int, int> mpp;
-    mpp[0] = 1;
+    unordered_map<int, int> mpp; // < Sum, number of times it occoured >
+    mpp[0] = 1; // This is very important to mark that the sum of 0 appears once
     int preSum = 0, cnt = 0;
     for (int i = 0; i < arr.size(); i++)
     {
@@ -21,9 +21,9 @@ int bestUsingHashMap(vector<int> arr, int target)
         cnt += mpp[remove];
         mpp[preSum] += 1;
     }
-
     return cnt;
 }
+
 int main()
 {
     vector<int> arr = {1, 2, 3, 1, 1, 1, 1, 4, 2, 3};
