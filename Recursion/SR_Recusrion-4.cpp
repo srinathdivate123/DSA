@@ -25,11 +25,10 @@ bool isStringPalindrome(int i, int n)
 {
     if (i >= str.length() / 2)
         return true;
-    if (str[i] != str[n - i - 1]) // Checking 
+    if (str[i] != str[n - i - 1]) // Checking
         return false;
-    return isStringPalindrome(i + 1,n);
+    return isStringPalindrome(i + 1, n);
 }
-
 
 int main()
 {
@@ -56,7 +55,7 @@ int main()
 
     cout << "Enter string - ";
     cin >> str;
-    cout << isStringPalindrome(0,str.length());
+    cout << isStringPalindrome(0, str.length());
 
     return 0;
 }
