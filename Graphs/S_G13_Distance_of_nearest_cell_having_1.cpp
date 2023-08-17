@@ -6,7 +6,7 @@
 // There are no diagonal distances calculated
 
 // TC = NxM + NxMx4
-// SC = NxM for vis and NxM for dist and NxM for queue because all elements are put into the queue 
+// SC = NxM for vis and NxM for dist and NxM for queue because all elements are put into the queue
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
