@@ -1,33 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void optimal_1(vector<int> arr1, vector<int> arr2, int n, int m)
-{
-    int left = n - 1;
-    int right = 0;
-    // Below takes TC of min(n, m)
-    while (left >= 0 && right < m)
-        if (arr1[left] > arr2[right])
-        {
-            swap(arr1[left], arr2[right]);
-            left--;
-            right++;
-        }
-        else
-            break;
-    sort(arr1.begin(), arr1.end()); // TC = n*log(n)
-    sort(arr2.begin(), arr2.end()); // TC = m*log(m)
-    for (int element : arr1)
-        cout << element << " ";
-    for (int element : arr2)
-        cout << element << " ";
-}
-
 void swapIfGreater(vector<int> &arr1, vector<int> &arr2, int index1, int index2)
 {
     if (arr1[index1] > arr2[index2])
         swap(arr1[index1], arr2[index2]);
 }
+
 // This uses GAP method which uses the 'Shell Sort' algorithm
 // TC = log2(n) for outer while loop + (n+m) for inner while loop
 // SC = (1)
@@ -63,11 +42,37 @@ void optimal_2_gap_method(vector<int> &arr1, vector<int> &arr2, int n, int m)
         cout << element << " ";
 }
 
+void optimal_1(vector<int> arr1, int m, vector<int> arr2, int n)
+{
+    int left = m - 1;
+    int right = 0;
+    // Below takes TC of min(n, m)
+    while (left >= 0 && right < n)
+        if (arr1[left] > arr2[right])
+        {
+            swap(arr1[left], arr2[right]);
+            left--;
+            right++;
+        }
+        else
+            break;
+    sort(arr1.begin(), arr1.end() - n); // TC = n*log(n)
+    sort(arr2.begin(), arr2.end());     // TC = m*log(m)
+    for (int i = m; i < m + n; i++)
+        arr1[i] = arr2[i - n];
+
+    for (int element : arr1)
+        cout << element << " ";
+    cout << endl;
+    for (int element : arr2)
+        cout << element << " ";
+}
+
 int main()
 {
-    vector<int> arr1 = {1, 3, 5, 7};
-    vector<int> arr2 = {0, 2, 6, 8, 9};
-    // optimal_1(arr1, arr2, arr1.size(), arr2.size());
-    optimal_2_gap_method(arr1, arr2, arr1.size(), arr2.size());
+    vector<int> arr1 = {0};
+    vector<int> arr2 = {1};
+    optimal_1(arr1, arr1.size() - arr2.size(), arr2, arr2.size());
+    // optimal_2_gap_method(arr1, arr2, arr1.size(), arr2.size());
     return 0;
 }

@@ -4,11 +4,6 @@ using namespace std;
 
 int main()
 {
-    char a = '0', b = 'P';
-    bool val = tolower(a) != tolower(b);
-    cout << val << endl;
-
-    cout << tolower(a) << endl;
-    cout << tolower(b) << endl;
+    vector<int> arr = {1, 2, 3, 4, 5, 6};
     return 0;
 }
