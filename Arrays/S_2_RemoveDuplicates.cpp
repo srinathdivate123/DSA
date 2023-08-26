@@ -6,9 +6,8 @@ using namespace std;
 int main()
 {
     vector <int> arr = {3, 4, 5, 5, 6, 7, 7, 8, 9, 10}; // Must be sorted
-    int n = arr.size();
     int i = 0;
-    for (int j = 1; j < n; j++)
+    for (int j = 1; j < arr.size(); j++)
         if (arr[j] != arr[i])
             arr[++i] = arr[j];
     cout << "Number of unique elements in array - " << i + 1 << endl;
