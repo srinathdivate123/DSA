@@ -33,6 +33,8 @@ int observation_based_optimal_approach(vector<int> &arr)
     }
     return ans;
 }
+
+
 int main()
 {
     vector<int> arr = {2, 3, -2, 4};
