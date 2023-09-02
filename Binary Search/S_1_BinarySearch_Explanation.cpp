@@ -8,7 +8,7 @@ int binarySearchIterative(int *arr, int n, int key)
     int low = 0, high = n;
     while (low <= high)
     {
-        int mid = low + (low - high) / 2; // We do this because we can get INT_MAX + INT_MAX, which may overflow.
+        int mid = low + (high - low) / 2; // We do this because we can get INT_MAX + INT_MAX, which may overflow.
         if (arr[mid] == key)
             return mid;
         else if (arr[mid] > key)
@@ -23,7 +23,7 @@ int binarySearchRecursive(int *arr, int key, int low, int high)
 {
     if (low > high)
         return -1;
-    int mid = low + (low - high) / 2; // We do this because we can get INT_MAX + INT_MAX, which may overflow.
+    int mid = low + (high - low) / 2; // We do this because we can get INT_MAX + INT_MAX, which may overflow.
     if (arr[mid] == key)
         return mid;
     else if (arr[mid] > key)
