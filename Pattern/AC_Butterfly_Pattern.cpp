@@ -1,6 +1,17 @@
 #include <iostream>
 using namespace std;
 
+// *                 *
+// * *             * *
+// * * *         * * *
+// * * * *     * * * *
+// * * * * * * * * * *
+// * * * * * * * * * *
+// * * * *     * * * *
+// * * *         * * *
+// * *             * *
+// *                 *
+
 int main()
 {
     // Space = 2*n - 2*row_number
