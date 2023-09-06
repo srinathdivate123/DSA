@@ -7,7 +7,7 @@ void pairs()
     pair<int, int> p1 = {1, 3};
     cout << p1.first << " " << p1.second << endl;
 
-    // Neseted
+    // Nested
     pair<int, pair<int, int>> p2 = {1, {2, 3}};
     cout << p2.first << " " << p2.second.first << " " << p2.second.second << endl;
     pair<int, int> arr[] = {{1, 2}, {3, 4}, {5, 6}};
@@ -19,7 +19,7 @@ void vectors()
     // push_back() is used to add elements to the vector by copying the provided value or object into the vector's storage.
     // It makes a copy of the given element and inserts that copy into the vector.
     // This means that the element must be copy-constructible and incur a copy operation.
-    
+
     // emplace_back() is used to add elements to the vector by constructing them directly in the vector's storage without making any unnecessary copies.
     // It forwards the arguments directly to the constructor of the element being inserted, effectively constructing the element in-place inside the vector.
     // This means that the element must be constructible with the given arguments, but it avoids a copy operation and is generally more efficient.
@@ -35,7 +35,7 @@ void vectors()
 
     vector<pair<int, int>> v2;
     v2.push_back({1, 2});
-    v2.emplace_back(3, 4); // no need to give {} because emplace_back assumes it as an array of you give 2 elements seperated by ,
+    v2.emplace_back(3, 4); // no need to give {} because emplace_back assumes it as an array if you give 2 elements seperated by ,
 
     vector<int> v3(5, 100); // gives {100,100,100,100,100}
     vector<int> v4(5);      // gives {0,0,0,0,0} You get container with 5 instances of 0. This again depends on the compiler.
@@ -44,7 +44,7 @@ void vectors()
 
     // Iterators
     vector<int>::iterator it = v1.begin();
-    printf("The memory location is - %u ", it); // I wasn't able to output it using cout
+    printf("The memory location is - %u \n", it); // I wasn't able to output it using cout
     cout << *(it) << endl;
     it++;
     cout << *(it) << endl;
@@ -91,17 +91,18 @@ void vectors()
     cout << endl;
 
     // Insert - It is a very time consuming function!
-    vector<int> v(2, 100);          // {100,100}
-    v.insert(v.begin(), 300);       // {300,100,100}
-    v.insert(v.begin() + 1, 2, 10); // {300,10,10,100,100}
+    // So user v.emplace(iterator_where_you_want_to_insert, value_which_you_want_to_insert)
+    vector<int> v(2, 100);          // {100, 100}
+    v.insert(v.begin(), 300);       // {300, 100, 100}
+    v.insert(v.begin() + 1, 2, 10); // {300, 10, 10, 100, 100}
 
-    vector<int> copy(2, 50);
+    vector<int> copy(2, 50);                       // copy = {50, 50}
     v.insert(v.begin(), copy.begin(), copy.end()); // {50,50,300,10,10,100,100}
 
     cout << v.size() << endl;
 
     v.pop_back(); // Removes last elemet
-    v1.swap(v3);  // Swaps th elements of v1 with v2
+    v1.swap(v3);  // Swaps th elements of v1 with v3
     v.clear();    // Erases the entire vector
     cout << "Is empty - " << v.empty();
 }
@@ -114,14 +115,13 @@ void lists()
     ls.push_front(3);
     ls.emplace_front(4);
     ls.emplace_front(5);
-    // Rest func same as vector
-    // begin, end, rbegin, rend, clear, insert, size, swap
+    // Rest func same as vector - begin, end, rbegin, rend, clear, insert, size, swap
     for (auto it : ls)
         cout << it << " ";
     cout << endl;
 }
 
-void dequeues()
+void dequeues() // Double ended queues
 {
     deque<int> dq;
     dq.push_back(1);
@@ -143,6 +143,7 @@ void dequeues()
 
     cout << "Back - " << dq.back() << endl;
     cout << "Front - " << dq.front();
+    // Rest func same as vector - begin, end, rbegin, rend, clear, insert, size, swap
 }
 
 void stacks()
@@ -154,31 +155,30 @@ void stacks()
     st.push(4);
     st.emplace(5);
     cout << st.top() << endl;
-    ;
     st.pop();
     cout << st.top() << endl;
-    ;
     cout << st.size() << endl;
-    ;
     cout << st.empty() << endl;
-    ;
     stack<int> st1, st2;
     st1.swap(st2);
 }
 
-void priorityQueue() // Data is not stored ina linear fashion, a tree is maintained inside
+void priorityQueue() // Data is not stored in a linear fashion, a tree is maintained inside
 {
+    // In priority_queue push - log(n). top - (1). pop - log(n)
+    // In below elements are arranged left to right as top to bottom (largest element on top)
+    // Maximum element is stored on top. It is called as max heap!
     priority_queue<int> pq;
     pq.push(5);     // {5}
     pq.push(2);     // {5, 2}
     pq.push(8);     // {8, 5, 2}
     pq.emplace(10); // {10, 8, 5, 2}
-
     cout << pq.top() << endl;
 
     // size, swap and empty func same as others
 
-    // MNIMUM HEAP  (Priority queue to store the min element on top)
+    // Priority queue to store the min element on top. It is called as min heap
+    // Declare the datatype as below
     priority_queue<int, vector<int>, greater<int>> pqq;
     pqq.push(5);     // {5}
     pqq.push(2);     // {2, 5}
@@ -356,12 +356,12 @@ int main()
     // vectors();
     // lists();
     // dequeues();
-    // stacks();
+    stacks();
     // priorityQueue();
     // sets();
     // multiSet();
     // unorderedSet();
     // maps();
-    sorting();
+    // sorting();
     return 0;
 }
