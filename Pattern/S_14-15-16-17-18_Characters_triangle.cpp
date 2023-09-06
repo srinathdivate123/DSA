@@ -7,16 +7,26 @@ int main()
     cout << endl;
     cout << "Pattern - 14" << endl
          << endl;
+    // A
+    // A B
+    // A B C
+    // A B C D
+    // A B C D E
     for (int i = 0; i < n; i++)
     {
         for (char ch = 'A'; ch <= 'A' + i; ch++) // ASCII value of A is 65
             cout << ch << " ";
         cout << endl;
     }
-    
+
     cout << endl;
     cout << "Pattern - 15" << endl
          << endl;
+    // A B C D E
+    // A B C D
+    // A B C
+    // A B
+    // A
     for (int i = 0; i < n; i++)
     {
         for (char ch = 'A'; ch <= 'A' + (n - i - 1); ch++)
@@ -27,6 +37,11 @@ int main()
     cout << endl;
     cout << "Pattern - 16" << endl
          << endl;
+    // A
+    // B B
+    // C C C
+    // D D D D
+    // E E E E E
     for (char ch = 'A'; ch < 'A' + n; ch++)
     {
         for (int i = 0; i <= ch - 65; i++) // The ASCII of A is 65.
@@ -38,6 +53,11 @@ int main()
     cout << endl;
     cout << "Pattern - 17" << endl
          << endl;
+    //     A
+    //    ABA
+    //   ABCBA
+    //  ABCDCBA
+    // ABCDEDCBA
     for (int i = 0; i < n; i++)
     {
         for (int j = i; j < n - 1; j++)
@@ -59,7 +79,11 @@ int main()
     cout << endl;
     cout << "Pattern - 18" << endl
          << endl;
-
+    // E
+    // D E
+    // C D E
+    // B C D E
+    // A B C D E
     for (int i = 0; i < n; i++)
     {
         // Inner loop for printing the alphabets from

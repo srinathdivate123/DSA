@@ -3,11 +3,7 @@ using namespace std;
 
 int main()
 {
-    int r, c;
-    cout << "Enter rows - ";
-    cin >> r;
-    cout << "Enter columns - ";
-    cin >> c;
+    int r=4, c=8;
     for (int i = 1; i <= r; i++)
     {
         for (int j = 1; j <= c; j++)

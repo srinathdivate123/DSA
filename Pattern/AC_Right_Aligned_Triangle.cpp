@@ -3,10 +3,7 @@ using namespace std;
 
 int main()
 {
-    int h;
-    cout << "Triangle height - ";
-    cin >> h;
-    // My Solution
+    int h = 9;
     for (int i = 1; i <= h; i++)
     {
         for (int j = i; j <= h; j++)
@@ -25,7 +22,7 @@ int main()
             else
                 cout << "* ";
         }
-        cout<<endl;
+        cout << endl;
     }
     return 0;
 }
