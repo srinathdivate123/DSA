@@ -10,10 +10,8 @@ double fibonacciNum(int n)
 
 int main()
 {
-    int n;
-    cin >> n;
+    int n = 7;
     cout << fibonacciNum(n);
-
     return 0;
 }
 // Time complexity is 2 power n.
