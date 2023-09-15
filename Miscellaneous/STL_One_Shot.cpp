@@ -85,13 +85,13 @@ void vectors()
     cout << endl;
     // Syntax - v1.erase(starting address from where u want to delete, end address after the element which you want to delete)
     v1.erase(v1.begin() + 1, v1.begin() + 4);
-    cout << "After earsing second time - ";
+    cout << "After erasing second time - ";
     for (auto it : v1)
         cout << it << " ";
     cout << endl;
 
     // Insert - It is a very time consuming function!
-    // So user v.emplace(iterator_where_you_want_to_insert, value_which_you_want_to_insert)
+    // So use v.emplace(iterator_where_you_want_to_insert, value_which_you_want_to_insert)
     vector<int> v(2, 100);          // {100, 100}
     v.insert(v.begin(), 300);       // {300, 100, 100}
     v.insert(v.begin() + 1, 2, 10); // {300, 10, 10, 100, 100}
@@ -107,6 +107,7 @@ void vectors()
     cout << "Is empty - " << v.empty();
 }
 
+// These are implemented are doubly linked lists!
 void lists()
 {
     list<int> ls;
@@ -165,7 +166,7 @@ void stacks()
 
 void priorityQueue() // Data is not stored in a linear fashion, a tree is maintained inside
 {
-    // In priority_queue push - log(n). top - (1). pop - log(n)
+    // In priority_queue push -> log(n). top -> (1). pop -> log(n)
     // In below elements are arranged left to right as top to bottom (largest element on top)
     // Maximum element is stored on top. It is called as max heap!
     priority_queue<int> pq;
@@ -203,12 +204,12 @@ void sets() // Everything in a sorted order and unique (non-repetition)
     s.insert(8);
     s.insert(9);
 
-    /* Functionality of insert in vector can be used also, this only increases the efficiency */
-    /* Rest functions are all same as above */
+    // Functionality of insert in vector can be used also, this only increases the efficiency
+    // Rest functions are all same as above
     auto it1 = s.find(3); // Returns an iterator that points to 3
     auto it2 = s.find(6); // Returns s.end() because 6 is not present in set
     s.erase(5);           // Takes log time
-    int c = s.count(2);   // Will have only occurance
+    int c = s.count(2);   // Will have only one occurance
 
     auto it5 = s.find(3);
     s.erase(it5); // takes constant time!
@@ -265,7 +266,7 @@ void maps()
         cout << it.first << " " << it.second << endl;
     cout << mp1[1] << endl;
     cout << mp1[6] << endl;
-    cout << "Doesnt exist " << mp1[9] << endl;
+    cout << "Doesn't exist " << mp1[9] << endl;
 
     auto it4 = mp1.find(3); // Here 3 is the key!
     cout << (*(it4)).second << endl;
@@ -274,7 +275,7 @@ void maps()
     auto it2 = mp1.upper_bound(2);
 }
 
-void multiMAp()
+void multiMap()
 {
     // Same as map but can store multiple keys
     // only map[key] cannot be used here
@@ -296,19 +297,17 @@ void sorting()
     sort(v.begin(), v.end());
     sort(&arr[5], &arr[8]); // We can sort in between elements also!
 
-    // sort(6,9, greater<int>); // For sorting in descending order
-
-    // Above line is giving error idky!
+    sort(v.begin(), v.end(), greater<int>()); // For sorting in descending order
+    // greater<int>() is a inbuilt comparator!!
     for (int i = 0; i < 10; i++)
         cout << arr[i] << " ";
     cout << endl;
 
-    // Sort it according to second element
+    // Sort it in the order of increasing second element
     // If second element is same then
     // Sort it according it according to first element, but in descending
     pair<int, int> a[] = {{1, 2}, {2, 1}, {4, 1}};
-    sort(a, a + 3, comp); // comp is defined below
-    // The comp paramete rmust be a boolean!!!
+    sort(a, a + 3, comp); // comp is a boolean self-written comparator defined below
 
     int num1 = 7;                       // Binary of 7 is 111
     int cnt = __builtin_popcount(num1); // This returns 3 as the number of 1's in binary of 7 are 3!
@@ -318,7 +317,7 @@ void sorting()
     int cn = __builtin_popcountll(num);
     cout << " __builtin_popcountll() - " << cn << endl;
 
-    string s = "123"; // This must be sorted!!
+    string s = "123"; // This must be sorted!! Printing all the permutations
     do
     {
         cout << s << endl;
@@ -339,12 +338,13 @@ void sorting()
     cout << "maxi - " << maxi << endl;
 }
 bool comp(pair<int, int> p1, pair<int, int> p2)
+// We assume that p1 lies before than p2!
 {
     if (p1.second < p2.second)
-        return true; // We assume that p1 lies before than p2!
+        return true; // Means that p1.second < p2.second. They are in correct order. No need to change
     if (p1.second > p2.second)
-        return false;
-    // Below will execute only is they are same
+        return false; // They are in wrong order
+    // Below will execute only if they are same
     if (p1.first > p2.first)
         return true;
     return false;
