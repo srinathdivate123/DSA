@@ -17,7 +17,7 @@ void bubbleSort(int arr[], int n)
         // At the end of all of the below loop, the largest element will be at the end of the array!
         int didSwap = 0; // If after iterating through entire array, we did no swaps (all elements in ascending order), means the array is sorted and so we can quit the loop by doing a break. This is use of didSwap variable.
 
-        for (int j = 0; j < n - i; j++) // Note the n-i here! This is because the array from n-i th index onwards would be already sorted because bubble sort sorts from back.
+        for (int j = 0; j < n - i; j++) // Note the n-i here! This is because the array from n-i th index onwards would be already sorted because bubble sort, sorts from back.
             if (arr[j] > arr[j + 1])
             {
                 arr[j] = arr[j] + arr[j + 1];

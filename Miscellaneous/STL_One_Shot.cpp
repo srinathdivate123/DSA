@@ -277,6 +277,7 @@ void maps()
 
 void multiMap()
 {
+    multimap<int, int> mm;
     // Same as map but can store multiple keys
     // only map[key] cannot be used here
 }
@@ -343,8 +344,8 @@ bool comp(pair<int, int> p1, pair<int, int> p2)
     if (p1.second < p2.second)
         return true; // Means that p1.second < p2.second. They are in correct order. No need to change
     if (p1.second > p2.second)
-        return false; // They are in wrong order
-    // Below will execute only if they are same
+        return false; // They are in wrong order. So change the order!
+    // Below will execute only if they are same!
     if (p1.first > p2.first)
         return true;
     return false;
