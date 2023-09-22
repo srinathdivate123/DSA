@@ -35,7 +35,7 @@ int better(vector<int> nums)
 
 // Tc = N (for putting elements into set assuming there are no collisions) + N (iterations of the for loop) + N (The total no of iterations that you would make in the while loop at worst case)
 // So TC = 3N
-// SC =
+// SC = N for set in worst case
 void best(vector<int> &arr, int n)
 {
     int longest = 1;
@@ -76,7 +76,7 @@ int bestest(vector<int> a)
     // find longest sequence:
     for (int i = 0; i < n; i++)
     {
-        if (a[i] - 1 == lastSmaller)
+        if (a[i] == lastSmaller + 1)
         {
             // a[i] is the next element of the
             // current sequence.
