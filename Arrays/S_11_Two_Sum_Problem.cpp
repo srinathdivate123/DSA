@@ -9,7 +9,7 @@ using namespace std;
 
 // TC = N x log(N)
 // SC = N (Space taken by map in worst case)
-array <int, 2> better(int arr[], int n, int target)
+array<int, 2> better(int arr[], int n, int target)
 {
     map<int, int> mpp; // Map will store the element-key.
     for (int i = 0; i < n; i++)
@@ -31,7 +31,7 @@ array <int, 2> better(int arr[], int n, int target)
 string best(int arr[], int n, int target)
 {
     int left = 0, right = n - 1;
-    sort(arr, arr+n);
+    sort(arr, arr + n);
     while (left < right)
     {
         int sum = arr[left] + arr[right];

@@ -14,7 +14,7 @@ void sumApproach(int arr[], int N, int arraySize)
 }
 // If the array has numbers of order 10^5 then the sum will be 10^10 which you have to store in long datatype.
 
-// But when we do XOR the value of 10^5-ordered numbers will never exceed 10^5. i.e. the XOR of all numbers will not be that big
+// But when we do XOR the value of 10^5 ordered numbers will never exceed 10^5. i.e. the XOR of all numbers will not be that big
 
 // The XOR of two same numbers is always 0.
 // 2^2 = 0
@@ -31,7 +31,7 @@ void XOR_Approach(int arr[], int N)
 
     // Below is one approach using two for loops with time complexity 2N
     // for (int i = 1; i < N; i++) // We start i from 1 because we want to start the XOR from 1
-    //     XOR1 = XOR1 ^ arr[i];
+    //     XOR1 = XOR1 ^ i;
     // for(int i=0; i<N-1;i++)
     //     XOR2 = XOR2 ^ arr[i];
 

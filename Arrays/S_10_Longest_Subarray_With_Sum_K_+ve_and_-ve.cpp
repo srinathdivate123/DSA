@@ -23,10 +23,10 @@ void brute(int arr[], int target, int n)
 // This will work for +ves & -ves also in array
 void betterHashing(int arr[], int target, int n)
 {
-    // arr[] = {a,b,c,d,e,f,g}
+    // arr[] = {a, b, c, d, e, f, g}
     // Let the sum of all elements upto e be SUM.
-    // If sum of c+d+e=K then sum of a+b=SUM-K
-    // Let's say we are standing at e and we get sum upto there as SUM. If anywhere previously we got a sum of SUM-K, which we got from a,b; then the sum of next element after b upto e will be K i.e. sum of c+d+e=K
+    // If sum of c+d+e=K then sum of a+b = SUM-K
+    // Let's say we are standing at e and we get sum upto there as SUM. If anywhere previously we got a sum of SUM-K, which we got from a & b, then the sum of next element after b upto e will be K i.e. sum of c+d+e=K
 
     map<long long, int> preSumMap;
     long long sum = 0;
@@ -37,6 +37,7 @@ void betterHashing(int arr[], int target, int n)
         if (sum == target)
             maxLen = max(maxLen, i + 1);
         long long rem = sum - target;
+        // map::find function is used to search for a specific key in a std::map container. It returns an iterator that points to the element with the specified key if it is found, or it returns the end iterator of the map if the key is not found. So if it returns the end iterator, then the key is not found.
         if (preSumMap.find(rem) != preSumMap.end())
         {
             int len = i - preSumMap[rem];
@@ -44,6 +45,7 @@ void betterHashing(int arr[], int target, int n)
         }
         // if array = {2, 0, 0, 3};
         // Here if the target=3, then it should give us the longest subarray as {0, 0, 3} and not just {3}, that's why we are checking below condition that if even after going to next element (i.e. 0), the sum remains same, we shouldn't update the index at which the sum was found!
+        // If sum is not found then the first condition would return the end iterator, which matches with the second condition, so then only we've to insert in the map.
         if (preSumMap.find(sum) == preSumMap.end()) // Checking if the sum was previously not there. If it was previously not there, then enter into map. If it was previously there, then don't enter into map.
             preSumMap[sum] = i;
     }

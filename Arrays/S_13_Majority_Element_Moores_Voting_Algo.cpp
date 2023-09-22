@@ -8,7 +8,7 @@ void better()
 {
 }
 
-// When we start & count=0, then we allot the first array element to it.
+// When we start & count=0, then we allot the first array element to 'element'.
 // In the next itertions, if elements we encounter are equal to the 'element' then we do count++ which means that the 'element' is the largest in the array till now
 // If we get elements that are not equal to 'element' then we do count-- which means that the 'element' is not the majority so far.
 // While doing this count++ & count-- if count becomes 0 then we again initialize 'element' with arr[i];
