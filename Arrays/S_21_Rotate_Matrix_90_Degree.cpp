@@ -32,7 +32,7 @@ void best(vector<vector<int>> &arr)
             swap(arr[i][j], arr[j][i]);
 
     // Reverse every row
-    // TC = N*(N/2)  {N for traversing the first for loop and N/2 for reversing the array using two pointer approach, if you would have written the code to reverse}
+    // TC = N*(N/2)  {N for traversing the first for loop and N/2 for reversing the array using two pointer approach}
     reverseArray(arr);
     printArray(arr);
 }

@@ -33,7 +33,7 @@ int better(vector<int> nums)
 // Put everthing into unordered_set
 // Then we will run a for loop and check for any number(x) if it is the starting number of the consecutive sequence by checking if the HashSet contains (x-1) or not. If ‘x’ is the starting number of the consecutive sequence we will keep searching for the numbers y = x+1, x+2, x+3, ….. And stop at the first ‘y’ which is not present in the HashSet. Using this we can calculate the length of the longest consecutive subsequence.
 
-// Tc = N (for putting elements into set assuming there are no collisions) + N (iterations of the for loop) + N (The total no of iterations that you would make in the while loop at worst case)
+// TC = N (for putting elements into set assuming there are no collisions) + N (iterations of the for loop) + N (The total no of iterations that you would make in the while loop at worst case)
 // So TC = 3N
 // SC = N for set in worst case
 void best(vector<int> &arr, int n)
@@ -92,6 +92,8 @@ int bestest(vector<int> a)
     }
     return longest;
 }
+
+
 int main()
 {
     vector<int> arr = {102, 4, 100, 1, 101, 3, 2, 1, 1};

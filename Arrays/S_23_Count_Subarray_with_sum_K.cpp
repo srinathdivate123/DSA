@@ -29,6 +29,5 @@ int main()
     vector<int> arr = {1, 2, 3, 1, 1, 1, 1, 4, 2, 3};
     int target = 3;
     cout << bestUsingHashMap(arr, 3);
-
     return 0;
 }
