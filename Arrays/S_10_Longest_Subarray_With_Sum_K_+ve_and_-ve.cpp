@@ -46,7 +46,7 @@ void betterHashing(int arr[], int target, int n)
         // if array = {2, 0, 0, 3};
         // Here if the target=3, then it should give us the longest subarray as {0, 0, 3} and not just {3}, that's why we are checking below condition that if even after going to next element (i.e. 0), the sum remains same, we shouldn't update the index at which the sum was found!
         // If sum is not found then the first condition would return the end iterator, which matches with the second condition, so then only we've to insert in the map.
-        if (preSumMap.find(sum) == preSumMap.end()) // Checking if the sum was previously not there. If it was previously not there, then enter into map. If it was previously there, then don't enter into map.
+        if (preSumMap.find(sum) == preSumMap.end()) // Checking if the sum was previously not there. If it was previously not there, then enter into map. If it was previously there, then don't enter into map. We do so because we want the longest subarray.
             preSumMap[sum] = i;
     }
     cout << maxLen;

@@ -7,9 +7,10 @@ using namespace std;
 
 // Better  using mathematical formulae
 // Sn -> Summation of n natural numbers
-// S2n -> SUmmation of squares of n natural numbers
+// S2n -> Summation of squares of n natural numbers
 // x -> Repeating number
 // y -> Missing number
+// This is sufficient for clearing interview
 vector<int> mathematical_way_optimal(vector<int> arr)
 {
     // S - Sn = x - y
@@ -30,6 +31,8 @@ vector<int> mathematical_way_optimal(vector<int> arr)
     return {(int)x, (int)y};
 }
 
+
+// This is not required in interview but it is good to tell this. 
 vector<int> XOR_way_optimal(vector<int> arr)
 {
     long long n = arr.size();
@@ -78,7 +81,6 @@ int main()
 {
     vector<int> arr = {4, 3, 6, 2, 1, 1};
     vector<int> ans = mathematical_way_optimal(arr);
-    for (int it : ans)
-        cout << it << endl;
+    cout << "Repeating: " << ans[0] << "\nMissing: " << ans[1] << endl;
     return 0;
 }

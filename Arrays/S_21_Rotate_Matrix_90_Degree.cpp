@@ -22,6 +22,7 @@ void brute(int (*arr)[4])
         for (int j = 0; j < 4; j++)
             ans[j][4 - 1 - i] = arr[i][j];
 }
+
 void best(vector<vector<int>> &arr)
 {
     // Transpose

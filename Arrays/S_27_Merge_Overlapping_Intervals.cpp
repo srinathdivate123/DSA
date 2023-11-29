@@ -14,7 +14,7 @@ void brute(vector<vector<int>> arr)
     {
         int start = arr[i][0];
         int end = arr[i][1];
-        if (!ans.empty() and end <= ans.back()[1])
+        if (!ans.empty() and end <= ans.back()[1]) // We skip the intervals that lie in the last inserted interval of our answer list.
             continue;
         for (int j = i + 1; j < n; j++)
             if (arr[j][0] <= end)
@@ -34,7 +34,7 @@ void best(vector<vector<int>> arr)
     sort(arr.begin(), arr.end());
     vector<vector<int>> ans;
     for (int i = 0; i < n; i++)
-        if (ans.empty() || arr[i][0] > ans.back()[1])
+        if (ans.empty() || arr[i][0] > ans.back()[1]) // arr[i][0] > ans.back()[1] implies that a new interval is starting, because arr[i][0] is greater than ans.back()[1] and cannot be accomodated in the ans.back()[0] to ans.back()[1] interval.
             ans.push_back(arr[i]);
         else
             ans.back()[1] = max(ans.back()[1], arr[i][1]);

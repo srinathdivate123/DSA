@@ -12,7 +12,7 @@ using namespace std;
 int bestUsingHashMap(vector<int> arr, int target)
 {
     unordered_map<int, int> mpp; // < Sum, number of times it occoured >
-    mpp[0] = 1; // This is very important to mark that the sum of 0 appears once
+    mpp[0] = 1; // This is very important to mark that the sum of 0 appears once. Because at i == 1, preSum=3, and remove=3-3=0, then cnt=mpp[0]=1: Only then we will be able to increase cnt to 1. So it is very important to make mpp[0] = 1.
     int preSum = 0, cnt = 0;
     for (int i = 0; i < arr.size(); i++)
     {

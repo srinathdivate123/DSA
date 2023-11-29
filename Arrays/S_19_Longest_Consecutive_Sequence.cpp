@@ -61,6 +61,8 @@ void best(vector<int> &arr, int n)
     cout << longest;
 }
 
+// TC = n*log(n)
+// SC = 0
 int bestest(vector<int> a)
 {
     int n = a.size();

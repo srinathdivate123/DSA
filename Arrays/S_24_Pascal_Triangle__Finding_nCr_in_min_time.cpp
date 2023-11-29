@@ -11,16 +11,16 @@ using namespace std;
 void Variation_2(int n);
 
 // Variation 1: Given row number r and column number c. Print the element at position (r, c) in Pascal’s triangle.
-// The value of element (r,c) is r-1 C c-1 = n! / r! * (n-r!)
+// The value of element (r,c) is (r-1) C (c-1) = n! / r! * (n-r!)
 // To find the combination 7C2 we have:
 // 7 x 6 x (5 x 4 x 3 x 2 x 1)
-// __________________________
+// ---------------------------
 // 2 x 1 x (5 x 4 x 3 x 2 x 1)
 // So here the 5 x 4 x 3 x 2 x 1 gets cancelled
 // We have 7x6 / 2x1
 // So the denominator (2) moves 2 places and the numerator also moves 2 places
 // So we do 7/1 * 6/2
-// Numerator goes in descending and denominator goes in ascending, because if we in starting only divide 7/2 then we will not get whole number, after if we divide thn somewhere we may get whole number
+// Numerator goes in descending and denominator goes in ascending, because if we in starting only divide 7/2 then we will not get whole number, after if we divide then somewhere we may get whole number
 void Variation_1(int n, int r) // We are finding nCr
 {
     long long result = 1;
@@ -36,6 +36,7 @@ void Variation_1(int n, int r) // We are finding nCr
 // The nth row will have n elements
 // The brute will be to run a loop from 1 to n, because each row will have n elements, and for each position (row, col) call the func Variation_1(row-1, col-1) and print
 // Best: See https://takeuforward.org/data-structure/program-to-generate-pascals-triangle for explanation
+// We can print a line if the numerator is multiplied by the previous consecutive element, and the denominator is multiplied by the next consecutive element.
 void Variation_2(int n)
 {
     int ans = 1;

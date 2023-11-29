@@ -21,7 +21,7 @@ int main()
     for (int i = 0; i < n; i++)
     {
         XR = XR ^ arr[i];
-        // Find K
+        // Find x
         int x = XR ^ K;
         cnt += mpp[x];
         mpp[XR]++;

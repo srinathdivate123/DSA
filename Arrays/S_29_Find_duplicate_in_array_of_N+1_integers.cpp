@@ -3,6 +3,9 @@ using namespace std;
 
 // Given an array of N + 1 size, where each element is between 1 and N. Assuming there is only one duplicate number, your task is to find the duplicate number.
 
+// Brute is to sort and check for duplicates
+
+// Below is the most optimal method called as the "Linked List Cycle Method"
 int findDuplicate(vector<int> &nums)
 {
     int slow = nums[0];
@@ -21,7 +24,6 @@ int findDuplicate(vector<int> &nums)
     }
     return slow;
 }
-// Brute is to sort and check for duplicates
 int main()
 {
     vector<int> arr = {1, 3, 4, 2, 3};
