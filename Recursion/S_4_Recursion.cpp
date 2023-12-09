@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-string str;
 
 // Reverse an array with one pointer. TC = n/2
 void reverseArray_1_Pointer(int i, int n, int arr[])
@@ -21,41 +20,34 @@ void reverseArray_2_Pointers(int l, int r, int arr[])
 }
 
 // Check if the string is palindrome
-bool isStringPalindrome(int i, int n)
+bool isStringPalindrome(int i, int n, string str)
 {
     if (i >= str.length() / 2)
         return true;
     if (str[i] != str[n - i - 1])
         return false;
-    return isStringPalindrome(i + 1, n);
+    return isStringPalindrome(i + 1, n, str);
 }
 
 int main()
 {
-    int n;
-    cout << "Enter array size - ";
-    cin >> n;
-    int arr[n];
-    cout << "Enter elements of array - " << endl;
-
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
+    int n = 7;
+    int arr[n] = {1, 2, 3, 4, 5, 6, 7};
     reverseArray_2_Pointers(0, n - 1, arr);
     cout << endl;
     cout << "After reversing - " << endl;
     for (int i = 0; i < n; i++)
-        cout << arr[i] << endl;
+        cout << arr[i];
 
     reverseArray_1_Pointer(0, n, arr);
-    cout << "After re-reversing - " << endl;
+    cout << endl << "After re-reversing - " << endl;
     for (int i = 0; i < n; i++)
-        cout << arr[i] << endl;
+        cout <<  arr[i];
 
     cout << endl;
 
-    cout << "Enter string - ";
-    cin >> str;
-    cout << isStringPalindrome(0, str.length());
+    string str = "Srinath";
+    cout << isStringPalindrome(0, str.length(), str);
 
     return 0;
 }

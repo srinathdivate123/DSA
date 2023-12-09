@@ -1,3 +1,4 @@
+// Parameterised and functional recursion
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -15,8 +16,8 @@ void Sum_parameterised(int i, int sum)
 // Sum of first n numbers using functional recursion way
 int Sum_functional(int n)
 {
-    if (n == 0)
-        return 0;
+    if (n == 1)
+        return 1;
     return n + Sum_functional(n - 1);
 }
 
@@ -31,9 +32,7 @@ int factorial(int n)
 
 int main()
 {
-    int n;
-    cout << "Enter a number - ";
-    cin >> n;
+    int n = 7;
 
     Sum_parameterised(n, 0);
     cout << endl;
