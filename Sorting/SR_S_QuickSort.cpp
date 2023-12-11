@@ -18,6 +18,7 @@ void quickSort(vector<int> &arr, int low, int high)
     quickSort(arr, low, partitionIndex - 1);        // Sort left subarray, this can be done after sorting the right part also.
     quickSort(arr, partitionIndex + 1, high);       // Sort right subarray
                                                     // We don't need to include the pivot element in the above two function calls, because it is already at its correct position in the array!
+    // We can sort left part first or right part first, doesn't matter
 }
 
 int partition(vector<int> &arr, int low, int high)
