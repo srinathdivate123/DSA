@@ -5,7 +5,7 @@
 5 in binary is 101. To check if the left-most bit is set or not we do
 101
 100
-and then do a & and get 100
+and then do a & and then the result is 100
 100 is a non zero number, hence we conclude that the first bit is set
 */
 #include <bits/stdc++.h>
@@ -17,7 +17,7 @@ void AllPossibleStrings(string s)
     {
         string sub = "";
         for (int i = 0; i < n; i++)
-            // check if the ith bit is set or not
+            // check if the ith bit is set or not, if yes, add it in the substring
             if (num & (1 << i))
                 sub += s[i];
         if (sub.length() > 0)
