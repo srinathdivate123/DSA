@@ -10,6 +10,7 @@ and then do a & and then the result is 100
 */
 #include <bits/stdc++.h>
 using namespace std;
+// TC = 2^n * n
 void AllPossibleStrings(string s)
 {
     int n = s.length();
