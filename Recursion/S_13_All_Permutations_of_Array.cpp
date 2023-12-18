@@ -37,7 +37,7 @@ void better(int index, vector<int> &nums)
     {
         swap(nums[index], nums[i]);
         better(index + 1, nums);
-        swap(nums[index], nums[i]);
+        swap(nums[index], nums[i]); 
     }
 }
 
