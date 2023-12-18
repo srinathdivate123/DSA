@@ -14,9 +14,11 @@ void func1(int index, vector<int> &elements, vector<int> &arr, int sum, int targ
         }
         return;
     }
+    // TAKE the element
     elements.emplace_back(arr[index]);
     sum += arr[index];
     func1(index + 1, elements, arr, sum, target_sum);
+    // NOT-TAKE the element
     elements.pop_back();
     sum -= arr[index];
     func1(index + 1, elements, arr, sum, target_sum);

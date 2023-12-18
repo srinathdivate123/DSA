@@ -16,10 +16,10 @@ void func(int index, vector<int> &subsequence, vector<int> &arr)
         cout << endl;
         return;
     }
-    // PICK : index is added to your subsequence
+    // TAKE : index is added to your subsequence
     subsequence.push_back(arr[index]);
     func(index + 1, subsequence, arr);
-    // NOT PICK : index is not added to your subsequence
+    // NOT TAKE : index is not added to your subsequence
     // When we try clothes in trial room, first we remove the cloth that we're currently wearing and then wear new cloth. Similarly, to try a different combination here, we have to remove the last added element.
     subsequence.pop_back();
     func(index + 1, subsequence, arr);
