@@ -4,7 +4,9 @@
 // Input: n = 4
 // Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
 
-// There are two ways to solve this. Here the optimal way is mentioned. For brute check taheUforward
+// There are two ways to solve this. Here the optimal way is mentioned. For brute check taheUforward.
+// TC =  Exponential in nature, since we are trying out all ways. To be precise it goes as O(N! * N) nearly.
+// SC = O(N^2)
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -5,6 +5,9 @@
 3. Each 3×3 submatrix should be filled with numbers (1 – 9) exactly once.
 
 Note: Character ‘.’ indicates empty cell. */
+
+// TC = O(9(n ^ 2)), in the worst case, for each cell in the n2 board, we have 9 possible numbers.
+// SC = O(1), since we are refilling the given board itself, there is no extra space required, so constant space complexity.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -37,9 +40,9 @@ bool solveSudoku(vector<vector<char>> &board)
                         else
                             board[i][j] = '.';
                     }
-                return false;
+                return false; // If you are not able to place anyone from 1-9 in that location.
             }
-    return true;
+    return true; // When everything is correctluy filled up (like after iterating, you found no '.')
 }
 int main()
 {
