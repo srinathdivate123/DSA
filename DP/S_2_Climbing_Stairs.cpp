@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// TC = 2^N, SC = N
 int func_memoization(int index)
 {
     if (index == 0 || index == 1)
@@ -9,6 +10,7 @@ int func_memoization(int index)
     return func_memoization(index - 1) + func_memoization(index - 2);
 }
 
+// TC = N, SC = N
 int func_tabulation(int n)
 {
     vector<int> dp(n + 1, -1);
@@ -19,6 +21,7 @@ int func_tabulation(int n)
     return dp[n];
 }
 
+// TC = N, SC = 1
 int func_space_optimised(int n)
 {
     int prev2 = 1;
