@@ -4,7 +4,7 @@
 using namespace std;
 
 // TC = N, SC = N
-// Top-down approach
+// Top-down approach, we start from top stair and come to down stair.
 int memoization(int ind, vector<int> &height, vector<int> &dp)
 {
     if (ind == 0)
@@ -40,13 +40,12 @@ int space_optimised(int n, vector<int> height, vector<int> dp)
     int prev2 = 0;
     for (int i = 1; i < n; i++)
     {
-        int jumpTwo = INT_MAX;
         int jumpOne = prev + abs(height[i] - height[i - 1]);
+        int jumpTwo = INT_MAX;
         if (i > 1)
             jumpTwo = prev2 + abs(height[i] - height[i - 2]);
-        int cur_i = min(jumpOne, jumpTwo);
         prev2 = prev;
-        prev = cur_i;
+        prev = min(jumpOne, jumpTwo);
     }
     return prev;
 }
