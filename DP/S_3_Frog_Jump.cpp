@@ -34,6 +34,7 @@ int tabulation(int n, vector<int> height, vector<int> dp)
     return dp[n - 1];
 }
 
+// TC = N, SC = 1
 int space_optimised(int n, vector<int> height, vector<int> dp)
 {
     int prev = 0;
@@ -51,7 +52,6 @@ int space_optimised(int n, vector<int> height, vector<int> dp)
 }
 int main()
 {
-
     vector<int> height{30, 10, 60, 10, 60, 50};
     int n = height.size();
     vector<int> dp(n, -1);

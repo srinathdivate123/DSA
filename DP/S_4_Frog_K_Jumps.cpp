@@ -1,4 +1,4 @@
-// This is a follow-up question to “Frog Jump” discussed in the previous article. In the previous question, the frog was allowed to jump either one or two steps at a time. In this question, the frog is allowed to jump up to ‘K’ steps at a time. If K=4, the frog can jump i+1, i+2, i+3, or i+4 steps at every index.
+// This is a follow-up question to “Frog Jump”. In the previous question, the frog was allowed to jump either one or two steps at a time. In this question, the frog is allowed to jump up to ‘K’ steps at a time. If K=4, the frog can jump i+1, i+2, i+3, or i+4 steps at every index.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -37,6 +37,8 @@ int tabulation(int n, vector<int> &height, vector<int> &dp1, int k)
     }
     return dp1[n - 1];
 }
+
+// Space optimised approach also exists, but it takes TC = N & SC = N in worst case.
 
 int main()
 {
