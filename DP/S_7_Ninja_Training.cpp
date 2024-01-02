@@ -76,7 +76,7 @@ int space_optimised(int n, vector<vector<int>> &points)
     for (int day = 1; day < n; day++)
     {
         vector<int> temp(4, 0); // Store the maximum points for the current day's activities
-        for (int last = 0; last < 4; last++)
+        for (int last = 0; last <= 3; last++)
         {
             temp[last] = 0;
             for (int task = 0; task <= 2; task++) // Tasks for the current day
