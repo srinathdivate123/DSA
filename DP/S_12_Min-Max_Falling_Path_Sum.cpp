@@ -100,13 +100,13 @@ int main()
     int n = matrix.size();
     int m = matrix[0].size();
     vector<vector<int>> dp(n, vector<int>(m, -1));
-    int maxi = INT_MIN;
+    int memoizationAnswer = INT_MIN;
     for (int j = 0; j < m; j++)
     {
         int ans = memoization(n - 1, j, m, matrix, dp);
-        maxi = max(maxi, ans);
+        memoizationAnswer = max(memoizationAnswer, ans);
     }
-    cout << maxi << endl;
+    cout << memoizationAnswer << endl;
     cout << tabulation(matrix, n, m) << endl;
     cout << spaceOptimised(matrix, n, m) << endl;
     return 0;
