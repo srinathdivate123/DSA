@@ -37,12 +37,9 @@ bool memoization(int n, vector<int> &arr)
     // If the total sum is odd, it cannot be partitioned into two equal subsets
     if (totSum % 2 == 1)
         return false;
-    else
-    {
-        int target = totSum / 2;
-        vector<vector<int>> dp(n, vector<int>(target + 1, -1));
-        return memoizationUtil(n - 1, target, arr, dp);
-    }
+    int target = totSum / 2;
+    vector<vector<int>> dp(n, vector<int>(target + 1, -1));
+    return memoizationUtil(n - 1, target, arr, dp);
 }
 
 // TC = n*k + n, SC = n*k
@@ -55,35 +52,33 @@ bool tabulation(int n, vector<int> &arr)
     // If the total sum is odd, it cannot be partitioned into two equal subsets
     if (totSum % 2 == 1)
         return false;
-    else
-    {
-        int k = totSum / 2;
-        vector<vector<bool>> dp(n, vector<bool>(k + 1, false));
 
-        // Base case: If the target sum is 0, it can be achieved by not selecting any elements
-        for (int i = 0; i < n; i++)
-            dp[i][0] = true;
+    int k = totSum / 2;
+    vector<vector<bool>> dp(n, vector<bool>(k + 1, false));
 
-        // Initialize the first row based on the first element of the array
-        if (arr[0] <= k)
-            dp[0][arr[0]] = true;
+    // Base case: If the target sum is 0, it can be achieved by not selecting any elements
+    for (int i = 0; i < n; i++)
+        dp[i][0] = true;
 
-        for (int ind = 1; ind < n; ind++)
-            for (int target = 1; target <= k; target++)
-            {
-                // Exclude the current element
-                bool notTaken = dp[ind - 1][target];
+    // Initialize the first row based on the first element of the array
+    if (arr[0] <= k)
+        dp[0][arr[0]] = true;
 
-                // Include the current element if it doesn't exceed the target
-                bool taken = false;
-                if (arr[ind] <= target)
-                    taken = dp[ind - 1][target - arr[ind]];
+    for (int ind = 1; ind < n; ind++)
+        for (int target = 1; target <= k; target++)
+        {
+            // Exclude the current element
+            bool notTaken = dp[ind - 1][target];
 
-                // Update the DP table
-                dp[ind][target] = notTaken || taken;
-            }
-        return dp[n - 1][k];
-    }
+            // Include the current element if it doesn't exceed the target
+            bool taken = false;
+            if (arr[ind] <= target)
+                taken = dp[ind - 1][target - arr[ind]];
+
+            // Update the DP table
+            dp[ind][target] = notTaken || taken;
+        }
+    return dp[n - 1][k];
 }
 
 // TC = n*k + n, SC = k
@@ -97,33 +92,31 @@ bool spaceOptimised(int n, vector<int> &arr)
     // If the total sum is odd, it cannot be partitioned into two equal subsets
     if (totSum % 2 == 1)
         return false;
-    else
+
+    int k = totSum / 2;
+    vector<bool> prev(k + 1, false);
+    // Base case: If the target sum is 0, it can be achieved by not selecting any elements
+    prev[0] = true;
+    // Initialize the first row based on the first element of the array
+    if (arr[0] <= k)
+        prev[arr[0]] = true;
+
+    for (int ind = 1; ind < n; ind++)
     {
-        int k = totSum / 2;
-        vector<bool> prev(k + 1, false);
-        // Base case: If the target sum is 0, it can be achieved by not selecting any elements
-        prev[0] = true;
-        // Initialize the first row based on the first element of the array
-        if (arr[0] <= k)
-            prev[arr[0]] = true;
+        vector<bool> cur(k + 1, false);
+        cur[0] = true;
 
-        for (int ind = 1; ind < n; ind++)
+        for (int target = 1; target <= k; target++)
         {
-            vector<bool> cur(k + 1, false);
-            cur[0] = true;
-
-            for (int target = 1; target <= k; target++)
-            {
-                bool notTaken = prev[target];
-                bool taken = false;
-                if (arr[ind] <= target)
-                    taken = prev[target - arr[ind]];
-                cur[target] = notTaken || taken;
-            }
-            prev = cur;
+            bool notTaken = prev[target];
+            bool taken = false;
+            if (arr[ind] <= target)
+                taken = prev[target - arr[ind]];
+            cur[target] = notTaken || taken;
         }
-        return prev[k];
+        prev = cur;
     }
+    return prev[k];
 }
 
 int main()

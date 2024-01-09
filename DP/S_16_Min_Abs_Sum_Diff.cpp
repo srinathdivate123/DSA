@@ -31,6 +31,7 @@ int memoization(vector<int> &arr, int n)
     vector<vector<int>> dp(n, vector<int>(totSum + 1, -1));
 
     // Calculate the subset sum for each possible sum from 0 to the total sum
+    // https://takeuforward.org/data-structure/partition-set-into-2-subsets-with-min-absolute-sum-diff-dp-16/
     for (int i = 0; i <= totSum; i++)
         bool dummy = memoizationUtil(n - 1, i, arr, dp);
 
