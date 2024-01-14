@@ -25,8 +25,7 @@ long tabulation(vector<int> &arr, int n, int T)
 {
     vector<vector<long>> dp(n, vector<long>(T + 1, 0));
     for (int i = 0; i <= T; i++)
-        if (i % arr[0] == 0)
-            dp[0][i] = 1;
+        dp[0][i] = i % arr[0] == 0;
 
     for (int ind = 1; ind < n; ind++)
         for (int target = 0; target <= T; target++)
@@ -45,8 +44,7 @@ long spaceOptimied(vector<int> &arr, int n, int T)
 {
     vector<long> prev(T + 1, 0);
     for (int i = 0; i <= T; i++)
-        if (i % arr[0] == 0)
-            prev[i] = 1;
+            prev[i] = i % arr[0] == 0;
 
     for (int ind = 1; ind < n; ind++)
     {
