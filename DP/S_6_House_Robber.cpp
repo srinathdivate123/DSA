@@ -41,9 +41,9 @@ int robStreet(int n, vector<int> &arr)
         if (i != n - 1)
             arr2.push_back(arr[i]);
     }
-
-    int ans1 = solve(arr1);
-    int ans2 = solve(arr2);
+    // We do below because we cannot take both first and last elements simultaneously, so we calculate two different answers.
+    int ans1 = solve(arr1); // Answer excluding the first element
+    int ans2 = solve(arr2); // Answer excluding the last element
     return max(ans1, ans2);
 }
 

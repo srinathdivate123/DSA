@@ -7,18 +7,11 @@ using namespace std;
 // TC = N*4*3, SC = N for auxiliary stack space + N*4 for dp vector
 int memoization(int day, int last, vector<vector<int>> &points, vector<vector<int>> &dp)
 {
+    if (day < 0)
+        return 0;
+
     if (dp[day][last] != -1)
         return dp[day][last];
-
-    if (day == 0) // Base case: When we reach the first day (day == 0)
-    {
-        int maxi = 0;
-        // Calculate the maximum points for the first day by choosing an activity different from last one
-        for (int i = 0; i <= 2; i++)
-            if (i != last)
-                maxi = max(maxi, points[0][i]);
-        return dp[day][last] = maxi;
-    }
 
     int maxi = 0;
     for (int i = 0; i <= 2; i++) // Iterate through the activities for the current day
