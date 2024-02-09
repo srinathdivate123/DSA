@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=Du881K7Jtk8
+
 // A Stack based C++ program to find next
 // greater element for all array elements.
 #include <bits/stdc++.h>
