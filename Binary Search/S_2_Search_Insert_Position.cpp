@@ -2,7 +2,7 @@
 
 // If the value is present in the array, then return its index. Otherwise, determine the index where it would be inserted in the array while maintaining the sorted order.
 
-// This is ame as finding the lower bound.
+// This is same as finding the lower bound.
 
 #include <bits/stdc++.h>
 using namespace std;
