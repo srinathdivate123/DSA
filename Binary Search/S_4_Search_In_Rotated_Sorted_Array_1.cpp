@@ -12,7 +12,8 @@ int search(vector<int> &arr, int n, int k)
 
         if (arr[mid] == k)
             return mid;
-
+        
+        // We check which part is sorted. Because if we don't know which part is sorted and which part is not, then how will we search in the sorted part and eliminate the other one?
         // if left part is sorted:
         if (arr[low] <= arr[mid])
             if (arr[low] <= k && k <= arr[mid])
