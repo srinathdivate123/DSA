@@ -25,11 +25,11 @@ int findPeakElement(vector<int> &arr)
     {
         int mid = (low + high) / 2;
 
-        // If arr[mid] is the peak:
+        // If arr[mid] is the peak
         if (arr[mid - 1] < arr[mid] && arr[mid] > arr[mid + 1])
             return mid;
 
-        // If we are in the left:
+        // If we are in the left
         if (arr[mid] > arr[mid - 1])
             low = mid + 1;
 
