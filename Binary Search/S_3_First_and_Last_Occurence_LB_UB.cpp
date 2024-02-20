@@ -40,7 +40,7 @@ pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
 {
     int lb = lowerBound(arr, n, k);
 
-    if (lb == n || arr[lb] != k) // Suppose we find that the lb is n (means that element is )
+    if (lb == n || arr[lb] != k) // Suppose we find that the lb is n (means that element is not present in arr and so it is giving n). If arr[lb] !=k means that k is not present in arr actually, but we got the next smallest element that is greater than or equal to k.
         return {-1, -1};
     int ub = upperBound(arr, n, k);
     return {lb, ub - 1};

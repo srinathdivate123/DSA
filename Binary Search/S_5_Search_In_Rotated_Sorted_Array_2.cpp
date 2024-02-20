@@ -1,4 +1,4 @@
-
+// Same as last question but here the elements may be duplicate
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -13,7 +13,7 @@ bool searchInARotatedSortedArrayII(vector<int> &arr, int k)
         if (arr[mid] == k)
             return true;
 
-        // Edge case:
+        // Edge case: When all are equal
         if (arr[low] == arr[mid] && arr[mid] == arr[high])
         {
             low = low + 1;
