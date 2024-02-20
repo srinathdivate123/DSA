@@ -1,0 +1,46 @@
+// Given an array of N integers. Every number in the array except one appears twice. Find the single number in the array.
+// arr = [1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6]
+// Before the single elemeent, we have the repeating elements at indexes (even, odd) and after the single element appears in the array we have the repeating elements at indexes (odd, even).
+// So if we find that the repeating elements are:
+// (even, odd) -> Single element on the right half
+// (odd, even) -> Single element on the left half
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int singleNonDuplicate(vector<int> &arr)
+{
+    int n = arr.size();
+
+    if (n == 1)
+        return arr[0];
+    if (arr[0] != arr[1])
+        return arr[0];
+    if (arr[n - 1] != arr[n - 2])
+        return arr[n - 1];
+
+    int low = 1, high = n - 2;
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+
+        // if arr[mid] is the single element:
+        if (arr[mid] != arr[mid + 1] && arr[mid] != arr[mid - 1])
+            return arr[mid];
+
+        // we are in the left:
+        if ((mid % 2 == 1 && arr[mid] == arr[mid - 1]) || (mid % 2 == 0 && arr[mid] == arr[mid + 1]))
+            low = mid + 1; // eliminate left half
+        
+        else // we are in the right
+            high = mid - 1; // eliminate right half
+    }
+    return -1;
+}
+
+int main()
+{
+    vector<int> arr = {1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6};
+    cout << singleNonDuplicate(arr);
+    return 0;
+}

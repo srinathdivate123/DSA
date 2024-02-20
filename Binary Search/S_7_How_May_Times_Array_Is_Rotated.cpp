@@ -1,4 +1,4 @@
-
+// This is similar to previous code.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,8 +16,8 @@ int findKRotation(vector<int> &arr)
         {
             if (arr[low] < ans) // Instead of calling the min() func, we are manually finding the min.
             {
-                index = low;
                 ans = arr[low];
+                index = low;
             }
             break;
         }
@@ -26,8 +26,8 @@ int findKRotation(vector<int> &arr)
         {
             if (arr[low] < ans) // Instead of calling the min() func, we are manually finding the min.
             {
-                index = low;
                 ans = arr[low];
+                index = low;
             }
             low = mid + 1; // Eliminate left half
         }
@@ -35,8 +35,8 @@ int findKRotation(vector<int> &arr)
         {
             if (arr[mid] < ans) // Instead of calling the min() func, we are manually finding the min.
             {
-                index = mid;
                 ans = arr[mid];
+                index = mid;
             }
             high = mid - 1; // Eliminate right half
         }
