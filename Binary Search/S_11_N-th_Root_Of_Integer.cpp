@@ -1,20 +1,21 @@
-// You have to return the n-th root of m
+// Given two numbers N and M, find the Nth root of M. The nth root of a number M is defined as a number X when raised to the power N equals M. If the nth root is not an integer, return -1.
+
 #include <bits/stdc++.h>
 using namespace std;
 
-// return 1, if calculatedSqrt == m:
-// return 0, if calculatedSqrt < m:
-// return 2, if calculatedSqrt > m:
+// return 1, if == m:
+// return 0, if < m:
+// return 2, if > m:
 int func(int mid, int n, int m)
 {
-    long long calculatedSqrt = 1;
+    long long ans = 1;
     for (int i = 1; i <= n; i++)
     {
-        calculatedSqrt *= mid;
-        if (calculatedSqrt > m)
+        ans = ans * mid;
+        if (ans > m)
             return 2;
     }
-    if (calculatedSqrt == m)
+    if (ans == m)
         return 1;
     return 0;
 }
@@ -35,9 +36,11 @@ int NthRoot(int n, int m)
     }
     return -1;
 }
+
 int main()
 {
     int n = 3, m = 27;
-    cout << "The answer is: " << NthRoot(n, m) << endl;
+    int ans = NthRoot(n, m);
+    cout << "The answer is: " << ans << "\n";
     return 0;
 }
