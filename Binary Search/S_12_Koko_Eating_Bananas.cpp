@@ -24,7 +24,9 @@ bool check(vector<int> &piles, int h, int k)
 int minimumRateToEatBananas(vector<int> v, int h)
 {
     int low = 1;
-    int high = *max_element(v.begin(), v.end()); // FInd max element in v
+    int high = *max_element(v.begin(), v.end()); // Find max element in v
+    // Let's say the max element in the array is M, koko can have a maximum eating speed of M bananas per hour. Koko cannot exceed that because it would not make sense to do so. Lets say some pile has m bananas (m<M), then the time m will only be used for eating bananas, the time M-m will go unutilised. So Koko can have a max eating speed of only M bananas per hour.
+
     while (low <= high)
     {
         int mid = ((high - low) / 2) + low;
