@@ -21,12 +21,48 @@ void reverseNumber(int n)
 
 void isPalindrome(int n)
 {
-    // You can do this by checking if the input num is same as its reverse.
+    // Use two pointers, one at the beginning and one at the end. If at anytime, the start & end pointers don't match then it is not a palindrome.
 }
 
-void isArmstrongNumber(int n)
+void GCD(int n1, int n2)
 {
-    // Check if the sum of the squares of digits in the number is equal to that number!
+    int gcd;
+    // Time complexity = (min(n1, n2))
+    for (int i = min(n1, n2); i >= 1; i--)
+        if (n1 % i == 0 && n2 % i == 0)
+        {
+            cout << "GCD : " << i;
+            break;
+        }
+}
+
+int GCD_Euclidean(int a, int b)
+{
+    // Intuition: GCD is the greatest number which can divide both a and b. If a number can divide both a and b, then it should also divide (a-b) and b as well
+
+    // Euclidean Algorithm states
+    // GCD (a, b) = GCD (a%b, b) provided a>b
+
+    // You have to go on applying Euclidean in recursion until one of the numbers in the brackets becomes zero. The moment one number becomes zero, the other one is the GCD.
+
+    if (b == 0)
+        return a;
+    return GCD_Euclidean(b, a % b);
+}
+
+// An Armstrong number is a number that is equal to the sum of each of its digits each raised to the power of the number of digits.
+int isArmstrongNumber(int num)
+{
+    int k = to_string(num).length(); // Calculate the number of digits in the given number
+    int sum = 0;
+    int n = num;
+    while (n > 0)
+    {
+        int ld = n % 10;
+        sum += pow(ld, k);
+        n = n / 10;
+    }
+    return sum == num ? true : false;
 }
 
 void find_all_divisors(int n)
@@ -61,34 +97,9 @@ void checkPrime(int n)
     if (cnt == 2)
         cout << "Prime Number it is!";
     else
-        cout << "Not prime it is !";
+        cout << "Not prime it is!";
 }
 
-void GCD(int n1, int n2)
-{
-    int gcd;
-    // Time cimplexity = (min(n1, n2))
-    for (int i = min(n1, n2); i >= 1; i--)
-        if (n1 % i == 0 && n2 % i == 0)
-        {
-            cout << "GCD : " << i;
-            break;
-        }
-}
-
-int GCD_Euclidean(int a, int b)
-{
-    // Intuition: Gcd is the greatest number which is divided by both a and b.If a number is divided by both a and b, it is should be divided by (a-b) and b as well
-
-    // Euclidean Algorithm states
-    //  GCD (a, b) = GCD (a%b, b) provided a>b
-
-    // You have to go on applying Euclidean in recursion until one of the numbers in the brackets becomes zero. The moment one number becomes zero, the other one is the GCD.
-
-    if (b == 0)
-        return a;
-    return GCD_Euclidean(b, a % b);
-}
 int main()
 {
     // countDigits(12345);

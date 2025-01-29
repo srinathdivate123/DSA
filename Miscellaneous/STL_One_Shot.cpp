@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 bool comp(pair<int, int> p1, pair<int, int> p2);
 
@@ -44,7 +45,8 @@ void vectors()
 
     // Iterators
     vector<int>::iterator it = v1.begin();
-    printf("The memory location is - %u \n", it); // I wasn't able to output it using cout
+    printf("The memory location is - %xx \n", it); // I wasn't able to output it using cout
+    // cout << std::hex << it; Does not work
     cout << *(it) << endl;
     it++;
     cout << *(it) << endl;
@@ -354,10 +356,10 @@ bool comp(pair<int, int> p1, pair<int, int> p2)
 int main()
 {
     // pairs();
-    // vectors();
+    vectors();
     // lists();
     // dequeues();
-    stacks();
+    // stacks();
     // priorityQueue();
     // sets();
     // multiSet();
