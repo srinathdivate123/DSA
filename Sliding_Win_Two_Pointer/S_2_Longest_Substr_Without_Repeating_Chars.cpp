@@ -32,7 +32,7 @@ int optimized_2(string str)
         return 0;
 
     int left = 0, right = 0, maxi = INT_MIN;
-    vector<int> mpp(256, -1);
+    vector<int> mpp(255, -1);
     while (right < str.size())
     {
         if (mpp[str[right]] != -1)
