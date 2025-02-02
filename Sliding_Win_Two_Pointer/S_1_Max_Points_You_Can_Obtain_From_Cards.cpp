@@ -13,6 +13,7 @@ You can take a card from front, back or both, but they should be consecutive
 #include <bits/stdc++.h>
 using namespace std;
 
+// The brute is the only solution
 int brute(vector<int> &cardPoints, int k)
 {
     int lsum = 0, rsum = 0, maxsum = 0;

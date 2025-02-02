@@ -3,9 +3,10 @@ You are visiting a farm that has a single row of fruit trees arranged from left 
 
 You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
 
-You only have two baskets, and each basket can only hold a single type of fruit. There is no limit on the amount of fruit each basket can hold.
-Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
-Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
+- You only have two baskets, and each basket can only hold a single type of fruit. There is no limit on the amount of fruit each basket can hold.
+- Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
+- Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
+
 Given the integer array fruits, return the maximum number of fruits you can pick.
 */
 
@@ -16,7 +17,8 @@ using namespace std;
 
 // Generate all the subarrays
 // TC: O(N^2), SC: O(3)
-// st.size() also takes some time, but here the max size can only be 3, hence it is as good as constant. hence, it can be ignored
+// st.size() also takes some time, but here the max size can only be 3, hence it is as good as constant. Hence, it can be ignored
+
 int brute(vector<int> &fruits)
 {
     int maxi = 0;
@@ -38,7 +40,7 @@ int brute(vector<int> &fruits)
 }
 
 // TC: O(N+N), SC: O(3) --> for the map
-// The map has 3 elements at amx, so accessing & deleting elements take constant time
+// The map has 3 elements at max, so accessing & deleting elements take constant time
 int better(vector<int> &fruits)
 {
     int l = 0, r = 0, maxi = 0;
@@ -65,7 +67,7 @@ int better(vector<int> &fruits)
     return maxi;
 }
 
-// Explanation
+// Explanation is same as the one to the previous problem's optimal solution
 int best(vector<int> &fruits)
 {
     int l = 0, r = 0, maxi = 0;
@@ -73,15 +75,12 @@ int best(vector<int> &fruits)
     while (r < fruits.size())
     {
         mpp[fruits[r]]++;
-        if (mpp.size() > 2)
+        if (mpp.size() > 2) // mpp can have at most 2 fruits
         {
-            if (mpp.size() > 2) // mpp can have at most 2 fruits
-            {
-                mpp[fruits[l]]--;
-                if (mpp[fruits[l]] == 0)
-                    mpp.erase(fruits[l]);
-                l++;
-            }
+            mpp[fruits[l]]--;
+            if (mpp[fruits[l]] == 0)
+                mpp.erase(fruits[l]);
+            l++;
         }
         else
         {
