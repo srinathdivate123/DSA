@@ -75,7 +75,7 @@ int best(vector<int> &fruits)
     while (r < fruits.size())
     {
         mpp[fruits[r]]++;
-        if (mpp.size() > 2) // mpp can have at most 2 fruits
+        if (mpp.size() > 2) // Basically just remove one fruit by shifting l once, and keep window size same. Because if you shift l by some places, you will end up with a smaller window. So keep window size same by incrementing both l & r. But update maxi only if there are 2 distinct fruits in map
         {
             mpp[fruits[l]]--;
             if (mpp[fruits[l]] == 0)
