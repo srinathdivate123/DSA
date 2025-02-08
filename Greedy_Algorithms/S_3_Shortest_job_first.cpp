@@ -21,8 +21,9 @@ int best(vector<int> jobs)
 
     for (int i = 0; i < n; ++i)
     {
-        waitTime += totalTime;
-        totalTime += jobs[i];
+        waitTime += totalTime; // The wait time for this job will be the total time that has passed upto now
+
+        totalTime += jobs[i]; // Update the total time elapsed after completing this job i by adding burst time of job i
     }
 
     return waitTime / n;

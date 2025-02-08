@@ -6,7 +6,7 @@ Each child i has a greed factor g[i], which is the minimum size of a cookie that
 #include <bits/stdc++.h>
 using namespace std;
 
-// TC = (n*log(n) + m*log(m) + m)
+// TC = (i*log(i) + j*log(j) + min(i, j))
 int brute(vector<int> &g, vector<int> &s)
 {
     sort(g.begin(), g.end());
@@ -15,7 +15,7 @@ int brute(vector<int> &g, vector<int> &s)
 
     while (sPtr < s.size() && gPtr < g.size())
     {
-        if (g[gPtr] <= s[sPtr])
+        if (s[sPtr] >= g[gPtr])
             gPtr++;
         sPtr++;
     }
