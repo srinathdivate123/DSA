@@ -11,6 +11,7 @@ Note that you don't need to modify intervals in-place. You can make a new array 
 #include <bits/stdc++.h>
 using namespace std;
 
+// TC = O(N), SC = O(N)
 vector<vector<int>> insert(vector<vector<int>> &intervals, vector<int> &newInterval)
 {
     vector<vector<int>> ans;
