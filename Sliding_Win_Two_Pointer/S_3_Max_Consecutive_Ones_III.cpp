@@ -50,7 +50,7 @@ int better(vector<int> &nums, int k)
     return maxi;
 }
 
-// Why the below works: https://youtu.be/3E4JBHSLpYk?t=1726
+// Why the below works, explained: https://youtu.be/3E4JBHSLpYk?t=1726
 // TC: O(N), SC: O(1)
 int best(vector<int> &nums, int k)
 {

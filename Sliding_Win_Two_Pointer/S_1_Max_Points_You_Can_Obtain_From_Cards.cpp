@@ -10,6 +10,7 @@ Given the integer array cardPoints and the integer k, return the maximum score y
 You can take a card from front, back or both, but they should be consecutive
 */
 
+
 #include <bits/stdc++.h>
 using namespace std;
 
