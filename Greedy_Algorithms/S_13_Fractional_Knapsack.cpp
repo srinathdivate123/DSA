@@ -20,6 +20,8 @@ bool static comp(Item a, Item b)
     return r1 > r2;
 }
 
+
+// TC = O(N*log(N) + N), SC = O(1)
 double fractionalKnapsack(int W, Item arr[], int n)
 {
     sort(arr, arr + n, comp); // Sort by the maximum value per weight which you get (value/weight)

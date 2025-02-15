@@ -169,7 +169,7 @@ void stacks()
 void priorityQueue() // Data is not stored in a linear fashion, a tree is maintained inside
 {
     // In priority_queue push -> log(n). top -> (1). pop -> log(n)
-    // In below elements are arranged left to right as top to bottom (largest element on top)
+    // In the below, elements are arranged left to right as top to bottom (largest element on top)
     // Maximum element is stored on top. It is called as max heap!
     priority_queue<int> pq;
     pq.push(5);     // {5}
@@ -308,7 +308,7 @@ void sorting()
 
     // Sort it in the order of increasing second element
     // If second element is same then
-    // Sort it according it according to first element, but in descending
+    // Sort it according to first element, but in descending
     pair<int, int> a[] = {{1, 2}, {2, 1}, {4, 1}};
     sort(a, a + 3, comp); // comp is a boolean self-written comparator defined below
 
@@ -338,8 +338,11 @@ void sorting()
 
     int aa[] = {1, 45, 2, 4678, 63, 0, 2, 3, 9, 878};
     int *maxi = max_element(aa, aa + 10);
-    cout << "maxi - " << maxi << endl;
+    cout << "*maxi - " << *maxi << endl;
+    cout << " maxi - " << maxi << endl;
+    cout << "&maxi - " << &maxi << endl;
 }
+
 bool comp(pair<int, int> p1, pair<int, int> p2)
 // We assume that p1 lies before than p2!
 {
@@ -356,7 +359,7 @@ bool comp(pair<int, int> p1, pair<int, int> p2)
 int main()
 {
     // pairs();
-    vectors();
+    // vectors();
     // lists();
     // dequeues();
     // stacks();
