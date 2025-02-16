@@ -38,10 +38,10 @@ void GCD(int n1, int n2)
 
 int GCD_Euclidean(int a, int b)
 {
-    // Intuition: GCD is the greatest number which can divide both a and b. If a number can divide both a and b, then it should also divide (a-b) and b as well
+    // Intuition: GCD is the greatest number which can divide both a and b. If a number can divide both a and b, then it should also divide b and (a%b) as well
 
     // Euclidean Algorithm states
-    // GCD (a, b) = GCD (a%b, b) provided a>b
+    // GCD (a, b) = GCD (b, a%b) provided a>b
 
     // You have to go on applying Euclidean in recursion until one of the numbers in the brackets becomes zero. The moment one number becomes zero, the other one is the GCD.
 
@@ -62,12 +62,13 @@ int isArmstrongNumber(int num)
         sum += pow(ld, k);
         n = n / 10;
     }
-    return sum == num ? true : false;
+    return sum == num;
 }
 
 void find_all_divisors(int n)
 {
     // Brute is to iterate upto the number and find all the divisors!
+    
     // Below is optimal to iterate upto sqrt(n). But you will not get divsors in sorted order in this!
     for (int i = 1; i * i <= n; i++)
         if (n % i == 0)
@@ -104,9 +105,10 @@ int main()
 {
     // countDigits(12345);
     // reverseNumber(12345);
+    // isPalindrome(12321);
+    // GCD(12, 36);
+    cout << GCD_Euclidean(12, 15) << endl;
+    cout << GCD_Euclidean(15, 12) << endl;
     // find_all_divisors(36);
     // checkPrime(5);
-    // GCD(12, 36);
-    cout << "GCD is : " << GCD_Euclidean(36, 12);
-    return 0;
 }

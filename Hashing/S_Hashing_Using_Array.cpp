@@ -21,7 +21,7 @@ int main()
     {
         int number;
         cin >> number;
-        cout << "Number of entries of the above number is - "<<hash[number] << endl;
+        cout << "Number of entries of the above number is - " << hash[number] << endl;
     }
     return 0;
 }

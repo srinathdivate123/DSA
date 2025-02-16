@@ -42,6 +42,6 @@ int main()
     
     cout<< factorial(n);
     cout << endl;
-;
+
     return 0;
 }
