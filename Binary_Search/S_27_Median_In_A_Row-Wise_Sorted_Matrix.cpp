@@ -8,6 +8,7 @@
 using namespace std;
 
 // The upperbound will always point to the first element greater than x
+// TC = log(m)
 int upperBound(vector<int> &arr, int x, int n)
 {
     int low = 0, high = n - 1;
@@ -31,6 +32,7 @@ int upperBound(vector<int> &arr, int x, int n)
     return ans;
 }
 
+// TC = n
 int countSmallEqual(vector<vector<int>> &matrix, int m, int n, int x)
 {
     int cnt = 0;
@@ -42,7 +44,7 @@ int countSmallEqual(vector<vector<int>> &matrix, int m, int n, int x)
     return cnt;
 }
 
-// TC = log(10^9) * n * log(m)
+// Total TC = log(10^9) * n * log(m)
 // The smallest number in the matrix can be as small as 1
 // The largest number in the matrix can be as large as 10^9
 int median(vector<vector<int>> &matrix, int m, int n)
