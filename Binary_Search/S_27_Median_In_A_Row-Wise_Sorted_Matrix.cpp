@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// The upperbound will always point to the first element greater than x
 int upperBound(vector<int> &arr, int x, int n)
 {
     int low = 0, high = n - 1;
@@ -33,6 +34,7 @@ int upperBound(vector<int> &arr, int x, int n)
 int countSmallEqual(vector<vector<int>> &matrix, int m, int n, int x)
 {
     int cnt = 0;
+    // Iterate through all the rows
     for (int i = 0; i < m; i++)
     {
         cnt += upperBound(matrix[i], x, n);
