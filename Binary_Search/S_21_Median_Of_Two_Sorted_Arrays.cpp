@@ -116,7 +116,7 @@ double best(vector<int> &a, vector<int> &b)
     int low = 0, high = n1;
     while (low <= high)
     {
-        int mid1 = (low + high) >> 1; // Dividing by 1
+        int mid1 = (low + high) >> 1; // Dividing by 2
         int mid2 = lenLeftHalf - mid1;
         // calculate l1, l2, r1 and r2;
         int l1 = INT_MIN, l2 = INT_MIN;
