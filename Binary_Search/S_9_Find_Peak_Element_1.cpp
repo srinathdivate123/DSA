@@ -44,7 +44,8 @@ int findPeakElement(vector<int> &arr)
 
 int main()
 {
-    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 5, 1};
+    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 5, 1}; // Gives 7
+    // vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 9}; // Gives -1. Note that this is an incorrect test case as no two elements should have the same value
     int ans = findPeakElement(arr);
     cout << "The peak is at index: " << ans << "\n";
     return 0;
