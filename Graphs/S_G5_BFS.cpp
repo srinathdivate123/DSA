@@ -6,7 +6,7 @@ using namespace std;
 // SC = Queue, visited array ~ 2N SC
 // TC = A node goes once into the queue and the while loop runs for all it's degrees (for all the nodes connected to it)
 // So it is N for queue because each node (total N) goes into it
-// And it is 2E for running on all the degrees of all the nodes because the total num of degrees in a graph is 2E
+// And it is 2E for running on all the degrees of all the nodes because the total num of degrees in a graph is 2E 
 // So TC = N + 2E
 vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
 {
