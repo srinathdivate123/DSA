@@ -38,7 +38,7 @@ ListNode *findMiddleOfLL(ListNode *head)
     if (head == NULL)
         return head;
     if (head->next == NULL)
-        return head->next;
+        return head;
 
     ListNode *fast = head;
     ListNode *slow = head;

@@ -10,15 +10,6 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-void print(ListNode *headNode)
-{
-    while (headNode != NULL)
-    {
-        cout << headNode->val << " ";
-        headNode = headNode->next;
-    }
-}
-
 ListNode *convertArr2DLL(vector<int> arr)
 {
     ListNode *headNode = new ListNode(arr[0]);
@@ -32,6 +23,7 @@ ListNode *convertArr2DLL(vector<int> arr)
     }
     return headNode;
 }
+
 
 ListNode *reverseIterative(ListNode *head)
 {
@@ -51,15 +43,43 @@ ListNode *reverseIterative(ListNode *head)
     return prev;
 }
 
+
+bool isPalindrome(ListNode *head)
+{
+    // First find the middle of the LL
+    if (head == NULL || head->next == NULL)
+        return true;
+
+    ListNode *fast = head;
+    ListNode *slow = head;
+
+    while (fast->next != NULL && fast->next->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    // After the while loop, the slow pointer will be standing at the first half
+    // The head of the second half is slow->next
+    ListNode *reversedSecondHalfHead = reverseIterative(slow->next);
+
+    ListNode *firstHalf = head;
+    ListNode *secondHalf = reversedSecondHalfHead;
+
+    while(secondHalf != NULL)
+    {
+        if(firstHalf->val != secondHalf->val)
+            return false;
+        firstHalf = firstHalf->next;
+        secondHalf = secondHalf->next;
+    }
+    return true;
+}
+
+
 int main()
 {
-    vector<int> arr = {1, 2, 3, 3, 2, 1};
+    vector<int> arr = {1, 2, 3, 4, 2, 1};
     ListNode *headNode = convertArr2DLL(arr);
-    cout << "Before:  " << endl;
-    print(headNode);
-    cout << endl;
-
-    ListNode *ans = reverseIterative(headNode);
-    cout << "Iterative:" << endl;
-    print(ans);
+    cout << isPalindrome(headNode);
 }
