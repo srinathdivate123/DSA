@@ -5,14 +5,14 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode() : val(0), next(NULL) {}
+    ListNode(int x) : val(x), next(NULL) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 void print(ListNode *headNode)
 {
-    while (headNode != nullptr)
+    while (headNode != NULL)
     {
         cout << headNode->val << " ";
         headNode = headNode->next;
@@ -60,7 +60,17 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 //  Brute Force: https://takeuforward.org/data-structure/remove-n-th-node-from-the-end-of-a-linked-list/
 int main()
 {
-    vector<int> arr = {1,2,3,4,5,6,7,8,9,};
+    vector<int> arr = {
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+    };
     ListNode *headNode = convertArr2DLL(arr);
     cout << "Before:  " << endl;
     print(headNode);

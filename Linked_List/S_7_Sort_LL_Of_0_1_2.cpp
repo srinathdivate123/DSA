@@ -5,14 +5,14 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode() : val(0), next(NULL) {}
+    ListNode(int x) : val(x), next(NULL) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 void print(ListNode *headNode)
 {
-    while (headNode != nullptr)
+    while (headNode != NULL)
     {
         cout << headNode->val << " ";
         headNode = headNode->next;
@@ -35,7 +35,7 @@ ListNode *convertArr2DLL(vector<int> arr)
 
 ListNode *sortList(ListNode *head)
 {
-    if (head == nullptr || head->next == nullptr)
+    if (head == NULL || head->next == NULL)
         return head;
 
     ListNode *dummyZeroHead = new ListNode(-1);
@@ -48,7 +48,7 @@ ListNode *sortList(ListNode *head)
 
     ListNode *temp = head;
 
-    while (temp != nullptr)
+    while (temp != NULL)
     {
         if (temp->val == 0)
         {
@@ -71,7 +71,7 @@ ListNode *sortList(ListNode *head)
 
     oneTraversal->next = dummyTwoHead->next;
 
-    twoTraversal->next = nullptr;
+    twoTraversal->next = NULL;
 
     ListNode *newHead = dummyZeroHead->next;
     delete dummyZeroHead;

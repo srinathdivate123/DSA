@@ -33,35 +33,50 @@ ListNode *convertArr2DLL(vector<int> arr)
     return headNode;
 }
 
-ListNode *oddEvenList(ListNode *head)
+ListNode *reverseIterative(ListNode *head)
+{
+    if (head == NULL || head->next == NULL)
+        return head;
+    ListNode *temp = head;
+    ListNode *prev = NULL;
+    ListNode *front = NULL;
+
+    while (temp != NULL)
+    {
+        front = temp->next;
+        temp->next = prev;
+        prev = temp;
+        temp = front;
+    }
+    return prev;
+}
+
+ListNode *reverseRecursive(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
 
-    ListNode *odd = head;
-    ListNode *even = head->next;
-    ListNode *evenHead = head->next;
-
-    while (even != NULL && even->next != NULL)
-    {
-        odd->next = odd->next->next;
-        even->next = even->next->next;
-        odd = odd->next;
-        even = even->next;
-    }
-    odd->next = evenHead;
-    return head;
+    ListNode *newHead = reverseRecursive(head->next);
+    ListNode *front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return newHead;
 }
 
 int main()
 {
-    vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
+    vector<int> arr = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     ListNode *headNode = convertArr2DLL(arr);
     cout << "Before:  " << endl;
     print(headNode);
     cout << endl;
 
-    ListNode *ans = oddEvenList(headNode);
-    cout << "After:" << endl;
+    ListNode *ans = reverseIterative(headNode);
+    cout << "Iterative:" << endl;
+    print(ans);
+
+    cout << endl;
+    ans = reverseRecursive(ans);
+    cout << "Recursive:" << endl;
     print(ans);
 }
