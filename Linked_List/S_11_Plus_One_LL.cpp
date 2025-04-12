@@ -85,9 +85,9 @@ int helperRecursion(ListNode *temp)
     return 1;
 }
 
-ListNode *plusOneRecursion(ListNode *head, int carry)
+ListNode *plusOneRecursion(ListNode *head)
 {
-    carry = helperRecursion(head);
+    int carry = helperRecursion(head);
     if (carry == 1)
     {
         ListNode *newNode = new ListNode(carry);
@@ -115,7 +115,7 @@ int main()
          << "Before:  " << endl;
     print(headNode);
     cout << endl;
-    ans = plusOneRecursion(headNode, 0);
+    ans = plusOneRecursion(headNode);
     cout << "After:  " << endl;
     print(ans);
 }
