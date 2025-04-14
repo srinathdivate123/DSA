@@ -78,7 +78,6 @@ void deleteByValue(node *&head, int val)
         return;
     }
     if (head->next == NULL) // If there is only one node in the LL
-    // i.e. when a node is the first node and the last node both!
     {
         delete_head(head);
         return;
