@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-// This optimal approach of N TC is a based on a modification of Kadane's algorithm. But it is not a very intuiive approach. It is only a algo that can be told if you remember it. So don't tell the below algo in interviews as it seems pre-planned!
+// This optimal approach of N TC is a based on a modification of Kadane's algorithm. But it is not a very intutive approach. It is only a algo that can be told if you remember it. So don't tell the below algo in interviews as it seems pre-planned!
 
 int kadane_algo_based_optimal_approach(vector<int> nums)
 {
@@ -19,16 +19,17 @@ int kadane_algo_based_optimal_approach(vector<int> nums)
 // TC = N
 int observation_based_optimal_approach(vector<int> &arr)
 {
+    int n = arr.size();
     int ans = INT_MIN;
     int prefix = 1, suffix = 1;
-    for(int i = 0; i < arr.size(); i++)
+    for(int i = 0; i < n; i++)
     {
         if(prefix == 0)
             prefix = 1;
         if(suffix == 0)
             suffix = 1;
         prefix *= arr[i];
-        suffix *= arr[arr.size() - i - 1];
+        suffix *= arr[n - i - 1];
         ans = max(ans, max(prefix, suffix));
     }
     return ans;

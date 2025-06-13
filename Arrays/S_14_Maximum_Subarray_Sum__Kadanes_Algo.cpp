@@ -5,7 +5,7 @@ using namespace std;
 // A subarray with a sum less than 0 will always reduce our answer and so this type of subarray cannot be a part of the subarray with maximum sum.
 // TC = N
 // SC = 1
-void Kadnes_Algo(int arr[], int n)
+void Kadanes_Algo(int arr[], int n)
 {
     long long sum = 0, maxi = LONG_MIN;
     int ansStart = 0, ansEnd = 0, start = 0;
@@ -34,6 +34,6 @@ void Kadnes_Algo(int arr[], int n)
 int main()
 {
     int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-    Kadnes_Algo(arr, sizeof(arr) / sizeof(arr[0]));
+    Kadanes_Algo(arr, sizeof(arr) / sizeof(arr[0]));
     return 0;
 }

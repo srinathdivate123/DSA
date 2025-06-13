@@ -9,13 +9,13 @@ using namespace std;
 
 // TC = N x log(N)
 // SC = N (Space taken by map in worst case)
-array<int, 2> better(int arr[], int n, int target)
+pair<int, int> better(int arr[], int n, int target)
 {
     map<int, int> mpp; // Map will store the element-key.
     for (int i = 0; i < n; i++)
     {
         int a = arr[i];
-        int more_needed = target - a; // more is the no that is required in order to get a sum up to the target
+        int more_needed = target - a; // more_needed is the no that is required in order to get a sum up to the target
         if (mpp.find(more_needed) != mpp.end())
             return {mpp[more_needed], i};
         mpp[a] = i; // Add the element and it's index to the map
@@ -49,8 +49,8 @@ int main()
 {
     int arr[] = {2, 6, 5, 8, 11};
     int target = 14;
-    array<int, 2> answer = better(arr, sizeof(arr) / sizeof(arr[0]), target);
-    cout << answer[0] << " , " << answer[1] << endl;
+    pair<int, int> answer = better(arr, sizeof(arr) / sizeof(arr[0]), target);
+    cout << answer.first << " , " << answer.second << endl;
 
     cout << best(arr, sizeof(arr) / sizeof(arr[0]), target);
     return 0;

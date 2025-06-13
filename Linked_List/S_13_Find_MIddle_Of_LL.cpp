@@ -33,6 +33,7 @@ ListNode *convertArr2DLL(vector<int> arr)
     return headNode;
 }
 
+// When fast reaches the end of the LL, then the slow is at the middle of the LL
 ListNode *findMiddleOfLL(ListNode *head)
 {
     if (head == NULL)
