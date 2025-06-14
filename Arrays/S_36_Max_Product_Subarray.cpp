@@ -17,6 +17,7 @@ int kadane_algo_based_optimal_approach(vector<int> nums)
 
 // Tell below in interviews
 // TC = N
+// https://takeuforward.org/data-structure/maximum-product-subarray-in-an-array
 int observation_based_optimal_approach(vector<int> &arr)
 {
     int n = arr.size();

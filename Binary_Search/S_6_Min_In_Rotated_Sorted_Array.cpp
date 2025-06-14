@@ -34,7 +34,7 @@ int binarySearch_Optimised(vector<int> &arr)
     while (low <= high)
     {
         int mid = (low + high) / 2;
-        // If search space is already sorted then arr[low] of that search space will always be the minimum in that search space. So no need to check further at all.
+        // If the entire search space is already sorted then arr[low] of that search space will always be the minimum in that search space. So no need to check further at all.
         if (arr[low] <= arr[high])
         {
             ans = min(ans, arr[low]);

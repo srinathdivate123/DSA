@@ -53,7 +53,7 @@ vector<vector<int>> better(int n, vector<int> &arr)
 }
 
 
-// TC od n*log(n) for sorting and near about n*2 for the while loop
+// TC of n*log(n) for sorting and near about n*2 for the while loop
 vector<vector<int>> best(int n, vector<int> &num)
 {
     vector<vector<int>> ans;
