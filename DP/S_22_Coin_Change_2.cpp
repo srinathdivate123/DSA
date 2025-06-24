@@ -4,64 +4,64 @@
 using namespace std;
 
 // Till index in, in how many ways can you form target?
-// TC = n*T, SC = n*T + n
-long memoization(vector<int> &arr, int ind, int T, vector<vector<long>> &dp)
+// TC = n*target, SC = n*target + n
+long memoization(vector<int> &arr, int ind, int target, vector<vector<long>> &dp)
 {
     if (ind == 0)
-        return (T % arr[ind] == 0); // Check if the target sum is divisible by the first element
+        return (target % arr[ind] == 0); // Check if the target sum is divisible by the first element
 
-    if (dp[ind][T] != -1)
-        return dp[ind][T];
+    if (dp[ind][target] != -1)
+        return dp[ind][target];
 
-    long notTaken = memoization(arr, ind - 1, T, dp);
-    long taken = 0;
-    if (arr[ind] <= T)
-        taken = memoization(arr, ind, T - arr[ind], dp);
-    return dp[ind][T] = notTaken + taken;
+    long ifYouDontTakeThis = memoization(arr, ind - 1, target, dp);
+    long ifYouTakeThis = 0;
+    if (arr[ind] <= target)
+        ifYouTakeThis = memoization(arr, ind, target - arr[ind], dp);
+    return dp[ind][target] = ifYouDontTakeThis + ifYouTakeThis;
 }
 
-// TC = n*T, SC = n*T
-long tabulation(vector<int> &arr, int n, int T)
+// TC = n*target, SC = n*target
+long tabulation(vector<int> &arr, int n, int target)
 {
-    vector<vector<long>> dp(n, vector<long>(T + 1, 0));
-    for (int i = 0; i <= T; i++)
+    vector<vector<long>> dp(n, vector<long>(target + 1, 0));
+    for (int i = 0; i <= target; i++)
         dp[0][i] = i % arr[0] == 0;
 
     for (int ind = 1; ind < n; ind++)
-        for (int target = 0; target <= T; target++)
+        for (int target = 0; target <= target; target++)
         {
-            long notTaken = dp[ind - 1][target];
-            long taken = 0;
+            long ifYouDontTakeThis = dp[ind - 1][target];
+            long ifYouTakeThis = 0;
             if (arr[ind] <= target)
-                taken = dp[ind][target - arr[ind]];
+                ifYouTakeThis = dp[ind][target - arr[ind]];
 
-            dp[ind][target] = notTaken + taken;
+            dp[ind][target] = ifYouDontTakeThis + ifYouTakeThis;
         }
-    return dp[n - 1][T];
+    return dp[n - 1][target];
 }
 
-long spaceOptimied(vector<int> &arr, int n, int T)
+long spaceOptimied(vector<int> &arr, int n, int target)
 {
-    vector<long> prev(T + 1, 0);
-    for (int i = 0; i <= T; i++)
+    vector<long> prev(target + 1, 0);
+    for (int i = 0; i <= target; i++)
             prev[i] = i % arr[0] == 0;
 
     for (int ind = 1; ind < n; ind++)
     {
-        vector<long> cur(T + 1, 0);
-        for (int target = 0; target <= T; target++)
+        vector<long> cur(target + 1, 0);
+        for (int target = 0; target <= target; target++)
         {
-            long notTaken = prev[target];
+            long ifYouDontTakeThis = prev[target];
 
-            long taken = 0;
+            long ifYouTakeThis = 0;
             if (arr[ind] <= target)
-                taken = cur[target - arr[ind]];
+                ifYouTakeThis = cur[target - arr[ind]];
 
-            cur[target] = notTaken + taken;
+            cur[target] = ifYouDontTakeThis + ifYouTakeThis;
         }
         prev = cur;
     }
-    return prev[T];
+    return prev[target];
 }
 int main()
 {

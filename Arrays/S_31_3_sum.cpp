@@ -53,7 +53,7 @@ vector<vector<int>> better(int n, vector<int> &arr)
 }
 
 
-// TC of n*log(n) for sorting and near about n*2 for the while loop
+// TC of n*log(n) for sorting and near about n*2 for the loops
 vector<vector<int>> best(int n, vector<int> &num)
 {
     vector<vector<int>> ans;
@@ -63,8 +63,8 @@ vector<vector<int>> best(int n, vector<int> &num)
         // Avoid the duplicates while moving i:
         if (i > 0 && num[i] == num[i - 1])
             continue;
-        int j = i + 1; // Assuming j = i + 1
-        int k = n - 1; // Assuming k = n - 1
+        int j = i + 1; // Assuming j = i + 1 => Left pointer of window
+        int k = n - 1; // Assuming k = n - 1 => Right pointer of window
         while (j < k)
         {
             int sum = num[i] + num[j] + num[k];
