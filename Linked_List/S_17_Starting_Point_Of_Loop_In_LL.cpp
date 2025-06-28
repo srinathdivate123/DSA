@@ -37,7 +37,6 @@ Node *firstNode(Node *head)
         fast = fast->next->next;
         if (slow == fast)
         {
-
             // Reset the slow pointer
             // to the head of the list
             slow = head;
@@ -45,19 +44,16 @@ Node *firstNode(Node *head)
             // Phase 2: Find the first node of the loop
             while (slow != fast)
             {
-
                 // Move slow and fast one step at a time
                 slow = slow->next;
                 fast = fast->next;
 
                 // When slow and fast meet again, it's the first node of the loop
             }
-
             // Return the first node of the loop
             return slow;
         }
     }
-
     // If no loop is found, return NULL
     return NULL;
 }
@@ -73,11 +69,8 @@ int main()
     node3->next = node4;
     Node *node5 = new Node(5);
     node4->next = node5;
-
     node5->next = node2;
-
     Node *head = node1;
-
     Node *loopStartNode = firstNode(head);
 
     if (loopStartNode)
@@ -88,6 +81,5 @@ int main()
     {
         cout << "No loop detected in the linked list." << endl;
     }
-
     return 0;
 }
