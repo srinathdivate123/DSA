@@ -41,6 +41,7 @@ ListNode *reverseIterative(ListNode *head)
     ListNode *prev = nullptr;
     ListNode *front = nullptr;
 
+    // Easy way to remember below loop: Note that in a given line, the expression which is in the right side of the '=', comes to the left side of the '=' in the next line. Which means, what we use to assign the value to a variable, that itself is changed in the next line!
     while (temp != nullptr)
     {
         front = temp->next;
