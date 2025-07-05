@@ -5,8 +5,8 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(NULL) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
@@ -27,13 +27,13 @@ ListNode *convertArr2DLL(vector<int> arr)
 
 ListNode *reverseIterative(ListNode *head)
 {
-    if (head == NULL || head->next == NULL)
+    if (head == nullptr || head->next == nullptr)
         return head;
     ListNode *temp = head;
-    ListNode *prev = NULL;
-    ListNode *front = NULL;
+    ListNode *prev = nullptr;
+    ListNode *front = nullptr;
 
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         front = temp->next;
         temp->next = prev;
@@ -47,13 +47,13 @@ ListNode *reverseIterative(ListNode *head)
 bool isPalindrome(ListNode *head)
 {
     // First find the middle of the LL
-    if (head == NULL || head->next == NULL)
+    if (head == nullptr || head->next == nullptr)
         return true;
 
     ListNode *fast = head;
     ListNode *slow = head;
 
-    while (fast->next != NULL && fast->next->next != NULL)
+    while (fast->next != nullptr && fast->next->next != nullptr)
     {
         slow = slow->next;
         fast = fast->next->next;
@@ -66,7 +66,7 @@ bool isPalindrome(ListNode *head)
     ListNode *firstHalf = head;
     ListNode *secondHalf = reversedSecondHalfHead;
 
-    while(secondHalf != NULL)
+    while(secondHalf != nullptr)
     {
         if(firstHalf->val != secondHalf->val)
             return false;

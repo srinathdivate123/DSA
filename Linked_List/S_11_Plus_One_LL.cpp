@@ -7,8 +7,8 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(NULL) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
@@ -28,7 +28,7 @@ ListNode *convertArr2DLL(vector<int> arr)
 
 void print(ListNode *headNode)
 {
-    while (headNode != NULL)
+    while (headNode != nullptr)
     {
         cout << headNode->val << " ";
         headNode = headNode->next;
@@ -37,13 +37,13 @@ void print(ListNode *headNode)
 
 ListNode *reverseIterative(ListNode *head)
 {
-    if (head == NULL || head->next == NULL)
+    if (head == nullptr || head->next == nullptr)
         return head;
     ListNode *temp = head;
-    ListNode *prev = NULL;
-    ListNode *front = NULL;
+    ListNode *prev = nullptr;
+    ListNode *front = nullptr;
 
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         front = temp->next;
         temp->next = prev;
@@ -58,7 +58,7 @@ ListNode *plusOneBruteForce(ListNode *head)
     head = reverseIterative(head);
     ListNode *temp = head;
     int carry = 1;
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         carry += temp->val;
         temp->val = carry % 10;
@@ -77,7 +77,7 @@ ListNode *plusOneBruteForce(ListNode *head)
 
 int helperRecursion(ListNode *temp)
 {
-    if (temp == NULL)
+    if (temp == nullptr)
         return 1;
     int carry = helperRecursion(temp->next);
     temp->val += carry;

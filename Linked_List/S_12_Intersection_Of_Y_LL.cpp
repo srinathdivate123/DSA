@@ -5,14 +5,14 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(NULL) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 void printList(ListNode *head)
 {
-    while (head->next != NULL)
+    while (head->next != nullptr)
     {
         cout << head->val << "->";
         head = head->next;
@@ -24,14 +24,14 @@ void insertNode(ListNode *&head, int val)
 {
     ListNode *newNode = new ListNode(val);
 
-    if (head == NULL)
+    if (head == nullptr)
     {
         head = newNode;
         return;
     }
 
     ListNode *temp = head;
-    while (temp->next != NULL)
+    while (temp->next != nullptr)
         temp = temp->next;
 
     temp->next = newNode;
@@ -45,7 +45,7 @@ ListNode *checkIntersection(ListNode *l1, ListNode *l2)
 int main()
 {
 
-    ListNode *head = NULL;
+    ListNode *head = nullptr;
     insertNode(head, 1);
     insertNode(head, 3);
     insertNode(head, 1);
@@ -53,7 +53,7 @@ int main()
     insertNode(head, 4);
     ListNode *head1 = head;
     head = head->next->next->next;
-    ListNode *headSec = NULL;
+    ListNode *headSec = nullptr;
     insertNode(headSec, 3);
     ListNode *head2 = headSec;
     headSec->next = head;

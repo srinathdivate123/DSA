@@ -5,14 +5,14 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(NULL) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 void print(ListNode *headNode)
 {
-    while (headNode != NULL)
+    while (headNode != nullptr)
     {
         cout << headNode->val << " ";
         headNode = headNode->next;
@@ -35,14 +35,14 @@ ListNode *convertArr2DLL(vector<int> arr)
 
 ListNode *oddEvenList(ListNode *head)
 {
-    if (head == NULL || head->next == NULL)
+    if (head == nullptr || head->next == nullptr)
         return head;
 
     ListNode *odd = head;
     ListNode *even = head->next;
     ListNode *evenHead = head->next;
 
-    while (even != NULL && even->next != NULL)
+    while (even != nullptr && even->next != nullptr)
     {
         odd->next = odd->next->next;
         even->next = even->next->next;

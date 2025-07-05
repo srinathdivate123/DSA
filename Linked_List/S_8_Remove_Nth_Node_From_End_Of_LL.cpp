@@ -5,14 +5,14 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(NULL) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 void print(ListNode *headNode)
 {
-    while (headNode != NULL)
+    while (headNode != nullptr)
     {
         cout << headNode->val << " ";
         headNode = headNode->next;
@@ -42,10 +42,10 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
     for (int i = 0; i < n; i++)
         fastp = fastp->next;
 
-    if (fastp == NULL)
+    if (fastp == nullptr)
         return head->next;
 
-    while (fastp->next != NULL)
+    while (fastp->next != nullptr)
     {
         fastp = fastp->next;
         slowp = slowp->next;

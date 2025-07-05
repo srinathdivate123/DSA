@@ -9,13 +9,13 @@ public:
     node(int val)
     {
         data = val;
-        left = right = NULL;
+        left = right = nullptr;
     }
 };
 
 node *insertBST(node *root, int val)
 {
-    if (root == NULL)
+    if (root == nullptr)
         return new node(val);
     if (val < root->data)
         root->left = insertBST(root->left, val);
@@ -26,7 +26,7 @@ node *insertBST(node *root, int val)
 
 void inorder(node *root)
 {
-    if (root == NULL)
+    if (root == nullptr)
         return;
     inorder(root->left);
     cout << root->data << " ";
@@ -35,7 +35,7 @@ void inorder(node *root)
 
 int main()
 {
-    node *root = NULL;
+    node *root = nullptr;
     root = insertBST(root, 5);
     insertBST(root, 1);
     insertBST(root, 3);

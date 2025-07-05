@@ -8,7 +8,7 @@ public:
     node(int val)
     {
         data = val;
-        next = NULL;
+        next = nullptr;
     }
 };
 void delete_head(node *&head);
@@ -16,14 +16,14 @@ void delete_head(node *&head);
 void insertAtTail(node *&head, int val) // Here we take head by reference and not by value because we're going to modify our LL here.
 {
     node *n = new node(val);
-    if (head == NULL) // This is true if not even one node is there in our LL.
+    if (head == nullptr) // This is true if not even one node is there in our LL.
     {
         head = n;
         return;
     }
     // Below is to traverse the LL till the last node!
     node *temp = head;
-    while (temp->next != NULL)
+    while (temp->next != nullptr)
         temp = temp->next;
     temp->next = n;
 }
@@ -47,7 +47,7 @@ void insertByIndex(node *&head)
     for (i = 0; i < loc; i++)
     {
         temp = temp->next;
-        if (temp == NULL)
+        if (temp == nullptr)
         {
             cout << "\nCan't insert at location " << loc << " because reached the end!!\n";
             return;
@@ -62,22 +62,22 @@ void display(node *head) // Here we take head by value and not by reference beca
 {
     cout << "\nDisplaying Linked List\n\n";
     node *temp = head;
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         cout << temp->data << "->";
         temp = temp->next;
     }
-    cout << "NULL" << endl;
+    cout << "nullptr" << endl;
 }
 
 void deleteByValue(node *&head, int val)
 {
-    if (head == NULL) // If there is no data (not even the head node) in the LL
+    if (head == nullptr) // If there is no data (not even the head node) in the LL
     {
         cout << "\nDeletion not possible because the list is empty!";
         return;
     }
-    if (head->next == NULL) // If there is only one node in the LL
+    if (head->next == nullptr) // If there is only one node in the LL
     {
         delete_head(head);
         return;
@@ -102,11 +102,11 @@ void deleteAtLast(node *&head)
 {
     int returnVal;
     node *temp = head;
-    if (head == NULL)
+    if (head == nullptr)
     {
         cout << "\nDeletion not possible because the list is empty!";
     }
-    else if (head->next == NULL)
+    else if (head->next == nullptr)
     {
         returnVal = temp->data;
         delete_head(head);
@@ -114,11 +114,11 @@ void deleteAtLast(node *&head)
     }
     else
     {
-        while (temp->next->next != NULL)
+        while (temp->next->next != nullptr)
             temp = temp->next;
         returnVal = temp->next->data;
         node *todelete = temp->next->next;
-        temp->next = NULL;
+        temp->next = nullptr;
         delete todelete;
         cout << "\nThe last node of the list, \'" << returnVal << "\' was deleted!";
     }
@@ -136,7 +136,7 @@ void deleteByIndex(node *&head)
         ptr1 = ptr;
         ptr = ptr->next;
 
-        if (ptr == NULL)
+        if (ptr == nullptr)
         {
             printf("\nCan't delete because reached the end of index!");
             return;
@@ -151,7 +151,7 @@ void search(node *&head)
     node *ptr = head;
     int item, i = 0;
     bool flag = true;
-    if (ptr == NULL)
+    if (ptr == nullptr)
     {
         printf("\nThe list is empty. Searching not possible!!\n");
     }
@@ -159,7 +159,7 @@ void search(node *&head)
     {
         printf("Enter item which you want to search - ");
         scanf("%d", &item);
-        while (ptr != NULL)
+        while (ptr != nullptr)
         {
             if (ptr->data == item)
             {
@@ -181,7 +181,7 @@ void search(node *&head)
 
 int main()
 {
-    node *head = NULL;
+    node *head = nullptr;
     int choice = 0;
     int value;
     do

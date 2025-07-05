@@ -5,14 +5,14 @@ struct ListNode
 {
     int val;
     ListNode *next;
-    ListNode() : val(0), next(NULL) {}
-    ListNode(int x) : val(x), next(NULL) {}
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 void print(ListNode *headNode)
 {
-    while (headNode != NULL)
+    while (headNode != nullptr)
     {
         cout << headNode->val << " ";
         headNode = headNode->next;
@@ -36,15 +36,15 @@ ListNode *convertArr2DLL(vector<int> arr)
 // When fast reaches the end of the LL, then the slow is at the middle of the LL
 ListNode *findMiddleOfLL(ListNode *head)
 {
-    if (head == NULL)
+    if (head == nullptr)
         return head;
-    if (head->next == NULL)
+    if (head->next == nullptr)
         return head;
 
     ListNode *fast = head;
     ListNode *slow = head;
 
-    while (fast != NULL && fast->next != NULL)
+    while (fast != nullptr && fast->next != nullptr)
     {
         slow = slow->next;
         fast = fast->next->next;

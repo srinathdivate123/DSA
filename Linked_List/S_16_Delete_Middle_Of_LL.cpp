@@ -20,14 +20,14 @@ public:
 };
 
 Node *deleteMiddle(Node *head) {
-    if (head == NULL || head->next == NULL) {
-        return NULL;
+    if (head == nullptr || head->next == nullptr) {
+        return nullptr;
     }
     Node* slow = head;
     Node* fast = head;
     fast = head->next->next; // Because we want slow to reach one step before the middle node
 
-    while (fast != NULL && fast->next != NULL) {
+    while (fast != nullptr && fast->next != nullptr) {
         slow = slow->next;
         fast = fast->next->next;
     }
@@ -38,7 +38,7 @@ Node *deleteMiddle(Node *head) {
 void printLL(Node* head){
     
     Node *temp = head;
-    while(temp!=NULL){
+    while(temp!=nullptr){
         cout << temp->data << " ";
         temp = temp->next;
     }

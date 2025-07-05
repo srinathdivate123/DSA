@@ -10,7 +10,7 @@ class Node
     Node (int data)
     {
         this-> data = data;
-        next = NULL;
+        next = nullptr;
     }
 };
 

@@ -28,13 +28,13 @@ public:
 
 Node *reverseLinkedList(Node *head)
 {
-    if (head == NULL || head->next == NULL)
+    if (head == nullptr || head->next == nullptr)
         return head;
     Node *temp = head;
-    Node *prev = NULL;
-    Node *front = NULL;
+    Node *prev = nullptr;
+    Node *front = nullptr;
 
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         front = temp->next;
         temp->next = prev;
@@ -46,7 +46,7 @@ Node *reverseLinkedList(Node *head)
 
 Node *getKthNode(Node *temp, int k)
 {
-    while (--k && temp != NULL)
+    while (--k && temp != nullptr)
         temp = temp->next;
     return temp;
 }
@@ -54,18 +54,18 @@ Node *getKthNode(Node *temp, int k)
 Node *kReverse(Node *head, int k)
 {
     Node *temp = head;
-    Node *prevLast = NULL;
-    while (temp != NULL)
+    Node *prevLast = nullptr;
+    while (temp != nullptr)
     {
         Node *kthNode = getKthNode(temp, k);
-        if (kthNode == NULL)
+        if (kthNode == nullptr)
         {
             if (prevLast)
                 prevLast->next = temp;
             break;
         }
         Node *nextNode = kthNode->next;
-        kthNode->next = NULL;
+        kthNode->next = nullptr;
         reverseLinkedList(temp);
         if (temp == head)
         {

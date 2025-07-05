@@ -9,7 +9,7 @@ public:
     node(int val)
     {
         data = val;
-        next = NULL;
+        next = nullptr;
     }
 };
 
@@ -21,14 +21,14 @@ class queue
 public:
     queue()
     {
-        front = NULL;
-        back = NULL;
+        front = nullptr;
+        back = nullptr;
     }
 
     void push(int x)
     {
         node *n = new node(x);
-        if (front == NULL) // For empty queue
+        if (front == nullptr) // For empty queue
         {
             back = n;
             front = n;
@@ -40,7 +40,7 @@ public:
 
     void pop()
     {
-        if (front == NULL)
+        if (front == nullptr)
         {
             cout << "Queue Underflow";
             return;
@@ -52,7 +52,7 @@ public:
 
     int peek()
     {
-        if (front == NULL)
+        if (front == nullptr)
         {
             cout << "No element in queue";
             return -1;
@@ -62,7 +62,7 @@ public:
 
     bool empty()
     {
-        if (front == NULL)
+        if (front == nullptr)
             return true;
         return false;
     }

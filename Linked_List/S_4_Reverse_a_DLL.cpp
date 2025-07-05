@@ -20,8 +20,8 @@ public:
     Node(int data1)
     {
         data = data1;
-        nextPtr = NULL;
-        backPtr = NULL;
+        nextPtr = nullptr;
+        backPtr = nullptr;
     }
 };
 
@@ -32,7 +32,7 @@ Node *convertArr2DLL(vector<int> arr)
 
     for (int i = 1; i < arr.size(); i++)
     {
-        Node *tempNode = new Node(arr[i], NULL, prevNode);
+        Node *tempNode = new Node(arr[i], nullptr, prevNode);
         prevNode->nextPtr = tempNode;
         prevNode = tempNode;
     }
@@ -41,7 +41,7 @@ Node *convertArr2DLL(vector<int> arr)
 
 void print(Node *headNode)
 {
-    while (headNode != NULL)
+    while (headNode != nullptr)
     {
         cout << headNode->data << " ";
         headNode = headNode->nextPtr;
@@ -50,13 +50,13 @@ void print(Node *headNode)
 
 Node *reverseDLL(Node *headNode)
 {
-    if (headNode == NULL || headNode->nextPtr == NULL)
+    if (headNode == nullptr || headNode->nextPtr == nullptr)
         return headNode;
-    Node *prevNode = NULL;
+    Node *prevNode = nullptr;
 
     Node *currentNode = headNode;
 
-    while (currentNode != NULL)
+    while (currentNode != nullptr)
     {
         prevNode = currentNode->backPtr;
         currentNode->backPtr = currentNode->nextPtr;

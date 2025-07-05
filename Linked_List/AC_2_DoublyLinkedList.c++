@@ -10,26 +10,26 @@ public:
     node(int val)
     {
         data = val;
-        next = NULL;
-        prev = NULL;
+        next = nullptr;
+        prev = nullptr;
     }
 };
 void deleteAtHead(node *&head);
 
 void insertAtTail(node *&head, int val)
 {
-    if (head == NULL)
+    if (head == nullptr)
     {
         node *n = new node(val);
         n->next = head;
-        if (head != NULL)
+        if (head != nullptr)
             head->prev = n;
         head = n;
         return;
     }
     node *n = new node(val);
     node *temp = head;
-    while (temp->next != NULL)
+    while (temp->next != nullptr)
         temp = temp->next;
     temp->next = n;
     n->prev = temp;
@@ -39,7 +39,7 @@ void insertAtHead(node *&head, int val)
 {
     node *n = new node(val);
     n->next = head;
-    if (head != NULL)
+    if (head != nullptr)
         head->prev = n;
     head = n;
 }
@@ -48,7 +48,7 @@ void display(node *head)
 {
     cout << "Displaying all the elements -\n\n";
     node *temp = head;
-    while (temp != NULL)
+    while (temp != nullptr)
     {
         cout << temp->data << " ";
         temp = temp->next;
@@ -65,13 +65,13 @@ void deleteByIndex(node *&head, int position)
     }
     node *temp = head;
     int count=0;
-    while (temp != NULL && count != position)
+    while (temp != nullptr && count != position)
     {
         temp = temp->next;
         count++;
     }
     temp->prev->next = temp->next;
-    if (temp->next != NULL) // Suppose if we're deleting the last node, then we wouldn't be able to access its next node as its next node doesn't exist.
+    if (temp->next != nullptr) // Suppose if we're deleting the last node, then we wouldn't be able to access its next node as its next node doesn't exist.
         temp->next->prev = temp->prev;
     delete temp;
 }
@@ -80,13 +80,13 @@ void deleteAtHead(node *&head)
 {
     node *todelete = head;
     head = head->next;
-    head->prev = NULL;
+    head->prev = nullptr;
     delete todelete;
 }
 
 int main()
 {
-    node *head = NULL;
+    node *head = nullptr;
     int choice = 0;
     int value;
     do

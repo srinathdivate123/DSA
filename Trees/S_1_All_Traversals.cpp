@@ -11,14 +11,14 @@ struct node *newNode(int data)
 {
     struct node *node = (struct node *)malloc(sizeof(struct node));
     node->data = data;
-    node->left = NULL;
-    node->right = NULL;
+    node->left = nullptr;
+    node->right = nullptr;
     return node;
 }
 
 vector<int> preorder_Iterative(node *curr, vector<int> &ans)
 {
-    if (curr == NULL)
+    if (curr == nullptr)
         return ans;
     stack<node *> s;
     s.push(curr);
@@ -28,9 +28,9 @@ vector<int> preorder_Iterative(node *curr, vector<int> &ans)
         ans.push_back(topNode->data);
         s.pop();
         // We're using stack which is LIFO so we push right first and then left
-        if (topNode->right != NULL)
+        if (topNode->right != nullptr)
             s.push(topNode->right);
-        if (topNode->left != NULL)
+        if (topNode->left != nullptr)
             s.push(topNode->left);
     }
     return ans;
@@ -38,7 +38,7 @@ vector<int> preorder_Iterative(node *curr, vector<int> &ans)
 
 vector<int> preorder_Recursive(node *curr, vector<int> &ans)
 {
-    if (curr == NULL)
+    if (curr == nullptr)
         return ans;
     ans.push_back(curr->data);
     preorder_Recursive(curr->left, ans);
@@ -48,13 +48,13 @@ vector<int> preorder_Recursive(node *curr, vector<int> &ans)
 
 vector<int> inorder_Iterative(node *curr, vector<int> &ans)
 {
-    if (curr == NULL)
+    if (curr == nullptr)
         return ans;
         //test Test
     stack<node *> s;
     while (true)
     {
-        if (curr != NULL)
+        if (curr != nullptr)
         {
             s.push(curr);
             curr = curr->left;
@@ -74,7 +74,7 @@ vector<int> inorder_Iterative(node *curr, vector<int> &ans)
 
 vector<int> inorder_Recursive(node *curr, vector<int> &ans)
 {
-    if (curr == NULL)
+    if (curr == nullptr)
         return ans;
     inorder_Recursive(curr->left, ans);
     ans.push_back(curr->data);
@@ -87,7 +87,7 @@ vector<int> inorder_Recursive(node *curr, vector<int> &ans)
 vector<int> postorder_Iterative_2_Stacks(node *curr, vector<int> &ans)
 {
     vector<int> postOrder;
-    if (curr == NULL)
+    if (curr == nullptr)
         return postOrder;
 
     stack<node *> s1, s2;
@@ -97,9 +97,9 @@ vector<int> postorder_Iterative_2_Stacks(node *curr, vector<int> &ans)
         curr = s1.top();
         s1.pop();
         s2.push(curr);
-        if (curr->left != NULL)
+        if (curr->left != nullptr)
             s1.push(curr->left);
-        if (curr->right != NULL)
+        if (curr->right != nullptr)
             s1.push(curr->right);
     }
     while (!s2.empty())
@@ -115,14 +115,14 @@ vector<int> postorder_Iterative_2_Stacks(node *curr, vector<int> &ans)
 vector<int> postorder_Iterative_1_Stack(node *curr, vector<int> &ans)
 {
     vector<int> postOrder;
-    if (curr == NULL)
+    if (curr == nullptr)
         return postOrder;
 
     stack<node *> st;
-    while (curr != NULL || !st.empty())
+    while (curr != nullptr || !st.empty())
     {
 
-        if (curr != NULL)
+        if (curr != nullptr)
         {
             st.push(curr);
             curr = curr->left;
@@ -130,7 +130,7 @@ vector<int> postorder_Iterative_1_Stack(node *curr, vector<int> &ans)
         else
         {
             node *temp = st.top()->right;
-            if (temp == NULL)
+            if (temp == nullptr)
             {
                 temp = st.top();
                 st.pop();
@@ -151,7 +151,7 @@ vector<int> postorder_Iterative_1_Stack(node *curr, vector<int> &ans)
 
 vector<int> postorder_Recursive(node *curr, vector<int> &ans)
 {
-    if (curr == NULL)
+    if (curr == nullptr)
         return ans;
     postorder_Recursive(curr->left, ans);
     postorder_Recursive(curr->right, ans);
@@ -162,7 +162,7 @@ vector<int> postorder_Recursive(node *curr, vector<int> &ans)
 vector<vector<int>> levelorder_Traversal(node *curr)
 {
     vector<vector<int>> ans;
-    if (curr == NULL)
+    if (curr == nullptr)
         return ans;
     queue<node *> q;
     q.push(curr);
@@ -174,9 +174,9 @@ vector<vector<int>> levelorder_Traversal(node *curr)
         {
             node *currentNode = q.front();
             q.pop();
-            if (currentNode->left != NULL)
+            if (currentNode->left != nullptr)
                 q.push(currentNode->left);
-            if (currentNode->right != NULL)
+            if (currentNode->right != nullptr)
                 q.push(currentNode->right);
             elements_at_this_level.push_back(currentNode->data);
         }
@@ -189,7 +189,7 @@ void all_traversals_in_one(node *root, vector<int> &pre, vector<int> &in, vector
 {
     stack<pair<node *, int>> st;
     st.push({root, 1});
-    if (root == NULL)
+    if (root == nullptr)
         return;
 
     while (!st.empty())
@@ -205,7 +205,7 @@ void all_traversals_in_one(node *root, vector<int> &pre, vector<int> &in, vector
             pre.push_back(it.first->data);
             it.second++;
             st.push(it);
-            if (it.first->left != NULL)
+            if (it.first->left != nullptr)
                 st.push({it.first->left, 1});
         }
 
@@ -217,7 +217,7 @@ void all_traversals_in_one(node *root, vector<int> &pre, vector<int> &in, vector
             in.push_back(it.first->data);
             it.second++;
             st.push(it);
-            if (it.first->right != NULL)
+            if (it.first->right != nullptr)
                 st.push({it.first->right, 1});
         }
         // don't push it back again

@@ -31,7 +31,7 @@ Node *firstNode(Node *head)
     Node *fast = head;
 
     // Phase 1: Detect if there is a loop
-    while (fast != NULL && fast->next != NULL)
+    while (fast != nullptr && fast->next != nullptr)
     {
         slow = slow->next;
         fast = fast->next->next;
@@ -54,8 +54,8 @@ Node *firstNode(Node *head)
             return slow;
         }
     }
-    // If no loop is found, return NULL
-    return NULL;
+    // If no loop is found, return nullptr
+    return nullptr;
 }
 
 int main()
