@@ -94,17 +94,16 @@ Node *myReverse(Node *head, int k)
     Node *start = nullptr;
     int count = 0;
 
-
     while (temp != nullptr)
     {
-        if(count == 0)
+        if (count == 0)
             start = temp;
         front = temp->next;
         temp->next = prev;
         prev = temp;
         temp = front;
         count++;
-        if(count == k)
+        if (count == k)
         {
             start->next = temp;
             count = 0;
@@ -145,7 +144,6 @@ int main()
     /*   MY REVERSE FUNCTION */
 
     myReverse(head, 3);
-
     cout << "Re-reversed Linked List by my reverse function: " << endl;
     printLinkedList(head);
     return 0;
