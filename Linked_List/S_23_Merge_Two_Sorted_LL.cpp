@@ -1,5 +1,13 @@
 // https://leetcode.com/problems/merge-two-sorted-lists/description/
 
+/*
+You are given the heads of two sorted linked lists list1 and list2.
+
+Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+Return the head of the merged linked list.
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -41,7 +49,7 @@ Node *sortTwoLinkedLists(Node *list1, Node *list2)
         temp = temp->next;
     }
 
-    // If any list still has remaining elements, append them to the merged list
+    // If any list still has remaining elements, just point the temp to the remaining section of that LL (no need to append all the nodes in a for loop as they're already sorted & this is a LL)
     if (list1 != nullptr)
         temp->next = list1;
     else
