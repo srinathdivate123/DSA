@@ -11,7 +11,6 @@ using namespace std;
 
 int numEnclaves(vector<vector<int>> &grid)
 {
-
 }
 
 int main()
