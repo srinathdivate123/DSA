@@ -3,10 +3,10 @@
 #include <typeinfo>
 using namespace std;
 
-// SC = Queue, visited array ~ 2N SC
-// TC = A node goes once into the queue and the while loop runs for all it's degrees (for all the nodes connected to it)
-// So it is N for queue because each node (total N) goes into it
-// And it is 2E for running on all the degrees of all the nodes because the total num of degrees in a graph is 2E
+// SC = Queue, visited array ~ 2N
+// TC = A node goes once into the queue and the while loop runs for all it's edges (for all the nodes connected to it)
+// So it is N for queue because each node (total N) goes into the queue once
+// And it is 2E for running on all the edges of all the nodes. Also the total num of degrees in a graph is 2E
 // So TC = N + 2E
 vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
 {
@@ -23,6 +23,7 @@ vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
         ans.push_back(node);
         // traverse for all its neighbours
         for (auto it : adj[node])
+        {
             // if the neighbour has previously not been visited,
             // store in q and mark as visited
             if (!visited[it])
@@ -30,6 +31,7 @@ vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
                 visited[it] = 1;
                 q.push(it);
             }
+        }
     }
     return ans;
 }
