@@ -7,11 +7,11 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-void dfs(int node, int visited[], vector<int> &ans, vector<int> adj[]);
+void dfs(int node, vector<int> &visited, vector<int> &ans, vector<int> adj[]);
 
 vector<int> dfsMain(int numberOfNodes, vector<int> adj[], int startDFSFrom)
 {
-    int visited[numberOfNodes] = {0};
+    vector<int> visited(numberOfNodes, 0);
     vector<int> ans;
     dfs(startDFSFrom, visited, ans, adj);
     return ans;
@@ -19,7 +19,9 @@ vector<int> dfsMain(int numberOfNodes, vector<int> adj[], int startDFSFrom)
 
 // Using recursion to trace back the way to the parent node
 // This makes sure that all the children node are iterated first and then the neighbour nodes are iterated
-void dfs(int node, int visited[], vector<int> &ans, vector<int> adj[])
+// The below DFS only works for connected components. If there are disconnected components, then we have to run a for loop from 0 to N (all nodes) and call the dfs function for every unvisited node: https://www.geeksforgeeks.org/dsa/depth-first-search-or-dfs-for-a-graph/
+
+void dfs(int node, vector<int> &visited, vector<int> &ans, vector<int> adj[])
 {
     visited[node] = 1;
     ans.push_back(node);
