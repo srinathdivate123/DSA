@@ -7,9 +7,9 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-void dfs(int node, vector<int> &visited, vector<int> &ans, vector<int> adj[]);
+void dfs(int node, vector<int> &visited, vector<int> &ans, vector<vector<int>> &adj);
 
-vector<int> dfsMain(int numberOfNodes, vector<int> adj[], int startDFSFrom)
+vector<int> dfsParentFunction(int numberOfNodes, vector<vector<int>> &adj, int startDFSFrom)
 {
     vector<int> visited(numberOfNodes, 0);
     vector<int> ans;
@@ -21,7 +21,7 @@ vector<int> dfsMain(int numberOfNodes, vector<int> adj[], int startDFSFrom)
 // This makes sure that all the children node are iterated first and then the neighbour nodes are iterated
 // The below DFS only works for connected components. If there are disconnected components, then we have to run a for loop from 0 to N (all nodes) and call the dfs function for every unvisited node: https://www.geeksforgeeks.org/dsa/depth-first-search-or-dfs-for-a-graph/
 
-void dfs(int node, vector<int> &visited, vector<int> &ans, vector<int> adj[])
+void dfs(int node, vector<int> &visited, vector<int> &ans, vector<vector<int>> &adj)
 {
     visited[node] = 1;
     ans.push_back(node);
@@ -31,7 +31,7 @@ void dfs(int node, vector<int> &visited, vector<int> &ans, vector<int> adj[])
     return; // Writing this return isn't necessary
 }
 
-void addEdge(vector<int> adj[], int u, int v)
+void addEdge(vector<vector<int>> &adj, int u, int v)
 {
     adj[u].push_back(v);
     adj[v].push_back(u);
@@ -45,7 +45,8 @@ void printAns(vector<int> &ans)
 
 int main()
 {
-    vector<int> adj[11]; // declaring an array named adj consisting of 6 elements, where each element is a vector<int>.
+    int n = 11;
+    vector<vector<int>> adj(n);
     addEdge(adj, 1, 2);
     addEdge(adj, 1, 3);
     addEdge(adj, 2, 5);
@@ -55,7 +56,7 @@ int main()
     addEdge(adj, 4, 8);
     addEdge(adj, 7, 8);
 
-    vector<int> ans = dfsMain(10, adj, 1);
+    vector<int> ans = dfsParentFunction(n, adj, 1);
     printAns(ans);
     return 0;
 }

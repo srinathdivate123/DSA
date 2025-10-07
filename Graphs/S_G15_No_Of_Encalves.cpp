@@ -7,13 +7,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int numEnclaves(vector<vector<int>> &grid)
+int numberOfEnclaves(vector<vector<int>> &grid)
 {
     
 }
 
-int main()
-{
-    cout << "ENDL";
-    return 0;
+int main() {
+    
+    vector<vector<int>> grid{
+        {0, 0, 0, 0},
+        {1, 0, 1, 0},
+        {0, 1, 1, 0},
+        {0, 0, 0, 0}};
+        
+    cout << numberOfEnclaves(grid) << endl;
+
 }

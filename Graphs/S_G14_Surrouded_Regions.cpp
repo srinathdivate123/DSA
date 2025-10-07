@@ -18,7 +18,7 @@ private:
         {
             int nrow = row + delRow[i];
             int ncol = col + delCol[i];
-            if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && !vis[nrow][ncol] && mat[nrow][ncol] == 'o')
+            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && !vis[nrow][ncol] && mat[nrow][ncol] == 'o')
             {
                 dfs(nrow, ncol, vis, mat, delRow, delCol);
             }
