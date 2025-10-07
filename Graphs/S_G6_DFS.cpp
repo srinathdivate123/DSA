@@ -12,6 +12,7 @@ void dfs(int node, vector<int> &visited, vector<int> &ans, vector<vector<int>> &
 vector<int> dfsParentFunction(int numberOfNodes, vector<vector<int>> &adj, int startDFSFrom)
 {
     vector<int> visited(numberOfNodes, 0);
+    vector<int> visited(numberOfNodes, 0);
     vector<int> ans;
     dfs(startDFSFrom, visited, ans, adj);
     return ans;
