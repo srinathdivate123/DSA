@@ -2,7 +2,7 @@
 // SC = N for visited array + N for storing the answer + N for the recursion stack space at the worst case when the nodes are connected together like train coaches are connected. So it's 3N in worst case!
 // TC = The dfs function is called for every node so it is N
 // The dfs function is also called for every neighbour node which is equal to 2*Edges.
-// So TC = N + 2*E
+// So TC = N + 2*E4
 // TC is not N*2*E
 
 #include <bits/stdc++.h>
@@ -11,7 +11,6 @@ void dfs(int node, vector<int> &visited, vector<int> &ans, vector<vector<int>> &
 
 vector<int> dfsParentFunction(int numberOfNodes, vector<vector<int>> &adj, int startDFSFrom)
 {
-    vector<int> visited(numberOfNodes, 0);
     vector<int> visited(numberOfNodes, 0);
     vector<int> ans;
     dfs(startDFSFrom, visited, ans, adj);
@@ -27,8 +26,12 @@ void dfs(int node, vector<int> &visited, vector<int> &ans, vector<vector<int>> &
     visited[node] = 1;
     ans.push_back(node);
     for (auto it : adj[node]) // Traverse all its degrees (neighbours)
+    {
         if (!visited[it])
+        {
             dfs(it, visited, ans, adj);
+        }
+    }
     return; // Writing this return isn't necessary
 }
 

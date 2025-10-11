@@ -19,7 +19,7 @@ vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
     q.push(startBFSFrom);      // push the initial starting node from where you want to start BFS
     while (!q.empty())
     {
-        // get the topmost element in the queue
+        // Get the topmost element in the queue
         int node = q.front();
         q.pop();
         ans.push_back(node);
