@@ -1,5 +1,13 @@
 // https://leetcode.com/problems/number-of-provinces/
-// Problem Statement: Given an undirected graph with V vertices. We say two vertices u and v belong to a single province if there is a path from u to v or v to u. Your task is to find the number of provinces.
+// https://takeuforward.org/data-structure/number-of-provinces/
+
+// There are n cities. Some of them are connected, while some are not. If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+
+// A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+
+// You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+
+// Return the total number of provinces.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,22 +27,32 @@ public:
     {
         int V = isConnected.size();
         vector<vector<int>> adj;
+
         // Making adjacency list out of adjacency matrix.
         for (int i = 0; i < V; i++)
+        {
             for (int j = 0; j < V; j++)
-                if (isConnected[i][j] == 1 && i != j) // We put i!=j so that there are no self-nodes in our adjacency list. Self nodes are those nodes that are connected with themselves
+            {
+                // We put i!=j so that there are no self-nodes in our adjacency list. Self nodes are those nodes that are connected with themselves
+                if (isConnected[i][j] == 1 && i != j)
                 {
                     adj[i].push_back(j);
                     adj[j].push_back(i);
                 }
+            }
+        }
+
+        // Basically count hwo many times the multi-source DFS/BFS runs
         vector<int> vis(V, 0);
         int cnt = 0;
         for (int i = 0; i < V; i++)
+        {
             if (!vis[i])
             {
                 cnt++;
                 dfs(i, adj, vis);
             }
+        }
         return cnt;
     }
 };
