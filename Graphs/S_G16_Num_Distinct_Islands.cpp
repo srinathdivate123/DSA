@@ -1,12 +1,8 @@
-// https://takeuforward.org/data-structure/number-of-islands/
+// https://takeuforward.org/data-structure/number-of-distinct-islands/
+// https://leetcode.com/problems/number-of-distinct-islands-ii/
 
-// Given a grid of size NxM (N is the number of rows and M is the number of columns) consisting of ‘0’s (Water) and ‘1’s (Land). Find the number of islands.
+// Given a boolean 2D matrix grid of size N x M. You have to find the number of distinct islands where a group of connected 1s (horizontally or vertically) forms an island. Two islands are considered to be distinct if and only if one island is equal to another (not rotated or reflected).
 
-// Note: An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically or diagonally i.e., in all 8 directions.
-
-// SC = N*N for visited array + N*N for queue at worst case when all are 1 i.e. only one island is there and no water is there
-
-// O (N² + NxMx9), N² for the nested loops, and NxMx9 for the overall BFS of the matrix.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -20,21 +16,22 @@ public:
         vis[row][col] = 1;
 
         // Define all 8 directions
-        int delRow[] = {-1, -1, -1, 0, 1, 1, 1, 0};
-        int delCol[] = {-1, 0, 1, 1, 1, 0, -1, -1};
+        int deltaRow[] = {-1, -1, -1, 0, 1, 1, 1, 0};
+        int deltaCol[] = {-1, 0, 1, 1, 1, 0, -1, -1};
 
         while (!q.empty())
         {
             int r = q.front().first;
             int c = q.front().second;
-            // Pop it from the queue
             q.pop();
 
+            // Traverse all 8 directions
             for (int i = 0; i < 8; i++)
             {
-                int nrow = r + delRow[i];
-                int ncol = c + delCol[i];
+                int nrow = r + deltaRow[i];
+                int ncol = c + deltaCol[i];
 
+                // Check bounds and unvisited land
                 if (nrow >= 0 && nrow < grid.size() &&
                     ncol >= 0 && ncol < grid[0].size() &&
                     !vis[nrow][ncol] && grid[nrow][ncol] == '1')
@@ -66,7 +63,6 @@ public:
                 }
             }
         }
-
         return count;
     }
 };

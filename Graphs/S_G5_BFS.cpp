@@ -3,7 +3,8 @@
 #include <typeinfo>
 using namespace std;
 
-// SC = Queue ~ N, visited array ~ 2N
+// SC = Queue ~ N, visited array ~ 2E or 2(2N)
+// Where N = Nodes, 2E is for total degrees as we traverse all adjacent nodes.
 // TC = A node goes once into the queue and the while loop runs for all it's edges (for all the nodes connected to it)
 // So it is N for queue because each node (total N) goes into the queue once
 // And it is 2E for running on all the edges of all the nodes. Also the total num of degrees in a graph is 2E

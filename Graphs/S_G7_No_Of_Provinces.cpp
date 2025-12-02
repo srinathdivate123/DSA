@@ -42,7 +42,7 @@ public:
             }
         }
 
-        // Basically count hwo many times the multi-source DFS/BFS runs
+        // Basically count how many times the multi-source DFS/BFS runs
         vector<int> vis(V, 0);
         int cnt = 0;
         for (int i = 0; i < V; i++)
