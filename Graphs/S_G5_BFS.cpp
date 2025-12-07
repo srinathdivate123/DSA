@@ -3,12 +3,13 @@
 #include <typeinfo>
 using namespace std;
 
-// SC = Queue ~ N, visited array ~ 2E or 2(2N)
-// Where N = Nodes, 2E is for total degrees as we traverse all adjacent nodes.
+// TC = N + 2E
+// SC = 3N : Queue, visited array adjacency list
+
 // TC = A node goes once into the queue and the while loop runs for all it's edges (for all the nodes connected to it)
 // So it is N for queue because each node (total N) goes into the queue once
 // And it is 2E for running on all the edges of all the nodes. Also the total num of degrees in a graph is 2E
-// So TC = N + 2E
+// SC : N = Nodes, 2E is for total degrees as we traverse all adjacent nodes.
 // The below BFS only works for connected components. If there are disconnected components, then we have to run a for loop from 0 to N (all nodes) and call the bfs function for every unvisited node: https://www.geeksforgeeks.org/dsa/breadth-first-search-or-bfs-for-a-graph
 
 vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)

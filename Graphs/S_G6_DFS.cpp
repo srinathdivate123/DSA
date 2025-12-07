@@ -1,9 +1,11 @@
-// This code will work for unidirected, bidirected graphs also
-// SC = N for visited array + N for storing the answer + N for the recursion stack space at the worst case when the nodes are connected together like train coaches are connected. So it's 3N in worst case!
+// TC = N + 2*E
+// SC = 3N (ans, visited array, stack space)
+
 // TC = The dfs function is called for every node so it is N
 // The dfs function is also called for every neighbour node which is equal to 2*Edges.
-// So TC = N + 2*E
-// TC is not N*2*E
+// Note that TC is not N*2*E
+
+// This code will work for unidirected, bidirected graphs also
 
 #include <bits/stdc++.h>
 using namespace std;
