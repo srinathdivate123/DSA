@@ -12,79 +12,82 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-class Solution
+
+int orangesRotting(vector<vector<int>> &grid)
 {
-public:
-    int orangesRotting(vector<vector<int>> &grid)
+    if (grid.empty())
+        return 0;
+
+    int m = grid.size();
+    int n = grid[0].size();
+
+    int minutesPassed = 0;
+
+    // fresh + rotten
+    int totalOranges = 0;
+
+    // Variable to count how many oranges became rotten during the process
+    int cnt = 0;
+    queue<pair<int, int>> rotten;
+
+    for (int i = 0; i < m; ++i)
     {
-        if (grid.empty())
-            return 0;
-
-        int n = grid.size();
-        int m = grid[0].size();
-        queue<pair<pair<int, int>, int>> q; // {{row, col}, time} --> Storing the row, col, time of the rotting oranges
-        vector<vector<int>> vis(n, vector<int>(m, 0));
-
-        int cntFresh = 0;
-
-        for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; ++j)
         {
-            for (int j = 0; j < m; j++)
-            {
-                // Iterate once through the entire matrix and push all the rotten oranges into the queue!
-                if (grid[i][j] == 2)
-                {
-                    q.push({{i, j}, 0});
-                    vis[i][j] = 2;
-                }
-                // Count number of fresh oranges
-                if (grid[i][j] == 1)
-                    cntFresh++;
-            }
-        }
+            if (grid[i][j] != 0)
+                totalOranges++; // Count it as a valid orange
 
-        int time = 0;
-        int delRow[] = {-1, 0, 1, 0}; // This is the difference of row for 4 neighbours
-        int delCol[] = {0, 1, 0, -1}; // This is the difference of col for 4 neighbours
-        int cnt = 0;
-
-        while (!q.empty())
-        {
-            int r = q.front().first.first;
-            int c = q.front().first.second;
-            int t = q.front().second;
-            time = max(time, t);
-            q.pop();
-
-            for (int i = 0; i < 4; i++)
-            {
-                int nrow = r + delRow[i];
-                int ncol = c + delCol[i];
-                if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && vis[nrow][ncol] != 2 && grid[nrow][ncol] == 1)
-                {
-                    q.push({{nrow, ncol}, t + 1});
-                    vis[nrow][ncol] = 2;
-                    cnt++;
-                }
-            }
+            if (grid[i][j] == 2)
+                rotten.push({i, j});
         }
-        if (cnt != cntFresh)
-        // If we did not push all the fresh oranges into the queue, we will not end up rotting all the oranges, hence return -1
-        {
-            return -1;
-        }
-        return time;
     }
-};
+
+    int dx[4] = {0, 0, 1, -1};
+    int dy[4] = {1, -1, 0, 0};
+
+    while (!rotten.empty())
+    {
+        // Number of rotten oranges to process at this minute
+        int k = rotten.size();
+
+        // Add these many oranges to the count of rotted oranges
+        cnt += k;
+
+        // Process all rotten oranges at this time step
+        while (k--)
+        {
+            // Get the front orange from the queue
+            int x = rotten.front().first;
+            int y = rotten.front().second;
+            rotten.pop();
+
+            // Check all 4 directions
+            for (int i = 0; i < 4; ++i)
+            {
+                int nx = x + dx[i];
+                int ny = y + dy[i];
+
+                if (nx < 0 || ny < 0 || nx >= m || ny >= n || grid[nx][ny] != 1)
+                    continue;
+
+                grid[nx][ny] = 2;
+                rotten.push({nx, ny});
+            }
+        }
+        // If new oranges were added to the queue, increase the time
+        if (!rotten.empty())
+            minutesPassed++;
+    }
+    return totalOranges == cnt ? minutesPassed : -1;
+}
 
 int main()
 {
-    vector<vector<int>> v = {
-        {2, 1, 1},
-        {1, 1, 0},
-        {0, 1, 1}};
-    Solution obj;
-    cout << obj.orangesRotting(v);
+    vector<vector<int>> v{{2, 1, 1},
+                          {1, 1, 0},
+                          {0, 1, 1}};
 
+    int rotting = orangesRotting(v);
+    cout << "Minimum Number of Minutes Required " << rotting << endl;
     return 0;
 }
