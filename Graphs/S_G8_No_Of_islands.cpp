@@ -1,4 +1,5 @@
 // https://takeuforward.org/data-structure/number-of-islands/
+// https://leetcode.com/problems/number-of-islands/description/
 
 // Given a grid of size NxM (N is the number of rows and M is the number of columns) consisting of ‘0’s (Water) and ‘1’s (Land). Find the number of islands.
 

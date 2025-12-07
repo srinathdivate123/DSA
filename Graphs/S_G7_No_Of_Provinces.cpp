@@ -14,7 +14,7 @@ using namespace std;
 class Solution
 {
 private:
-    void dfs(int node, vector<vector<int>> adj, vector<int> &vis)
+    void dfs(int node, vector<vector<int>> &adj, vector<int> &vis)
     {
         vis[node] = 1;
         for (auto it : adj[node])
@@ -26,7 +26,7 @@ public:
     int findCircleNum(vector<vector<int>> &isConnected)
     {
         int V = isConnected.size();
-        vector<vector<int>> adj;
+        vector<vector<int>> adj(V);
 
         // Making adjacency list out of adjacency matrix.
         for (int i = 0; i < V; i++)

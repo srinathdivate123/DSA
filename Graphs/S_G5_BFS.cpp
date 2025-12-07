@@ -17,7 +17,7 @@ vector<int> bfs(int numberOfNodes, vector<int> adj[], int startBFSFrom)
     queue<int> q;
     vector<int> ans;
     visited[startBFSFrom] = 1; // Mark the starting node as visited
-    q.push(startBFSFrom);      // push the initial starting node from where you want to start BFS
+    q.push(startBFSFrom);      // Push the initial starting node from where you want to start BFS
     while (!q.empty())
     {
         // Get the topmost element in the queue

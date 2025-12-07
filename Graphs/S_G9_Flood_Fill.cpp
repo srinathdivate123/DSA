@@ -1,9 +1,21 @@
-// Problem Statement: An image is represented by a 2-D array of integers, each integer representing the pixel value of the image. Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, “flood fill” the image.
+// https://takeuforward.org/graph/flood-fill-algorithm-graphs/
+// https://leetcode.com/problems/flood-fill/description/
 
-// To perform a “flood fill”, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same colour as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same colour as the starting pixel), and so on. Replace the colour of all of the aforementioned pixels with the newColor.
+// You are given an image represented by an m x n grid of integers image, where image[i][j] represents the pixel value of the image. You are also given three integers sr, sc, and color. Your task is to perform a flood fill on the image starting from the pixel image[sr][sc].
 
-// TC = P*4 where P is he total number of nodes that end up being new-colored. 4 because we travel for 4 neighbour nodes for each node.
+// To perform a flood fill:
+
+// Begin with the starting pixel and change its color to 'color'.
+// Perform the same process for each pixel that is directly adjacent (pixels that share a side with the original pixel, either horizontally or vertically) and shares the same color as the starting pixel.
+// Keep repeating this process by checking neighboring pixels of the updated pixels and modifying their color if it matches the original color of the starting pixel.
+// The process stops when there are no more adjacent pixels of the original color to update.
+// Return the modified image after performing the flood fill.
+
+// TC = P*4 where P is the total number of nodes that end up being new-colored. 4 because we travel for 4 neighbour nodes for each node.
 // Sc = N*M external matrix for storing answer + N*M for recursion stack space in worst case where are the elements are of the initial given color
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
