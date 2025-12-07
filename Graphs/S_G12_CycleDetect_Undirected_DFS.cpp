@@ -1,7 +1,11 @@
-#include <bits/stdc++.h>
-using namespace std;
+// The cycle in a graph starts from a node and ends at the same node.
+// We say that the graph has a cycle if any of the components (may be connected or not connected) have a cycle.
+
 // SC = N (for recursion stack space at worst case if all nodes are connected like coaches of train) + N (for visited array)
 // TC = N + 2E (for DFS) + N (the for loop in the isCycle function)
+
+#include <bits/stdc++.h>
+using namespace std;
 class Solution
 {
 private:
@@ -15,7 +19,7 @@ private:
                 if (dfs(adjacentNode, node, vis, adj)) // If this returns a false then it's fine. We do DFS for the next neighbours
                     return true;
             }
-            if (vis[adjacentNode] == 1 && adjacentNode != parent)
+            else if (adjacentNode != parent)
                 return true;
         }
         return false;
