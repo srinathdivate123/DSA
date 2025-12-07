@@ -10,6 +10,10 @@
 
 // Return the minimum number of minutes that must elapse until no cell has a fresh orange. If this is impossible, return -1.
 
+// TC: O(n × n × 4) In the worst case, every cell in the grid may contain an orange, and for each rotten orange we explore 4 directions (up, down, left, right). So we iterate through all cells (n × n) and perform 4 operations per orange. Hence, the complexity becomes O(n × n × 4), which simplifies to O(n²).
+
+// SC: O(n × n) In the worst case, all the oranges might be rotten and will be stored in the queue simultaneously. The maximum size of the queue can be equal to the total number of oranges in the grid, i.e., n × n. Therefore, the space complexity is O(n²).
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -87,7 +91,6 @@ int main()
                           {1, 1, 0},
                           {0, 1, 1}};
 
-    int rotting = orangesRotting(v);
-    cout << "Minimum Number of Minutes Required " << rotting << endl;
+    cout << orangesRotting(v);
     return 0;
 }

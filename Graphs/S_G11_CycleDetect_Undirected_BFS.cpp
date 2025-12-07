@@ -5,10 +5,11 @@
 // SC = N (for visited array) + N (for queue in worst case)
 #include <bits/stdc++.h>
 using namespace std;
+
 class Solution
 {
 private:
-    bool detect_the_BFS_way(int start, vector<int> adj[], int vis[])
+    bool detect_the_BFS_way(int start, vector<int> adj[], vector<int> vis)
     {
         vis[start] = 1;
         queue<pair<int, int>> q; // To store node, source from where it came
@@ -25,7 +26,7 @@ private:
                     vis[adjacentNode] = 1;
                     q.push({adjacentNode, node});
                 }
-                if (vis[adjacentNode] == 1 && parent != adjacentNode)
+                else if (parent != adjacentNode)
                     return true;
             }
         }
@@ -35,15 +36,22 @@ private:
 public:
     bool isCycle(int V, vector<int> adj[]) // V is number of nodes
     {
-        int vis[V] = {0};
-        // We write like this if the graph has many non-connected components and one of them may be a cycle and some of them may not be a cycle
+        vector<int> vis(V, 0);
+        // For multi-source BFS
         for (int i = 0; i < V; i++)
+        {
             if (!vis[i])
+            {
                 if (detect_the_BFS_way(i, adj, vis))
+                {
                     return true;
+                }
+            }
+        }
         return false;
     }
 };
+
 int main()
 {
     vector<int> adj[8] = {

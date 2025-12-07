@@ -10,9 +10,9 @@ private:
         vis[node] = 1;
         for (auto adjacentNode : adj[node])
         {
-            if (vis[adjacentNode] == 0)
+            if (!vis[adjacentNode])
             {
-                if (dfs(adjacentNode, node, vis, adj) == true) // If this returns a false then it's fine. We do DFS for the next neighbours
+                if (dfs(adjacentNode, node, vis, adj)) // If this returns a false then it's fine. We do DFS for the next neighbours
                     return true;
             }
             if (vis[adjacentNode] == 1 && adjacentNode != parent)
@@ -26,9 +26,15 @@ public:
     {
         vector<int> vis(V, 0);
         for (int i = 0; i < V; i++)
+        {
             if (!vis[i])
+            {
                 if (dfs(i, -1, vis, adj) == true)
+                {
                     return true;
+                }
+            }
+        }
         return false;
     }
 };
