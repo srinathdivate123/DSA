@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/number-of-enclaves/description/
+// https://takeuforward.org/graph/number-of-enclaves/
 
 // You are given an m x n binary matrix grid, where 0 represents a sea cell and 1 represents a land cell.
 // A move consists of walking from one land cell to another adjacent (4-directionally) land cell or walking off the boundary of the grid.

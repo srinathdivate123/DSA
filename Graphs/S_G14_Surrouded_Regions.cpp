@@ -8,8 +8,6 @@
 // Surround: The region is surrounded with 'X' cells if you can connect the region with 'X' cells and none of the region cells are on the edge of the board.
 // To capture a surrounded region, replace all 'O's with 'X's in-place within the original board. You do not need to return anything.
 
-// The intuition is that we start from boundary elements having ‘O’ and go through its neighboring Os in 4 directions and mark them as visited to avoid replacing them with ‘X’.
-
 // TC: O(N × M), since each cell is visited at most once during DFS and once during the final traversal.
 
 // SC: O(N × M), due to the visited matrix and the recursion stack in the worst case.
@@ -18,6 +16,7 @@
 // --------------------------------------------- //
 
 
+// The intuition is that we start from boundary elements having ‘O’ and go through its neighboring Os in 4 directions and mark them as visited to avoid replacing them with ‘X’.
 // Mark all 'O's that are connected to the boundary as safe.
 // At the end, flip all other 'O's (unvisited ones) into 'X'.
 // Approach
