@@ -1,4 +1,7 @@
 // https://leetcode.com/problems/is-graph-bipartite/description/
+// Also refer: 
+// - https://www.geeksforgeeks.org/dsa/m-coloring-problem/
+// - https://leetcode.com/problems/painting-a-grid-with-three-different-colors/description/
 
 // TC = N + 2E
 // SC = 2N : Queue, colour array
