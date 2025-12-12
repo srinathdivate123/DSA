@@ -3,6 +3,11 @@
 // TC = N + 2E
 // SC = 2N : Queue, colour array
 
+// Start BFS from any uncolored vertex and assign it color 0.
+// For each vertex, color its uncolored neighbors with the opposite color (1 if current is 0, and vice versa)
+// Check if a neighbor already has the same color as the current vertex, return false (graph is not bipartite).
+// If BFS completes without any conflicts, return true (graph is bipartite).
+
 #include <bits/stdc++.h>
 using namespace std;
 
