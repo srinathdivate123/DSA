@@ -1,11 +1,11 @@
 // https://leetcode.com/problems/is-graph-bipartite/description/
-// Also refer: 
+// Also refer:
 // - https://www.geeksforgeeks.org/dsa/m-coloring-problem/
 // - https://leetcode.com/problems/painting-a-grid-with-three-different-colors/description/
 
-// • Bi-Partite Graph: A graph is said to be bi-partite if you can colour the graph with 2 colours, such that no adjacent nodes have the same colour
-// 	• Linear Graphs with no cycles are always bipartite
-// 	• Any graph with an even cycle length can also be bipartite
+// Bi-Partite Graph: A graph is said to be bi-partite if you can colour the graph with 2 colours, such that no adjacent nodes have the same colour
+// Linear Graphs with no cycles are always bipartite
+// Any graph with an even cycle length can also be bipartite
 // Any graph with odd cycle length can never be bipartite
 
 // TC = N + 2E
@@ -13,7 +13,7 @@
 
 // Start BFS from any uncolored vertex and assign it color 0.
 // For each vertex, color its uncolored neighbors with the opposite color (1 if current is 0, and vice versa)
-// Check if a neighbor already has the same color as the current vertex, return false (graph is not bipartite).
+// If a neighbor already has the same color as the current vertex, return false (graph is not bipartite).
 // If BFS completes without any conflicts, return true (graph is bipartite).
 
 #include <bits/stdc++.h>
@@ -71,9 +71,23 @@ public:
         return true;
     }
 };
+void addEdge(vector<vector<int>> adj, int u, int v)
+{
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
 
 int main()
 {
+    // V = 4, E = 4
+    vector<vector<int>> adj;
 
+    addEdge(adj, 0, 2);
+    addEdge(adj, 0, 3);
+    addEdge(adj, 2, 3);
+    addEdge(adj, 3, 1);
+
+    Solution obj;
+    bool ans = obj.isBipartite(adj);
     return 0;
 }

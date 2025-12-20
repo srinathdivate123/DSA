@@ -38,8 +38,8 @@ public:
             }
         }
 
-        int delRow[] = {-1, 0, +1, 0}; // This is the difference of row for 4 neighbours
-        int delCol[] = {0, +1, 0, -1}; // This is the difference of col for 4 neighbours
+        int delRow[] = {-1, 0, +1, 0};
+        int delCol[] = {0, +1, 0, -1};
         // TC = NxMx4
         while (!q.empty())
         {

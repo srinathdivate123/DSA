@@ -62,7 +62,9 @@ int numberOfEnclaves(vector<vector<int>> &grid)
         {
             // check for unvisited land cell
             if (grid[i][j] == 1 & vis[i][j] == 0)
+            {
                 cnt++;
+            }
         }
     }
     return cnt;

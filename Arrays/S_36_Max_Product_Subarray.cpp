@@ -4,13 +4,14 @@ using namespace std;
 
 int kadane_algo_based_optimal_approach(vector<int> nums)
 {
-    int prod1 = nums[0],prod2 = nums[0],result = nums[0];
-    for(int i=1;i<nums.size();i++) {
-        int temp = max({nums[i],prod1*nums[i],prod2*nums[i]});
-        prod2 = min({nums[i],prod1*nums[i],prod2*nums[i]});
+    int prod1 = nums[0], prod2 = nums[0], result = nums[0];
+    for (int i = 1; i < nums.size(); i++)
+    {
+        int temp = max({nums[i], prod1 * nums[i], prod2 * nums[i]});
+        prod2 = min({nums[i], prod1 * nums[i], prod2 * nums[i]});
         prod1 = temp;
-        
-        result = max(result,prod1);
+
+        result = max(result, prod1);
     }
     return result;
 }
@@ -23,11 +24,11 @@ int observation_based_optimal_approach(vector<int> &arr)
     int n = arr.size();
     int ans = INT_MIN;
     int prefix = 1, suffix = 1;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        if(prefix == 0)
+        if (prefix == 0)
             prefix = 1;
-        if(suffix == 0)
+        if (suffix == 0)
             suffix = 1;
         prefix *= arr[i];
         suffix *= arr[n - i - 1];
@@ -35,7 +36,6 @@ int observation_based_optimal_approach(vector<int> &arr)
     }
     return ans;
 }
-
 
 int main()
 {

@@ -7,7 +7,7 @@
 
 // SC = N*N for visited array + N*N for queue at worst case when all are 1 i.e. only one island is there and no water is there
 
-// O (N² + NxMx9), N² for the nested loops, and NxMx9 for the overall BFS of the matrix.
+// SC = O(N² + NxMx9), N² for the nested loops, and NxMx9 for the overall BFS of the matrix.
 #include <bits/stdc++.h>
 using namespace std;
 

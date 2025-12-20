@@ -9,6 +9,9 @@
 
 // Return the total number of provinces.
 
+// TC: O(V+2E), we visit every node and for every node we visit all of its neighbours in the DFS traversal.
+// SC: O(2N), for storing visited array and auxiliary stack space.
+
 #include <bits/stdc++.h>
 using namespace std;
 class Solution
@@ -18,8 +21,12 @@ private:
     {
         vis[node] = 1;
         for (auto it : adj[node])
+        {
             if (!vis[it])
+            {
                 dfs(it, adj, vis);
+            }
+        }
     }
 
 public:

@@ -53,7 +53,7 @@ public:
         {
             for (int j = 0; j < m; j++)
             {
-                // If land and not visited
+                // If it is land and is not visited
                 if (grid[i][j] == 1 && !vis[i][j])
                 {
                     vector<pair<int, int>> shape;

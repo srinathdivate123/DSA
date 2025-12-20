@@ -1,11 +1,11 @@
 // https://leetcode.com/problems/is-graph-bipartite/description/
-// Also refer: 
+// Also refer:
 // - https://www.geeksforgeeks.org/dsa/m-coloring-problem/
 // - https://leetcode.com/problems/painting-a-grid-with-three-different-colors/description/
 
-// • Bi-Partite Graph: A graph is said to be bi-partite if you can colour the graph with 2 colours, such that no adjacent nodes have the same colour
-// • Linear Graphs with no cycles are always bipartite
-// • Any graph with an even cycle length can also be bipartite
+// Bi-Partite Graph: A graph is said to be bi-partite if you can colour the graph with 2 colours, such that no adjacent nodes have the same colour
+// Linear Graphs with no cycles are always bipartite
+// Any graph with an even cycle length can also be bipartite
 // Any graph with odd cycle length can never be bipartite
 
 // TC and SC same as DFS

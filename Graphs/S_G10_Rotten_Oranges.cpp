@@ -57,7 +57,7 @@ int orangesRotting(vector<vector<int>> &grid)
         // Add these many oranges to the count of rotted oranges
         cnt += k;
 
-        // Process all rotten oranges at this time step
+        // Process ALL the current rotten oranges at this time step
         while (k--)
         {
             // Get the front orange from the queue
@@ -80,7 +80,9 @@ int orangesRotting(vector<vector<int>> &grid)
         }
         // If new oranges were added to the queue, increase the time
         if (!rotten.empty())
+        {
             minutesPassed++;
+        }
     }
     return totalOranges == cnt ? minutesPassed : -1;
 }

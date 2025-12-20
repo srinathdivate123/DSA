@@ -16,11 +16,22 @@ private:
         {
             if (!vis[adjacentNode])
             {
-                if (dfs(adjacentNode, node, vis, adj)) // If this returns a false then it's fine. We do DFS for the next neighbours
+                // If this returns a false then it's fine. We do DFS for the next neighbours
+                if (dfs(adjacentNode, node, vis, adj))
+                {
                     return true;
+                }
             }
+            // IMP CONDITION: If adjacent node is visited and it's not your own parent node
+            // Let's say you have a graph like 5-6-7
+            // And the cycle is at 7. So when you come to 6 then you check that you have 2 neighbours (5 & 7). Now 5 has been visited because it is your parent and you yourself have come from 5. Let's say 7 has been visited by someone else.
+            // When you check that 7 has already been visited AND it is not your parent (5 here) then you can conclude that there is a cycle
+            // Can't write more understanding here. Refer BFS video at https://youtu.be/BPlrALf1LDU?t=212
             else if (adjacentNode != parent)
+            {
+                // yes it is a cycle
                 return true;
+            }
         }
         return false;
     }

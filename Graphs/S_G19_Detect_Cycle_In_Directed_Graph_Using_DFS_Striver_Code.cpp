@@ -5,7 +5,7 @@
 // Refer the above link to understand why the algorithm to detect cycles in undirected will not work for a directed graph
 
 // - We will traverse the graph component-wise using the DFS technique.
-// - Make sure to carry two visited arrays in the DFS call. One is a visited array(vis) and the other is a path-visited(pathVis) array. The visited array keeps a track of visited nodes, and the path-visited keeps a track of visited nodes in the current traversal only.
+// - Make sure to carry two arrays in the DFS call. One is a visited array (vis) and the other is a path-visited (pathVis) array. The visited array keeps a track of visited nodes, and the path-visited keeps a track of visited nodes in the current traversal only.
 // - While making a DFS call, at first we will mark the node as visited in both the arrays and then will traverse through its adjacent nodes. Now, there may be either of the three cases:
 // - Case 1: If the adjacent node is not visited, we will make a new DFS call recursively with that particular node.
 // - Case 2: If the adjacent node is visited and also on the same path (i.e marked visited in the pathVis array), we will return true, because it means it has a cycle, thereby the pathVis was true. Returning true will mean the end of the function call, as once we have got a cycle, there is no need to check for further adjacent nodes.
@@ -41,7 +41,8 @@ private:
                 return true;
             }
         }
-        // If there is no cycle, then it will come here
+        // If there is no cycle in that DFS-traversed branch, then it will come here.
+        // We unmark the node from pathVis as there is no cycle in this DFS-traversed branch
         pathVis[node] = 0;
         return false;
     }
@@ -69,12 +70,7 @@ int main()
     vector<int> adj[11] = {{}, {2}, {3}, {4, 7}, {5}, {6}, {}, {5}, {9}, {10}, {8}};
     int V = 11;
     Solution obj;
-    bool ans = obj.isCyclic(V, adj);
-
-    if (ans)
-        cout << "True\n";
-    else
-        cout << "False\n";
+    cout << obj.isCyclic(V, adj);
 
     return 0;
 }

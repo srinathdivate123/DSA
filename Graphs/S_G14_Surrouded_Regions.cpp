@@ -12,9 +12,7 @@
 
 // SC: O(N × M), due to the visited matrix and the recursion stack in the worst case.
 
-
 // --------------------------------------------- //
-
 
 // The intuition is that we start from boundary elements having ‘O’ and go through its neighboring Os in 4 directions and mark them as visited to avoid replacing them with ‘X’.
 // Mark all 'O's that are connected to the boundary as safe.
@@ -53,17 +51,22 @@ public:
         vector<vector<int>> vis(n, vector<int>(m, 0));
         int delRow[] = {-1, 0, +1, 0};
         int delCol[] = {0, +1, 0, -1};
-        // Traverse all the edges
+
+        // Traverse all the boundaries of the graph
         // Traverse first row and last row
         for (int j = 0; j < m; j++)
         {
             // For first row
             if (!vis[0][j] && mat[0][j] == 'o')
+            {
                 dfs(0, j, vis, mat, delRow, delCol, n, m);
+            }
 
             // For last row
             if (!vis[n - 1][j] && mat[n - 1][j] == 'o')
+            {
                 dfs(n - 1, j, vis, mat, delRow, delCol, n, m);
+            }
         }
 
         // Traverse first and last column
@@ -71,21 +74,30 @@ public:
         {
             // For first col
             if (!vis[i][0] && mat[i][0] == 'o')
+            {
                 dfs(i, 0, vis, mat, delRow, delCol, n, m);
+            }
 
             // For last col
             if (!vis[i][m - 1] && mat[i][m - 1] == 'o')
+            {
                 dfs(i, m - 1, vis, mat, delRow, delCol, n, m);
+            }
         }
 
         for (int i = 0; i < n; i++)
+        {
             for (int j = 0; j < m; j++)
+            {
                 if (!vis[i][j] && mat[i][j] == 'o')
+                {
                     mat[i][j] = 'x';
+                }
+            }
+        }
         return mat;
     }
 };
-
 
 int main()
 {
