@@ -48,9 +48,10 @@ public:
 
             for (auto it : adj[node])
             {
+                // 'node' is in your answer, so please remove it from indegree of 'it'
                 inDegree[it]--;
-
-                // Add the node to queue if its in-degree becomes zero
+                
+                // Add the it to queue if its in-degree becomes zero
                 if (inDegree[it] == 0)
                 {
                     q.push(it);
