@@ -8,13 +8,17 @@
 
 // Refer to the findOrder function to understand the core logic!
 
+// With Striver's code, many test cases on LintCode are not passing! Need to evaluaute this further!
+
 #include <bits/stdc++.h>
 using namespace std;
 
+// Class to represent the solution
 class Solution
 {
 private:
-    vector<int> topoSort(int V, vector<vector<int>> adj)
+    // Function to perform Topological Sort using Kahn's Algorithm (BFS)
+    vector<int> topoSort(int V, vector<int> adj[])
     {
         // indegree[i] will store number of incoming edges for node i
         vector<int> indegree(V, 0);
@@ -66,13 +70,12 @@ private:
 
 public:
     // Function to find the order of characters in the alien dictionary
-    string findOrder(vector<string> dict, int N, int K)
+    string findOrder(string dict[], int N, int K)
     {
-        vector<vector<int>> adj(N, vector<int>(K, 0));
+        // Graph represented as adjacency list
+        vector<int> adj[K];
 
         // Build graph by comparing adjacent words in dictionary
-        // The crux of this is that you pick two consecutive words and find out why the first word appears before the second. You'll need to find the first character in these words which has a mismatch.
-        // Once you get the first mismatching character, then you say that there is a (first char)->(second char) dependency and form the graph!
         for (int i = 0; i < N - 1; i++)
         {
             string s1 = dict[i];
@@ -84,7 +87,7 @@ public:
             {
                 if (s1[ptr] != s2[ptr])
                 {
-                    adj[s1[ptr] - 'a'].push_back(s2[ptr] - 'a'); // Store them as numbers instead of chars
+                    adj[s1[ptr] - 'a'].push_back(s2[ptr] - 'a');
                     break; // only the first mismatch matters
                 }
             }
@@ -108,7 +111,7 @@ public:
 int main()
 {
     int N = 5, K = 4;
-    vector<string> dict = {"baa", "abcd", "abca", "cab", "cad"};
+    string dict[] = {"baa", "abcd", "abca", "cab", "cad"};
 
     Solution obj;
     string ans = obj.findOrder(dict, N, K);
