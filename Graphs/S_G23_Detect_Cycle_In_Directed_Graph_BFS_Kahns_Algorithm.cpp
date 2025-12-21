@@ -1,3 +1,5 @@
+// https://takeuforward.org/data-structure/detect-a-cycle-in-a-directed-graph
+
 // After using the Kahn's algorithm, if you find that the toposort gives less than V vertices then it means that there was a cycle somewhere in the graph!
 
 // This happens if the queue has no more elements to process and it's size becomes zero, but more unprocessed elements are actually remaining in the graph.

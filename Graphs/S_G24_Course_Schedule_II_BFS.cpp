@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/course-schedule-i-and-ii-pre-requisite-tasks-topological-sort-g-24
+// https://leetcode.com/problems/course-schedule-ii/description/
+
 #include <bits/stdc++.h>
 using namespace std;
 

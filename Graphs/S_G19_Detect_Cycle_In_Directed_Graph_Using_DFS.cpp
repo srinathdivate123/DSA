@@ -1,5 +1,5 @@
 // https://takeuforward.org/data-structure/detect-cycle-in-a-directed-graph-using-dfs-g-19
-// https://leetcode.com/problems/course-schedule-ii/description/
+// Related but not exact problem: https://leetcode.com/problems/course-schedule-ii/description/
 
 // Given a directed graph with V vertices and E edges, check whether it contains any cycle or not.
 // Refer the above link to understand why the algorithm to detect cycles in undirected will not work for a directed graph

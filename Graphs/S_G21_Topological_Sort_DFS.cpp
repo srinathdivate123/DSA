@@ -1,3 +1,5 @@
+// https://takeuforward.org/data-structure/topological-sort-algorithm-dfs-g-21
+
 // - Initialize a visited array to mark whether each vertex has been visited.
 // - Create a stack to store vertices in their finishing order.
 // - For each vertex, if it has not been visited, perform a DFS starting from it.

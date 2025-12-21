@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/find-eventual-safe-states-bfs-topological-sort-g-25
+// https://leetcode.com/problems/find-eventual-safe-states/description/
+
 // Here we have to use topological sort for which we need to have atlease one node whose indegree is 0.
 // We have to find the safeNodes (i.e. nodes which have an outdegree of 0)
 // So we actually reverse the graph connections and startoff with the node which no has indegree of 0 after reversing it

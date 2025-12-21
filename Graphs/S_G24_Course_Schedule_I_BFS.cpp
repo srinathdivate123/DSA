@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/course-schedule-i-and-ii-pre-requisite-tasks-topological-sort-g-24
+// https://leetcode.com/problems/course-schedule/description/
+
 // If anytime you find that there is a cyclic dependency in the nodes, then you will not be able to complete the courses.
 // This cyclic dependency can be inferred when the count of nodes you've processed is less than the nodes in the graph (numCourses)
 
