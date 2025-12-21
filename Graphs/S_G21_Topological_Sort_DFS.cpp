@@ -6,8 +6,7 @@
 // - After exploring all neighbors, push the current vertex onto the stack.
 // - After DFS finishes for all vertices, pop all elements from the stack to get the topological ordering.
 
-
-// The idea is that you reach the very end of the graph, get the last node and then put it into the stack and then pop the element one by one!
+// The idea is that you reach the very end of the graph, get the last node and then put it into the stack, backtrack and put all the elements into the stack. Then pop the elements one by one!
 
 #include <bits/stdc++.h>
 using namespace std;
