@@ -1,0 +1,124 @@
+// https://takeuforward.org/data-structure/alien-dictionary-topological-sort-g-26
+// https://leetcode.com/problems/alien-dictionary/editorial/
+// https://www.lintcode.com/problem/892/
+
+// There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.
+
+// Refer to the LintCode and TUF link to see the examples!
+
+// Refer to the findOrder function to understand the core logic!
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+private:
+    vector<int> topoSort(int V, vector<vector<int>> adj)
+    {
+        // indegree[i] will store number of incoming edges for node i
+        vector<int> indegree(V, 0);
+
+        // Compute indegree of all vertices
+        for (int i = 0; i < V; i++)
+        {
+            for (auto neighbor : adj[i])
+            {
+                indegree[neighbor]++;
+            }
+        }
+
+        // Queue to store all vertices with indegree = 0
+        queue<int> q;
+        for (int i = 0; i < V; i++)
+        {
+            if (indegree[i] == 0)
+            {
+                q.push(i);
+            }
+        }
+
+        vector<int> topo; // to store the topological order
+
+        // Process until queue is empty
+        while (!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+
+            // Add this node to result
+            topo.push_back(node);
+
+            // For each neighbor, decrease its indegree
+            for (auto neighbor : adj[node])
+            {
+                indegree[neighbor]--;
+                // If indegree becomes 0, push it into the queue
+                if (indegree[neighbor] == 0)
+                {
+                    q.push(neighbor);
+                }
+            }
+        }
+
+        return topo;
+    }
+
+public:
+    // Function to find the order of characters in the alien dictionary
+    string findOrder(vector<string> dict, int N, int K)
+    {
+        vector<vector<int>> adj(N, vector<int>(K, 0));
+
+        // Build graph by comparing adjacent words in dictionary
+        // The crux of this is that you pick two consecutive words and find out why the first word appears before the second. You'll need to find the first character in these words which has a mismatch.
+        // Once you get the first mismatching character, then you say that there is a (first char)->(second char) dependency and form the graph!
+        for (int i = 0; i < N - 1; i++)
+        {
+            string s1 = dict[i];
+            string s2 = dict[i + 1];
+            int len = min(s1.size(), s2.size());
+
+            // Find the first different character and create edge
+            for (int ptr = 0; ptr < len; ptr++)
+            {
+                if (s1[ptr] != s2[ptr])
+                {
+                    adj[s1[ptr] - 'a'].push_back(s2[ptr] - 'a'); // Store them as numbers instead of chars
+                    break; // only the first mismatch matters
+                }
+            }
+        }
+
+        // Perform topological sort on the graph
+        vector<int> topo = topoSort(K, adj);
+
+        // Convert numeric values back to characters
+        string ans = "";
+        for (auto node : topo)
+        {
+            ans += char(node + 'a');
+        }
+
+        return ans;
+    }
+};
+
+// Driver Code
+int main()
+{
+    int N = 5, K = 4;
+    vector<string> dict = {"baa", "abcd", "abca", "cab", "cad"};
+
+    Solution obj;
+    string ans = obj.findOrder(dict, N, K);
+
+    // Print result
+    for (auto ch : ans)
+    {
+        cout << ch << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
