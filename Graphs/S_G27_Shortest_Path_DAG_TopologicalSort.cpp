@@ -69,6 +69,9 @@ public:
         // Initialize the distance vector with infinity
         vector<int> dist(N, 1e9);
 
+        // Note that the source vertex is assumed to be at zero as per the question.
+        // So the dist to it will be 0.
+        // Also in the stack st, the source/starting vertex will be at the top of the stack, because it is inserted at the last when all the DFS calls are over
         dist[0] = 0;
 
         while (!st.empty())
