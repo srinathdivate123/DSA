@@ -1,3 +1,5 @@
+// https://takeuforward.org/data-structure/shortest-path-in-undirected-graph-with-unit-distance-g-28
+
 // Given an Undirected Graph having unit weight, find the shortest path from the source to all other nodes in this graph. In this problem statement, we have assumed the source vertex to be ‘0’. If a vertex is unreachable from the source node, then return -1 for that vertex.
 
 // Perform BFS traversal starting from the source.
@@ -8,6 +10,7 @@
 // -> All edges have unit weight. So as we explore adjacent nodes, they are at a fixed increment of distance (1, 2, 3…).
 // -> This behavior naturally fits BFS because the queue automatically ensures we’re processing closer nodes first.
 // -> BFS acts like a sorted queue for level-wise distances, so we don’t need extra data structures like a min-heap (unlike Dijkstra).
+// -> Hence, BFS with it's concept of using a queue, naturally lends itself to this problem.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -38,7 +41,6 @@ public:
 
             for (auto it : adj[node])
             {
-
                 if (dist[node] + 1 < dist[it])
                 {
                     dist[it] = 1 + dist[node];
