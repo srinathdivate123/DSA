@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 // This was asked in google interviews!!!
 // You are given an array of ‘N’ integers. You need to find the length of the longest sequence which contains the consecutive elements. The elements may be picked up from array in any order. But they must be consecutive and sorted in the answer array!

@@ -1,6 +1,7 @@
 // Given a string s, find the length of the longest substring without repeating characters.
 
 #include <bits/stdc++.h>
+#include <unordered_set>
 using namespace std;
 
 int brute(string str)
