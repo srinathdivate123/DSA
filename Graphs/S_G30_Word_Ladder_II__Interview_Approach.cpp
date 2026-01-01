@@ -2,6 +2,8 @@
 // https://leetcode.com/problems/word-ladder-ii/description/
 // https://youtu.be/DREutrv2XD0
 
+// This interview approach is a bit elaborate and easy to understand. However, this approach will give TLE on LeetCode, so refer to the next cpp file which has optimized approach for LeetCode
+
 // Given two distinct words startWord and targetWord, and a list denoting wordList of unique words of equal lengths. Find all shortest transformation sequence(s) from startWord to targetWord. You can return them in any order possible.
 
 // In this problem statement, we need to keep the following conditions in mind:
@@ -77,7 +79,7 @@ public:
                 {
                     st.erase(it);
                 }
-                level++; // Move to the next level after you have deleted all the words that were used in the previous level
+                level++;             // Move to the next level after you have deleted all the words that were used in the previous level
                 usedOnLevel.clear(); // Not sure why!
             }
 
