@@ -1,8 +1,13 @@
+// https://takeuforward.org/graph/g-30-word-ladder-ii
+// https://leetcode.com/problems/word-ladder-ii/description/
+// https://youtu.be/AD4SFl7tu7I
+
 // This is for LeetCode and CP
 
 // Part 1: Follow Word Ladder 1, find the minimum steps and store the steps/level for which every word from the wordList was used (you need to store this in a map)
 
 // Part 2: Backtrack in the map from end to begin to get the answer
+
 // To understand why backtracking is needed: https://www.youtube.com/watch?v=AD4SFl7tu7I&t=691s
 
 #include <bits/stdc++.h>
@@ -22,13 +27,14 @@ private:
     {
         if (word == b)
         {
-            // If you reach the beginWord, the seq is your answer
+            // If you reach the beginWord, the seq now has your answer
             // But the seq is currently stored in a reverse order, from the endWord to the beginWord
             // So you need to reverse it
             reverse(seq.begin(), seq.end());
             ans.push_back(seq);
 
-            // You need to re-reverse it again because it will be used in the dfs in later calls
+            // You need to re-reverse it again because it will be popped back after the dfs (check the dfs call)
+            // If you do not re-reverse it, then the wrong word will be popped back
             reverse(seq.begin(), seq.end());
             return;
         }
@@ -42,11 +48,12 @@ private:
             for (char ch = 'a'; ch <= 'z'; ch++)
             {
                 word[i] = ch;
+                // The word should exist in the mpp and it's step should be 1 greater than the previous one
                 if (mpp.find(word) != mpp.end() && mpp[word] + 1 == steps)
                 {
-                    seq.push_back(word);
+                    seq.push_back(word); // Add the word into the seq
                     dfs(word, seq);
-                    seq.pop_back();
+                    seq.pop_back(); // Pop it back once you have made the dfs calls
                 }
             }
             word[i] = original;
@@ -101,14 +108,49 @@ public:
         // Part 2:
         if (mpp.find(endWord) != mpp.end()) // Check if you have indeed reached the endWord
         {
+            // You need to backtrack in reverse from the endWord to beginWord
+            // So you push the endWord into the seq and run the dfs until you reach beginWord
             seq.push_back(endWord);
             dfs(endWord, seq);
         }
         return ans;
     }
 };
+
+// A comparator function to sort the answer.
+bool comp(vector<string> a, vector<string> b)
+{
+    string x = "", y = "";
+    for (string i : a)
+        x += i;
+    for (string i : b)
+        y += i;
+    return x < y;
+}
+
 int main()
 {
+    vector<string> wordList = {"des", "der", "dfr", "dgt", "dfs"};
+    string startWord = "der", targetWord = "dfs";
+    Solution obj;
+    vector<vector<string>> ans = obj.findLadders(startWord, targetWord, wordList);
 
+    // If no transformation sequence is possible.
+    if (ans.size() == 0)
+    {
+        cout << -1 << endl;
+    }
+    else
+    {
+        sort(ans.begin(), ans.end(), comp);
+        for (int i = 0; i < ans.size(); i++)
+        {
+            for (int j = 0; j < ans[i].size(); j++)
+            {
+                cout << ans[i][j] << " ";
+            }
+            cout << endl;
+        }
+    }
     return 0;
 }
