@@ -4,6 +4,10 @@
 
 // Note: The Graph doesn't contain any negative weight cycle.
 
+// To solve this we use priority queue because we always want the minumum distance at the top of the queue.
+// The PQ stores {dist, node}
+// If two entries have the same distance, then the one with the lower node number will be stored above
+
 // TC: O((V+E)logV), each edge is relaxed at most once, and for each relaxation we may push into the priority queue, giving O(E) pushes with O(log V) heap operations.
 
 // SC: O(V+E), additonal space is used to store adjacency list, distance array and priority queue.
