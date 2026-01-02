@@ -75,7 +75,7 @@ public:
 
         // Store the final path in the 'path' array by backtracking from the destination node
         vector<int> path;
-        int node = n; // start from the last nonde
+        int node = n;                // start from the last nonde
         while (parent[node] != node) // Run until you do not reach such a node that parent[node] == node
         {
             path.push_back(node); // Add node to path
@@ -92,18 +92,12 @@ public:
 
 int main()
 {
-    // Driver Code
-
     int V = 5, E = 6;
     vector<vector<int>> edges = {{1, 2, 2}, {2, 5, 5}, {2, 3, 4}, {1, 4, 1}, {4, 3, 3}, {3, 5, 1}};
 
-    // Create an object of the Solution class
     Solution obj;
-
-    // Find the shortest path
     vector<int> path = obj.shortestPath(V, E, edges);
 
-    // Output the path
     for (int i = 0; i < path.size(); i++)
     {
         cout << path[i] << " ";
