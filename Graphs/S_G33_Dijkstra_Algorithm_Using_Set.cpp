@@ -36,9 +36,9 @@ public:
                 // If the new distance is smaller, update it
                 if (dis + edgWeight < dist[adjNode])
                 {
-                    // Erase the previous entry of the adjacent node
-                    // if it was visited previously with a larger cost.
-                    if (dist[adjNode] != 1e9) // If it's not equal to 1e9 then someone had reached it earlier
+                    // Erase the previous entry of the adjacent node if it was visited previously
+                    // If it was visited previously, it means that the dist would have been larger as you have already checked it the above condition
+                    if (dist[adjNode] != 1e9) // If it's not equal to 1e9 then someone had reached it earlier and updated it to some other value
                     {
                         st.erase({dist[adjNode], adjNode});
                     }

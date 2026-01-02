@@ -10,7 +10,7 @@
 
 // TC: O((V+E)logV), each edge is relaxed at most once, and for each relaxation we may push into the priority queue, giving O(E) pushes with O(log V) heap operations.
 
-// SC: O(V+E), additonal space is used to store adjacency list, distance array and priority queue.
+// SC: O(V+E), additional space is used to store adjacency list, distance array and priority queue.
 
 #include <bits/stdc++.h>
 using namespace std;
