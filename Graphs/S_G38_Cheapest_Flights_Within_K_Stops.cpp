@@ -2,6 +2,10 @@
 
 // You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
 
+// TC: O(N), where the additional log(N) time is eliminated by using a simple queue rather than a priority queue, which is usually used in Dijkstra’s Algorithm. Where N = Number of flights / Number of edges.
+
+// SC: O(E + V), for the adjacency list, priority queue, and the dist array. Where E = Number of edges (flights.size()) and V = Number of airports.
+
 #include <bits/stdc++.h>
 using namespace std;
 
