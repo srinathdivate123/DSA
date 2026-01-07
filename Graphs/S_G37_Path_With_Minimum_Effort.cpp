@@ -4,6 +4,16 @@
 
 // Return the minimum effort required to travel from the top-left cell to the bottom-right cell.
 
+// Basically our goal is here to choose a path that has the least number of ups and downs. Like the path is flat and not filled with ups and downs.
+
+// Refer explanation here: https://youtu.be/0ytpZyiZFhA
+
+// TC & SC are similar to Dijkstra's
+
+// TC: O(4 * N * M * log(N * M)), where N * M are the total cells, for each of which we check 4 adjacent nodes for the minimum effort and an additional log(N * M) for insertion-deletion operations in a priority queue. Where N = No. of rows of the binary maze and M = No. of columns of the binary maze.
+
+// SC: O(N * M), where N * M is the distance matrix containing N * M cells, plus the priority queue in the worst case containing all the nodes (N * M). Where N = No. of rows of the binary maze and M = No. of columns of the binary maze.
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -33,6 +43,8 @@ public:
             int col = it.second.second;
 
             // If we reach the destination cell, return the current effort
+            // No need to iterate through its neighbours because we have already reached the destination
+            // The priority queue already stores the minimum effort on the top, so you will never in the future get a effort less than the current effort
             if (row == n - 1 && col == m - 1)
                 return currEffort;
 
