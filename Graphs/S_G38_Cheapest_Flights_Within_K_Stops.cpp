@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/g-38-cheapest-flights-within-k-stops
+// https://leetcode.com/problems/cheapest-flights-within-k-stops/description/
+
 // There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei.
 
 // You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If there is no such route, return -1.
@@ -22,10 +25,14 @@ public:
             adj[it[0]].push_back({it[1], it[2]}); // Add an edge from source to destination with the weight (cost)
         }
 
-        // Create a queue to store the node, its distance from the source, and the number of stops
-        queue<pair<int, pair<int, int>>> q;
+        queue<pair<int, pair<int, int>>> q; // {stops, {node, cost}}
+        // Umm we're not using priority queue because we can never be sure if the least number of stops has the least cost
+        // In fact we are okay taking more stops upto K, but we want the price as low as possible
+        // And we are never sure if the least cost possible still has stops less than K
+        // Due to this uncertainity, it is never predictable if it'd be useful to pick a priority queue
+        // So a normal queue is the best bet to save time
 
-        q.push({0, {src, 0}}); // source node with 0 stops and 0 cost
+        q.push({0, {src, 0}});
 
         vector<int> dist(n, 1e9);
         dist[src] = 0;
