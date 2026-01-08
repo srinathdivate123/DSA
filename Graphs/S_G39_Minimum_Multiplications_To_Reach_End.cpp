@@ -1,12 +1,82 @@
 // https://takeuforward.org/graph/g-39-minimum-multiplications-to-reach-end
 
-// Given start, end, and an array arr of n numbers. At each step, the start is multiplied by any number in the array and then a mod operation with 100000 is done to get the new start. Your task is to find the minimum steps in which the end can be achieved starting from the start. If it is not possible to reach the end, then return -1.
+// Given start, end, and an array arr of n numbers. At each step, the start is multiplied by any number in the array and then a mod operation with 100000 is done to get the new start.
+
+// Your task is to find the minimum steps in which the end can be achieved starting from the start. If it is not possible to reach the end, then return -1.
+
+// You can use the elements in the arr any number of times.
+
+// This problem is very close to Striver's heart. He was the problem setter of this problem in 2019 when he was an intern at GFG during one of the hiring contests.
+
+// Here you have been said that you have to do mod with 10^5
+// So after multiplying with a number, then you can have only 10^5 possibilities because any number greater than 10^5 will be modded off and reduced to a number less than 10^5
+// So you can take a distance array of size 10^5
+
+// Start by creating a queue that stores the step-num pairs in the form {steps, num} and a dist array with each node initialized with a very large number (to indicate that they’ve not been attained initially). The size of the ‘dist’ array is set to 100000 because it is the maximum number of distinct numbers that can be generated.
+// --> We push the start number to the queue along with its steps marked as ‘0’ initially because we’ve just started the algorithm.
+// --> Pop the element from the front of the queue and look out for its adjacent nodes (here, adjacent nodes can be regarded as the numbers which we get when we multiply the start number by each element from the arr).
+// --> If the current dist value for a number is better than the previous distance indicated by the distance array, we update the distance/steps in the array and push it to the queue.
+// We repeat the above three steps until the queue becomes empty or we reach the end number.
+// Return the calculated number of steps after we reach the end number. If the queue becomes empty and we don’t encounter the required number, return ‘-1’ indicating that the following number is unattainable by multiplying the start number any number of times.
 
 #include <bits/stdc++.h>
 using namespace std;
 
+class Solution
+{
+public:
+    int minimumMultiplications(vector<int> &arr, int start, int end)
+    {
+        // Create a queue for storing the numbers as a result of multiplication
+        // of the numbers in the array and the start number.
+        queue<pair<int, int>> q;
+        q.push({start, 0});
+
+        // Create a dist array to store the no. of multiplications to reach
+        // a particular number from the start number.
+        vector<int> dist(100000, 1e9);
+        dist[start] = 0;
+        int mod = 100000;
+
+        // Multiply the start no. with each of numbers in the arr
+        // until we get the end no.
+        while (!q.empty())
+        {
+            int node = q.front().first;
+            int steps = q.front().second;
+            q.pop();
+
+            for (auto it : arr)
+            {
+                int num = (it * node) % mod;
+
+                // If the no. of multiplications are less than before
+                // in order to reach a number, we update the dist array.
+                if (steps + 1 < dist[num])
+                {
+                    dist[num] = steps + 1;
+
+                    // Whenever we reach the end number
+                    // return the calculated steps
+                    if (num == end)
+                        return steps + 1;
+                    q.push({num, steps + 1});
+                }
+            }
+        }
+        // If the end no. is unattainable.
+        return -1;
+    }
+};
+
 int main()
 {
-    
+    int start = 3, end = 30;
+
+    vector<int> arr = {2, 5, 7};
+    Solution obj;
+
+    cout << obj.minimumMultiplications(arr, start, end);
+
     return 0;
 }
