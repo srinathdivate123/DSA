@@ -15,11 +15,11 @@ using namespace std;
 class Solution
 {
 public:
-    int CheapestFLight(int n, vector<vector<int>> &flights, int src, int dst, int K)
+    int countPaths(int n, vector<vector<int>> &roads, int src, int dst, int K)
     {
         // Note for LeetCode, you will need to take long long everywhere as the test cases are too large
         vector<vector<pair<int, int>>> adj(n);
-        for (auto it : flights)
+        for (auto it : roads)
         {
             adj[it[0]].push_back({it[1], it[2]});
             adj[it[1]].push_back({it[0], it[2]});
@@ -89,7 +89,7 @@ int main()
     Solution obj;
 
     // Call the method to count the number of shortest paths
-    int ans = obj.CheapestFLight(n, edges, 0, 3, 1);
+    int ans = obj.countPaths(n, edges, 0, 3, 1);
 
     // Output the result
     cout << ans << endl;
