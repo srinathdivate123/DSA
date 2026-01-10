@@ -2,7 +2,7 @@
 
 // Given a graph of V vertices numbered from 0 to V-1. Find the shortest distances between every pair of vertices in a given edge-weighted directed graph. The graph is represented as an adjacency matrix of size n x n. Matrix[i][j] denotes the weight of the edge from i to j. If matrix[i][j]=-1, it means there is no edge from i to j.
 
-// Refer to TUF for notes
+// Refer to TUF website for notes
 
 #include <bits/stdc++.h>
 using namespace std;
