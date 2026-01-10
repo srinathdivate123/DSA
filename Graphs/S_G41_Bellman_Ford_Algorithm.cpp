@@ -2,6 +2,10 @@
 
 // Given a weighted, directed and connected graph of V vertices and E edges, Find the shortest distance of all the vertices from the source vertex S. Note: If the Graph contains a negative cycle then return an array consisting of only -1.
 
+// TC: O(V*E), where V = no. of vertices and E = no. of Edges.
+
+// SC: O(V) for the distance array which stores the minimized distances.
+
 #include <bits/stdc++.h>
 using namespace std;
 
