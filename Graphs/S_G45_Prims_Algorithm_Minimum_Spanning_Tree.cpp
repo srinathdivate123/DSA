@@ -8,7 +8,7 @@ using namespace std;
 class Solution
 {
 public:
-    int spanningTree(int V, vector<vector<vector<int>>> &adj, vector<pair<int, int>> &mstEdges)
+    int minSpanningTree(int V, vector<vector<vector<int>>> &adj, vector<pair<int, int>> &mstEdges)
     {
         priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> pq;
 
@@ -73,7 +73,7 @@ int main()
     }
 
     Solution obj;
-    cout << obj.spanningTree(V, adj, mstEdges) << endl;
+    cout << obj.minSpanningTree(V, adj, mstEdges) << endl;
     for (auto it : mstEdges)
     {
         cout << it.first << " --> " << it.second << endl;
