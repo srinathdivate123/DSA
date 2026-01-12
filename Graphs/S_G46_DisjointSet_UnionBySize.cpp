@@ -4,12 +4,12 @@
 using namespace std;
 class DisJointSet
 {
-    vector<int> rank, parent;
+    vector<int> size, parent;
 
 public:
     DisJointSet(int n)
     {
-        rank.resize(n + 1, 0);
+        size.resize(n + 1, 1); // NOTE: size is initially 1
         parent.resize(n + 1);
         for (int i = 0; i <= n; i++)
         {
@@ -27,46 +27,46 @@ public:
         // In the above, the 'parent[node] = ' does the path compression and makes sure that in the future whenever we call it for another node that we've already traversed, then we can just find it by a lookup
         // No need to call the findUltimateParent() for that node again
     }
-    void unionByRank(int u, int v)
+
+    void unionBySize(int u, int v)
     {
         int ultimateParent_u = findUltimateParent(u);
         int ultimateParent_v = findUltimateParent(v);
+
         if (ultimateParent_u == ultimateParent_v)
         {
             return;
         }
-        if (rank[ultimateParent_u] < rank[ultimateParent_v])
+
+        if (size[ultimateParent_u] < size[ultimateParent_v])
         {
             parent[ultimateParent_u] = ultimateParent_v;
+            size[ultimateParent_v] += size[ultimateParent_u]; // It's like you're attaching all the nodes of u to v, hence need to increment size[v] by size[u]
         }
-        else if (rank[ultimateParent_u] > rank[ultimateParent_v])
-        {
-            parent[ultimateParent_v] = ultimateParent_u;
-        }
+        // If size[ultimateParent_u] > size[ultimateParent_v] then you attach v to u
+        // If size[ultimateParent_u] == size[ultimateParent_v] then it doesn't matter whom you attach to. Here we choose to attach v to u
         else
         {
-            // You can either attach u to v or v to u
-            // Here we've chosen to attaach v to u
             parent[ultimateParent_v] = ultimateParent_u;
-            rank[ultimateParent_u]++;
+            size[ultimateParent_u] += size[ultimateParent_v]; // It's like you're attaching all the nodes of v to u, hence need to increment size[u] by size[v]
         }
     }
 };
 int main()
 {
     DisJointSet ds(7);
-    ds.unionByRank(1, 2);
-    ds.unionByRank(2, 3);
-    ds.unionByRank(4, 5);
-    ds.unionByRank(6, 7);
-    ds.unionByRank(5, 6);
+    ds.unionBySize(1, 2);
+    ds.unionBySize(2, 3);
+    ds.unionBySize(4, 5);
+    ds.unionBySize(6, 7);
+    ds.unionBySize(5, 6);
 
     if (ds.findUltimateParent(3) == ds.findUltimateParent(7))
         cout << "Same\n";
     else
         cout << "Not same\n";
 
-    ds.unionByRank(3, 7);
+    ds.unionBySize(3, 7);
 
     if (ds.findUltimateParent(3) == ds.findUltimateParent(7))
         cout << "Same\n";
