@@ -1,5 +1,9 @@
 // https://takeuforward.org/data-structure/disjoint-set-union-by-rank-union-by-size-path-compression-g-46
 
+// Notes are long so refer TUF
+
+// Time Complexity:  The actual time complexity is O(4*alpha) which is very small and close to 1. So, we can consider 4 as a constant.
+
 #include <bits/stdc++.h>
 using namespace std;
 class DisJointSet
@@ -11,6 +15,7 @@ public:
     {
         rank.resize(n + 1, 0);
         parent.resize(n + 1);
+        // Everyone is their initial parent
         for (int i = 0; i <= n; i++)
         {
             parent[i] = i;
@@ -24,7 +29,7 @@ public:
             return node;
         }
         return parent[node] = findUltimateParent(parent[node]);
-        // In the above, the 'parent[node] = ' does the path compression and makes sure that in the future whenever we call it for another node that we've already traversed, then we can just find it by a lookup
+        // In the above, the 'parent[node] = ' does the so called path compression and makes sure that in the future whenever we call it for another node that we've already traversed, then we can just find it by a lookup on the parent array!
         // No need to call the findUltimateParent() for that node again
     }
     void unionByRank(int u, int v)
@@ -32,13 +37,17 @@ public:
         int ultimateParent_u = findUltimateParent(u);
         int ultimateParent_v = findUltimateParent(v);
 
+        // The whole purpose of this function is to merge the two nodes or form a union of them
+        // But if you find that they are already belonging to the same component, then there is no need to merge them at all because they are already a part of the same component
         if (ultimateParent_u == ultimateParent_v)
         {
             return;
         }
 
-        // In the below you're seeing that we're connecting the smaller to larger
+        // Merging happens by rank
+        // In the below you're seeing that we're merging the smaller to larger
         // For explanation see: https://youtu.be/aBxjDBC4M1U?t=1949
+        // OR: https://takeuforward.org/data-structure/disjoint-set-union-by-rank-union-by-size-path-compression-g-46#:~:text=as%20a%20constant.-,Follow%2Dup%20question%3A,-In%20the%20union
 
         // If u < v, attach u to v
         // We do not need to increase the rank of v by 1 because it is already the 'GREATER' one
@@ -54,7 +63,7 @@ public:
         }
         // If both are equal, then you can either attach u to v OR v to u
         // But you need to increase the rank of it, because you have attached a same ranked graph to it
-        // In below, we've attached v to u, hence increase the rank of u by 1
+        // In below, we've chosen to attach v to u, hence increase the rank of u by 1
         else
         {
             parent[ultimateParent_v] = ultimateParent_u;
@@ -62,6 +71,7 @@ public:
         }
     }
 };
+
 int main()
 {
     DisJointSet ds(7);

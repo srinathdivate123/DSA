@@ -11,6 +11,7 @@ public:
     {
         size.resize(n + 1, 1); // NOTE: size is initially 1
         parent.resize(n + 1);
+        // Everyone is their initial parent
         for (int i = 0; i <= n; i++)
         {
             parent[i] = i;
@@ -24,7 +25,7 @@ public:
             return node;
         }
         return parent[node] = findUltimateParent(parent[node]);
-        // In the above, the 'parent[node] = ' does the path compression and makes sure that in the future whenever we call it for another node that we've already traversed, then we can just find it by a lookup
+        // In the above, the 'parent[node] = ' does the so called path compression and makes sure that in the future whenever we call it for another node that we've already traversed, then we can just find it by a lookup on the parent array!
         // No need to call the findUltimateParent() for that node again
     }
 
@@ -33,11 +34,14 @@ public:
         int ultimateParent_u = findUltimateParent(u);
         int ultimateParent_v = findUltimateParent(v);
 
+        // The whole purpose of this function is to merge the two nodes or form a union of them
+        // But if you find that they are already belonging to the same component, then there is no need to merge them at all because they are already a part of the same component
         if (ultimateParent_u == ultimateParent_v)
         {
             return;
         }
 
+        // Merging happens by size
         if (size[ultimateParent_u] < size[ultimateParent_v])
         {
             parent[ultimateParent_u] = ultimateParent_v;
@@ -45,6 +49,7 @@ public:
         }
         // If size[ultimateParent_u] > size[ultimateParent_v] then you attach v to u
         // If size[ultimateParent_u] == size[ultimateParent_v] then it doesn't matter whom you attach to. Here we choose to attach v to u
+        // Hence we have only an else condition below instead of having an else-if and then an else
         else
         {
             parent[ultimateParent_v] = ultimateParent_u;

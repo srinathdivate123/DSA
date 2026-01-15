@@ -1,2 +1,1 @@
-// https://takeuforward.org/data-structure/minimum-spanning-tree-theory-g-44
-
+// Only theory is there. Refer https://takeuforward.org/data-structure/minimum-spanning-tree-theory-g-44
