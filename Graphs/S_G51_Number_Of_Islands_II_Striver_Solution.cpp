@@ -98,7 +98,8 @@ public:
             int row = it[0];
             int col = it[1];
 
-            // Skip if the cell is already land, then it will not make a difference as it'd have already been computed earlier
+            // Skip if the cell is already land, because it will not make a difference as it'd have already been computed earlier
+            // This condition will happen true if you have duplicate queries
             if (vis[row][col] == 1)
             {
                 ans.push_back(cnt);
@@ -122,11 +123,21 @@ public:
                     {
                         int nodeNo = row * m + col;
                         int adjNodeNo = adjr * m + adjc;
-                        // If their parents are different then you need to connect them
+
                         if (ds.findUltimatePar(nodeNo) != ds.findUltimatePar(adjNodeNo))
                         {
+                            // If you find that you & your neighbour have different ultimate parents then you need to connect with your neighbour
+                            // Reduce count because you have merged this current node with it's neighbour
+                            // So the current node is no longer a individual island
                             cnt--;
                             ds.unionBySize(nodeNo, adjNodeNo);
+                        }
+                        else
+                        {
+                            // Do nothing
+                            // No need to connect because you are already connected (have the same ultimate parent)
+                            // No need to reduce -1 because you have already reduced it in the above if (but with a different neighbour who has the same ultimate parent)
+                            // You're coming here itself means that you had earlier come in contact with this graph but with a different neighbour and so you had connected yourself with this graph
                         }
                     }
                     else
