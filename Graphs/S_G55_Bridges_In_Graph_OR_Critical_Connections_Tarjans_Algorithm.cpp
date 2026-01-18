@@ -9,7 +9,7 @@
 
 // Time of insertion: Also called as step of insertion or discovery time. It is the DFS step at which the node is in visited. Like in step 1, the parent is visited. In step 2, one of parent's neighbour is visited. In step 3, one of the neighbour's neighbour is visited.
 
-// Lowest time of insertion of all the adjacent nodes apart from the parent
+// Lowest time of insertion: Minimum time of insertion of all the adjacent nodes apart from the parent
 
 // Time Complexity: O(V+2E), where V = no. of vertices, E = no. of edges. It is because the algorithm is just a simple DFS traversal.
 
