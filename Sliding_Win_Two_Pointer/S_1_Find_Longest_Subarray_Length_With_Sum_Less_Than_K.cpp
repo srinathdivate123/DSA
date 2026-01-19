@@ -1,5 +1,7 @@
 // Given a number K, find the length of the longest subarray whose sum is less than K
 
+// REFER: https://youtu.be/9kdHxplyl5I?t=380
+
 #include <bits/stdc++.h>
 using namespace std;
 
