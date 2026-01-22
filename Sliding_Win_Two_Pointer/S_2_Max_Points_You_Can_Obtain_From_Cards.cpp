@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/maximum-point-you-can-obtain-from-cards
+// https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+
 /* 
 There are several cards arranged in a row, and each card has an associated number of points. The points are given in the integer array cardPoints.
 
@@ -15,6 +18,10 @@ You can take a card from front, back or both, but they should be consecutive
 using namespace std;
 
 // The brute is the only solution
+// First take the sum of K elements from the start (i.e. K elements from the left)
+// Then take K-1 from the left and 1 from the right
+// Then take K-2 from the left and 2 from the right
+// While doing so, store the max
 int brute(vector<int> &cardPoints, int k)
 {
     int lsum = 0, rsum = 0, maxsum = 0;

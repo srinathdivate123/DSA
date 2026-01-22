@@ -47,7 +47,7 @@ void best(vector<int> arr, int K)
     while (right < n)
     {
         sum += arr[right];
-        // Here you shrink the subarray by many places until the sum becomes <= K
+        // Above you shrink the subarray by many places until the sum becomes <= K
         // But once you have already found that (let's say) 3 is the maxLen
         // The you wouldn't settle for 2 as the next maxLen at all
         // So there is no use of shrinking the window to any size lesser than 3
