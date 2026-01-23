@@ -7,7 +7,7 @@ You are visiting a farm that has a single row of fruit trees arranged from left 
 You want to collect as much fruit as possible. However, the owner has some strict rules that you must follow:
 
 - You only have two baskets, and each basket can only hold a single type of fruit. There is no limit on the amount of fruit each basket can hold.
-- Starting from any tree of your choice, you must pick exactly one fruit from 'every' tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
+- Starting from any tree of your choice, you must pick exactly one fruit from "each and every" tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
 - Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
 
 Given the integer array fruits, return the maximum number of fruits you can pick.
@@ -53,6 +53,7 @@ int better(vector<int> &fruits)
         mpp[fruits[r]]++;
         if (mpp.size() > 2)
         {
+            // While the size is greater than 2, move the left pointer ahead
             while (mpp.size() > 2) // mpp can have at most 2 fruits
             {
                 mpp[fruits[l]]--;
