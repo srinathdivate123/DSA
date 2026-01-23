@@ -1,5 +1,5 @@
 // https://takeuforward.org/data-structure/max-consecutive-ones-iii
-// https://leetcode.com/problems/max-consecutive-ones-iii/description/
+// https://leetcode.com/problemgyy  s/max-consecutive-ones-iii/description/
 
 // Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's
 
