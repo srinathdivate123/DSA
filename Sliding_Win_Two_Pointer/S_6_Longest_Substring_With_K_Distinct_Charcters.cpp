@@ -1,3 +1,7 @@
+// https://takeuforward.org/data-structure/longest-substring-with-at-most-k-distinct-characters
+// https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+// https://www.lintcode.com/problem/386/
+
 // Given a string S, find the length of the longest substring that contains at most k distinct characters.
 
 #include <bits/stdc++.h>
@@ -37,7 +41,7 @@ int better(string &str, int k)
     while (r < str.size())
     {
         mpp[str[r]]++;
-        while (mpp.size() > k)  // Run as long as the current substr is invalid
+        while (mpp.size() > k)  // Run as long as the current substr is invalid and remove chars to make it valid
         {
             mpp[str[l]]--;
             if (mpp[str[l]] == 0)
@@ -62,7 +66,7 @@ int best(string &str, int k)
     while (r < str.size())
     {
         mpp[str[r]]++;
-        if (mpp.size() > k) // Basically just remove one char, and keep window size same. Because if you shift l by some places, you will end up with a smaller window. So keep window size same by incrementing both l & r. But update maxi only if there are k distinct chars in map
+        if (mpp.size() > k) // Basically just remove one char, and keep window size same. Because if you shift l by some places, you will end up with a smaller window, which will not give you the max ans. So keep window size same by incrementing both l & r. But update maxi only if there are k distinct chars in map
         {
             mpp[str[l]]--;
             if (mpp[str[l]] == 0)
