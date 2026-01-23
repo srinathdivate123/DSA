@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+// https://takeuforward.org/data-structure/number-of-substring-containing-all-three-characters
+
 // Given a string s consisting only of characters a, b and c.
 
 // Return the number of substrings containing at least one occurrence of all these characters a, b and c.
@@ -6,6 +9,7 @@
 using namespace std;
 
 // TC = O(N*N), SC = O(1)
+// Find all substrings
 int brute(string &str)
 {
     int cnt = 0;
@@ -27,8 +31,9 @@ int brute(string &str)
 }
 
 
-
-// With every character, there is a substring that ends. So we are generating all the substrings smartly in this problem
+// With every character, there is a substring hat starts.
+// But also, with every character, there is a substring that ends. So we are generating all the substrings smartly in this problem
+// Refer video for complete explanation as it is very long: https://youtu.be/xtqN4qlgr8s?t=400
 // TC = O(N), SC = O(1)
 int best(string str)
 {
@@ -37,10 +42,10 @@ int best(string str)
     for(int i = 0; i<str.size(); i++)
     {
         lastSeen[str[i] - 'a'] = i;
-        // You can actually omit the below check. If all three chars have not be seen, then one of them will have -1. The min condition will result in -1 and the +1 -1 will result in zero. So cnt will remain cnt
+        // You can actually omit the below check. If all three chars have not be seen, then one of them will have -1. The min condition will result in -1 and the +1 -1 will result in zero. So cnt will remain 0
         if(lastSeen[0] != -1 && lastSeen[1] != -1 && lastSeen[2] != -1)
         {
-            cnt = cnt + (1 + min(lastSeen[0], min(lastSeen[1], lastSeen[2])));
+            cnt += 1 + min(lastSeen[0], min(lastSeen[1], lastSeen[2]));
         }
     }
     return cnt;
