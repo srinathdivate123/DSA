@@ -1,7 +1,7 @@
 // https://takeuforward.org/data-structure/length-of-longest-substring-without-any-repeating-character
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
 
-// Given a string s, find the length of the longest substring without repeating characters.
+// Given a string s which can have any characters from a-z, find the length of the longest substring without repeating characters.
 
 #include <bits/stdc++.h>
 #include <unordered_set>
@@ -31,7 +31,7 @@ int brute(string str)
 }
 
 // TC = O(N), SC = O(256)
-int optimized_2(string str)
+int optimized(string str)
 {
     if (str.size() == 0)
         return 0;
@@ -60,5 +60,5 @@ int main()
 {
     string str = "takeUforward";
     cout << brute(str) << endl;
-    cout << optimized_2(str) << endl;
+    cout << optimized(str) << endl;
 }

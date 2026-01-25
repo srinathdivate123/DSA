@@ -30,27 +30,26 @@ int brute(string &str)
     return cnt;
 }
 
-
 // With every character, there is a substring hat starts.
 // But also, with every character, there is a substring that ends. So we are generating all the substrings smartly in this problem
 // Refer video for complete explanation as it is very long: https://youtu.be/xtqN4qlgr8s?t=400
+// The below is not there on TUF website
 // TC = O(N), SC = O(1)
 int best(string str)
 {
     int cnt = 0;
     vector<int> lastSeen = {-1, -1, -1};
-    for(int i = 0; i<str.size(); i++)
+    for (int i = 0; i < str.size(); i++)
     {
         lastSeen[str[i] - 'a'] = i;
         // You can actually omit the below check. If all three chars have not be seen, then one of them will have -1. The min condition will result in -1 and the +1 -1 will result in zero. So cnt will remain 0
-        if(lastSeen[0] != -1 && lastSeen[1] != -1 && lastSeen[2] != -1)
+        if (lastSeen[0] != -1 && lastSeen[1] != -1 && lastSeen[2] != -1)
         {
             cnt += 1 + min(lastSeen[0], min(lastSeen[1], lastSeen[2]));
         }
     }
     return cnt;
 }
-
 
 int main()
 {
