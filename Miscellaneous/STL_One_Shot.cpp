@@ -19,7 +19,7 @@ void vectors()
 {
     // push_back() is used to add elements to the vector by copying the provided value or object into the vector's storage.
     // It makes a copy of the given element and inserts that copy into the vector.
-    // This means that the element must be copy-constructible and incur a copy operation.
+    // This means that the element must be copy-constructible and must incur a copy operation.
 
     // emplace_back() is used to add elements to the vector by constructing them directly in the vector's storage without making any unnecessary copies.
     // It forwards the arguments directly to the constructor of the element being inserted, effectively constructing the element in-place inside the vector.
@@ -109,7 +109,7 @@ void vectors()
     cout << "Is empty - " << v.empty();
 }
 
-// These are implemented are doubly linked lists!
+// These are implemented as doubly linked lists!
 void lists()
 {
     list<int> ls;
