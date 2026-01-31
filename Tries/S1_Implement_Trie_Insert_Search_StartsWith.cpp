@@ -1,6 +1,11 @@
 // https://leetcode.com/problems/implement-trie-prefix-tree
 // https://takeuforward.org/data-structure/implement-trie-1
 
+// Problem Statement: Implement the Trie class:
+// Trie(): Initializes the trie object. void insert (String word): Inserts the string word into the trie.
+// boolean search (String word): Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
+// boolean startsWith (String prefix): Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,7 +13,7 @@ using namespace std;
 struct Node
 {
     // Array to store links to child nodes, each index represents a letter
-    Node *links[26] = {nullptr}; // Initialize all to nullptr
+    Node *links[26] = {nullptr};
 
     // Flag indicating if the node marks the end of a word
     bool flag = false;
@@ -19,7 +24,7 @@ struct Node
         return (links[ch - 'a'] != nullptr);
     }
 
-    // Insert a new node with a specific key (letter) into the Trie
+    // Insert a new node with a specific key into the Trie
     void put(char ch, Node *node)
     {
         links[ch - 'a'] = node;
@@ -94,7 +99,7 @@ public:
         // Mark the end of the word
         node->setEnd();
     }
-    
+
     // Returns if the word is in the trie
     // O(len)
     bool search(string word)
@@ -113,7 +118,7 @@ public:
         // Check if the last node marks the end of a word
         return node->isEnd();
     }
-    
+
     // Returns if there is any word in the trie that starts with the given prefix
     // O(len)
     bool startsWith(string prefix)
