@@ -21,7 +21,7 @@ struct Node
     // Check if the node contains a specific key (letter)
     bool containsKey(char ch)
     {
-        return (links[ch - 'a'] != nullptr);
+        return (links[ch - 'a']);
     }
 
     // Insert a new node with a specific key into the Trie

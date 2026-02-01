@@ -1,4 +1,6 @@
 // https://takeuforward.org/data-structure/implement-trie-ii
+// PREMUIM: https://leetcode.com/problems/implement-trie-ii-prefix-tree/description/
+// https://www.lintcode.com/problem/3729/
 
 // Problem Statement: Implement "TRIE” data structure from scratch with the following functions.
 
@@ -23,7 +25,7 @@ struct Node
     // Function to check if the node contains a specific key
     bool containsKey(char ch)
     {
-        return (links[ch - 'a'] != NULL);
+        return (links[ch - 'a']);
     }
 
     // Function to get the child node corresponding to a key
