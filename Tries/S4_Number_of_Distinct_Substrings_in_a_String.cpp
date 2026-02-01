@@ -63,11 +63,15 @@ public:
                 // If the current character is not a child of the current node, insert it as a new child node
                 if (!node->containsKey(s[j]))
                 {
+                    for (int k = i; k <= j; k++)
+                        cout << s[k];
+
                     node->put(s[j], new Node());
                     // Insert a new child  node for character s[j]
                     cnt++;
                 }
                 node = node->get(s[j]);
+                cout << endl;
             }
         }
         // +1 to account for the input string
@@ -81,7 +85,6 @@ int main()
     // Main function to test the
     // countDistinctSubstrings function
     string s = "striver";
-    cout << "Current String: " << s << endl;
     Solution sol;
     // Input string
     cout << "Number of distinct substrings: " << sol.countDistinctSubstrings(s) << endl;
