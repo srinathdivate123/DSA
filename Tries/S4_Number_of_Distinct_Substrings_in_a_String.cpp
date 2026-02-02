@@ -42,7 +42,7 @@ struct Node
     }
 };
 
-// Once you've written the Node class, you actually do not need the Trie class
+// Once you've written the Node class, you actually do not need the Trie class for this example
 class Solution
 {
 public:
@@ -63,6 +63,7 @@ public:
                 // If the current character is not a child of the current node, insert it as a new child node
                 if (!node->containsKey(s[j]))
                 {
+                    // Just print
                     for (int k = i; k <= j; k++)
                         cout << s[k];
 
