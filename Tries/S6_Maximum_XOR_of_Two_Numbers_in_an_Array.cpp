@@ -52,7 +52,7 @@ public:
         root = new Node();
     }
 
-    // Insert the binary forma of a number into the Trie
+    // Insert the binary form of a number into the Trie
     void insert(int num)
     {
         // Always start from the root
@@ -90,7 +90,7 @@ public:
             }
             else
             {
-                // If opposite bit is not present, then you just need to go to the same bit in the next node as well
+                // If opposite bit is not present, then you just need to go to the same bit in the next node as well. You do not have the choice
                 node = node->get(bit);
             }
         }
