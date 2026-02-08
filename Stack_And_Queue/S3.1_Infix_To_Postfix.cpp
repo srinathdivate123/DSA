@@ -11,7 +11,6 @@
 // Print the output.
 // Finally, pop and print all remaining operators in the stack until it is empty.
 
-
 // Time Complexity: O(N), where N is the length of the infix expression. Each character in the expression is processed once.
 
 // Space Complexity: O(N), where N is the length of the infix expression. The stack can hold at most N operators and parentheses in the worst case.
@@ -42,7 +41,7 @@ void infixToPostfix(string s)
         char c = s[i];
 
         // If it is an operand, add it directly to the result string
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9'))
+        if (isalpha(c) || isdigit(c))
             result += c;
 
         // If the scanned character is an ‘(‘, push it to the stack
