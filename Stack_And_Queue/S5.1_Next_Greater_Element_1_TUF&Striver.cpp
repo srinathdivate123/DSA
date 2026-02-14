@@ -6,7 +6,7 @@
 
 // ---------------------------------------------------------------------------
 
-// To find the next greater element (not greatest) for each element in an array, we can use a stack to efficiently track potential candidates. As we traverse the array from right to left, we maintain a stack that always stores elements in decreasing order from top to bottom. This way, when we process an element, we can simply pop off all smaller or equal elements (which can't be the next greater element), and the top of the stack, if it exists, will be the next greater element. If the stack is empty, there is no greater element to the right, so we assign -1.
+// To find the next greater element (not the greatest) towards the right of each element in an array, we can use a stack to efficiently track potential candidates. As we traverse the array from right to left, we maintain a stack that always stores elements in decreasing order from top to bottom. This way, when we process an element, we can simply pop off all smaller or equal elements (which can't be the next greater element), and then, the top of the stack, if it exists, it will be the next greater element. If the stack is empty, there is no greater element to the right, so we assign -1.
 
 // ALGORITHM
 // Initialize an empty stack and a result array of the same length as input.
@@ -37,7 +37,7 @@ public:
         for (int i = n - 1; i >= 0; i--)
         {
             // Pop all smaller or equal elements
-            while (!st.empty() && st.top() <= nums[i])
+            while (!st.empty() && nums[i] >= st.top())
             {
                 st.pop();
             }

@@ -1,4 +1,7 @@
+// https://takeuforward.org/data-structure/next-greater-element-using-stack
 // https://leetcode.com/problems/next-greater-element-i/description/
+// Striver's & TUF's is a bit different from LC question
+// This file has the solution to LC question
 
 #include <bits/stdc++.h>
 using namespace std;
