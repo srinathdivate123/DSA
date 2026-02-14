@@ -5,6 +5,8 @@
 
 // The next greater number of a number x is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn't exist, return -1 for this number.
 
+// Note that in the below solutions, we do not double the array but hypothetically use indices via a mod %
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -73,10 +75,9 @@ public:
                 st.pop();
             }
 
-            // Only if i comes in the actual array range (i.e. < n)
+            // Only if i comes in the actual array range (i.e. i < n)
             if (i < n)
             {
-
                 // If the greater element is not found, stack will be empty
                 if (st.empty())
                     ans[i] = -1;
@@ -84,7 +85,6 @@ public:
                 else
                     ans[i] = st.top();
             }
-
             // Push the current element in the stack maintaining the decreasing order
             st.push(currEle);
         }
