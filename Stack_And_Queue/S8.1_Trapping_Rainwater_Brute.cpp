@@ -30,10 +30,10 @@ public:
         maxRight[n - 1] = height[n - 1];
 
         // Pre compute maxLeft and maxRight
-        for (int i = 0; i < n - 1; i++)
+        for (int i = 1; i < n; i++)
             maxLeft[i] = max(maxLeft[i - 1], height[i]);
 
-        for (int i = n - 2; i > 0; i--)
+        for (int i = n - 2; i >= 0; i--)
             maxRight[i] = max(maxRight[i + 1], height[i]);
 
         // Iterate over each bar in the elevation map
@@ -49,7 +49,6 @@ int main()
 {
     vector<int> height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
     Solution sol;
-    int result = sol.trap(height);
-    cout << "Trapped Rainwater: " << result << endl;
+    cout << sol.trap(height);
     return 0;
 }
