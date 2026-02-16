@@ -41,6 +41,7 @@ private:
         return ans;
     }
 
+    // PSEE is previous smaller or equal element
     vector<int> findPSEE(vector<int> &arr)
     {
         int n = arr.size();
@@ -51,6 +52,7 @@ private:
         for (int i = 0; i < n; i++)
         {
             while (!st.empty() && arr[st.top()] > arr[i]) // Note that there is no '=' here because we don't want to count the same element in NSE and PSEE. That's why this is called PSEE instead of PSE
+            // If there is an equal element, we don't pop the stack
             {
                 st.pop();
             }
