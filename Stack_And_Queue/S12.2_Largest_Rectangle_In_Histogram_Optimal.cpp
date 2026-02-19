@@ -3,8 +3,8 @@
 
 // Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
 
-// This approach is a single pass approach instead of a two-pass approach. When we traverse the array by finding the next greater element, we found that some elements were inserted into the stack which signifies that after them the smallest element is themselves
-// So we can find the area of the rectangle by using arr[i] * (right smaller - left smaller -1)
+// This approach is a single pass approach instead of a two-pass approach. When we traverse the array by finding the next greater element, we found that some elements were inserted into the stack which signifies that after them the smallest element is the current element
+// So we can find the area of the rectangle by using arr[i] * (right smaller - left smaller - 1)
 
 // Time Complexity: O(N) + O(N). For loop used along with a while loop
 // Space Complexity: O(N). Used for stack
@@ -27,8 +27,11 @@ public:
             // While current bar is smaller than the top of the stack or we reached the end
             while (!st.empty() && (i == n || histo[st.top()] >= histo[i]))
             {
-                int height = histo[st.top()]; // Get the height of the bar at top of the stack
-                st.pop();                     // Remove that bar
+                int height = histo[st.top()];
+                // Get the height of the bar at top of the stack (this is longer than the current bar)
+                // This is the next smaller element
+                st.pop();
+                // Remove that bar
 
                 int width;
                 if (st.empty())
@@ -37,7 +40,12 @@ public:
                 }
                 else
                 {
-                    width = i - st.top() - 1; // Width between current index and index at top of stack
+                    width = i - st.top() - 1;
+                    // Of the form: (NSE - PSE - 1)
+                    // i is NSE
+                    // st.top() is PSE
+                    // Width between current index and index at top of the stack
+                    // The index at the top of the stack has a smaller value compared to the index because of which we came into the while loop (i.e. it is lesser than 'height' and btw that's the reason 'height' was inserted into the stack after it. The stack is a monotic increasing stack)
                 }
 
                 // Calculate area and update maximum area

@@ -28,8 +28,9 @@ public:
             }
 
             // If stack is empty, no smaller element on the left
-            // +1 because we want the next element after the previous smaller element
-            // Else we will not be able to make a rectangle with it
+            // +1 because we want the element after the previous smaller element
+            // Because we will not be able to make a rectangle with the previous smaller element
+            // We need previous smaller element + 1
             PSE[i] = st.empty() ? 0 : st.top() + 1;
 
             // Push current index to stack
@@ -48,19 +49,22 @@ public:
                 st.pop();
             }
 
-            // If stack is empty, no smaller to the right
-            // -1 because we want one index before the next smaller element
-            // Else we will not be able to make a rectange with it
+            // If stack is empty, no smaller element on the right
+            // -1 because we want the element before the next smaller element
+            // Because we will not be able to make a rectangle with the previous smaller element
+            // We need next smaller element - 1
             NSE[i] = st.empty() ? n - 1 : st.top() - 1;
 
+            // Push current index to stack
             st.push(i);
         }
 
         // Calculate max area using PSE & NSE
+        // Formula: heights[i] * (NSE[i] - PSE[i] - 1)
         int maxA = 0;
         for (int i = 0; i < n; i++)
         {
-            int width = NSE[i] - PSE[i] + 1;
+            int width = (NSE[i] - PSE[i] - 1);
             maxA = max(maxA, heights[i] * width);
         }
 
