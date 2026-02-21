@@ -19,6 +19,10 @@
 // --> If the result contains leading zeroes, remove them before returning
 // --> If no digits were removed during iteration (because successive digits were in increasing order) and k is still greater than 0, remove the last k digits from the stack
 
+// Time Complexity: O(N), since traversing the given string takes O(N) time, each element is pushed onto and popped from the stack at most once in worst-case taking o(N) time, removing the remaining digits (if k > 0) takes O(k) time which can go upto O(N) in worst-case and forming the result, trimming the zeros and reversing the digits takes O(N) time.
+
+// Space Complexity: O(N), since we are using a stack to store the digits of the resulting number, in the worst case, the stack can contain all the digits of the input string.
+
 #include <bits/stdc++.h>
 using namespace std;
 
