@@ -27,6 +27,9 @@
 // Push the current index onto the stack
 // After completing the traversal, return the array of stock spans
 
+// Time Complexity: O(N), since finding the indices of previous greater elements takes O(N) time and we traverse the array once to compute the stock span, that takes O(N) as well.
+// Space Complexity: O(N), the stack space used to find the previous greater elements can go up to O(N) in the worst case.
+
 #include <bits/stdc++.h>
 using namespace std;
 

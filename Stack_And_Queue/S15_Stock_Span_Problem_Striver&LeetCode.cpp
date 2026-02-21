@@ -25,42 +25,20 @@
 // Push the current index onto the stack
 // After completing the traversal, return the array of stock spans
 
+// Time Complexity: O(N), since finding the indices of previous greater elements takes O(N) time and we traverse the array once to compute the stock span, that takes O(N) as well.
+// Space Complexity: O(N), the stack space used to find the previous greater elements can go up to O(N) in the worst case.
+
 #include <bits/stdc++.h>
 using namespace std;
 
 class StockSpanner
 {
 public:
-    stack<pair<int, int>> st;
+    stack<pair<int, int>> st; // {price, index}
     int ind = -1;
     StockSpanner()
     {
         ind = -1;
-    }
-
-    vector<int> findPGE(vector<int> arr)
-    {
-        int n = arr.size();
-        vector<int> ans(n);
-        stack<int> st;
-        for (int i = 0; i < n; i++)
-        {
-            int currEle = arr[i];
-            while (!st.empty() && arr[st.top()] <= currEle)
-            {
-                st.pop();
-            }
-
-            // If the greater element is not found, stack will be empty
-            if (st.empty())
-                ans[i] = -1;
-            // Else store the answer
-            else
-                ans[i] = st.top();
-            // Push the current index in the stack
-            st.push(i);
-        }
-        return ans;
     }
 
     int next(int price)
@@ -71,6 +49,9 @@ public:
             st.pop();
         }
         int ans;
+
+        // Means this element is the largest element in the stack so far
+        // Because the complete stack had to be emptied as all the elements were smaller than this
         if (st.empty())
         {
             ans = ind + 1;
@@ -78,6 +59,7 @@ public:
         else
         {
             ans = ind - st.top().second;
+            // st.top() is the largest element after the current element
         }
         st.push({price, ind});
         return ans;
