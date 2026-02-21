@@ -4,8 +4,7 @@
 // Given a rows*cols binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
 
 // You have to always connect questions to questions. This question is similar to the previous question.
-
-// ANS
+// Create an array to store heights of histogram bars, one for each column in the matrix.
 
 // INPUT:
 // [1 0 1 0 0]
@@ -21,7 +20,6 @@
 // [4 0 0 3 0]
 // [5 0 0 4 0]
 
-// Create an array to store heights of histogram bars, one for each column in the matrix.
 // Traverse the matrix row by row and for each cell in the row:
 // --> If the value is '1', increase the height at that column by 1.
 // --> If the value is '0', reset the height at that column to 0.
@@ -35,7 +33,7 @@ using namespace std;
 class Solution
 {
 public:
-    // This is same as the previosu question
+    // This is same as the previous question
     int largestRectangleArea(vector<int> &heights)
     {
         stack<int> st;
