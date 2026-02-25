@@ -62,10 +62,10 @@ struct List
     // Constructor
     List()
     {
-        head = new Node(0, 0);
-        tail = new Node(0, 0);
-        head->next = tail;
-        tail->prev = head;
+        head = new Node(-1, -1);
+        tail = new Node(-1, -1);
+        head->next = tail; // Written to just avoid multilpe if-else conditions of NULL at start and end
+        tail->prev = head; // Written to just avoid multilpe if-else conditions of NULL at start and end
         size = 0;
     }
 
@@ -126,11 +126,11 @@ public:
         keyNode.erase(node->key);
 
         // Update the frequency list hashmap
+        // Basically in the list "freqListMap[node->cnt]" you need to remove the "node"
         freqListMap[node->cnt]->removeNode(node);
 
         // If node was the last node having it's frequency
-        if (node->cnt == minFreq &&
-            freqListMap[node->cnt]->size == 0)
+        if (node->cnt == minFreq && freqListMap[node->cnt]->size == 0)
         {
             // Update the minimum frequency
             minFreq++;
@@ -142,7 +142,7 @@ public:
         // If the next higher frequency list already exists
         if (freqListMap.find(node->cnt + 1) != freqListMap.end())
         {
-            // Update pointer to already existing list
+            // Update pointer to already existing list and do not create a new one
             nextHigherFreqList = freqListMap[node->cnt + 1];
         }
 
@@ -152,7 +152,7 @@ public:
         // Add the node in front of higher frequency list
         nextHigherFreqList->addFront(node);
 
-        // Update the
+        // Update the freqListMap (you have modified it by inserting a node in it)
         freqListMap[node->cnt] = nextHigherFreqList;
         keyNode[node->key] = node;
     }
@@ -164,11 +164,9 @@ public:
         if (keyNode.find(key) != keyNode.end())
         {
             Node *node = keyNode[key]; // Get the node
-            int val = node->value;     // Get the value
             updateFreqListMap(node);   // Update the frequency
-
             // Return the value
-            return val;
+            return node->value;
         }
 
         // Return -1 if key is not found
@@ -203,14 +201,12 @@ public:
             // If cache limit is reached
             if (curSize == maxSizeCache)
             {
-
                 // Remove the least frequently used data-item
                 List *list = freqListMap[minFreq];
                 keyNode.erase(list->tail->prev->key);
 
                 // Update the frequency map
-                freqListMap[minFreq]->removeNode(
-                    list->tail->prev);
+                freqListMap[minFreq]->removeNode(list->tail->prev);
 
                 // Decrement the current size of cache
                 curSize--;
@@ -219,31 +215,31 @@ public:
             // Increment the current cache size
             curSize++;
 
-            // Adding new value to the cache
-            minFreq = 1; // Set its frequency to 1
+            // Adding new value to the cache (this value was not found in the cache hence the minFreq will be set to 1)
+            // Everytime a new element comes, the minFreq becomes 1
+            minFreq = 1;
 
             // Create a dummy list
-            List *listFreq = new List();
+            List *freqList = new List();
 
-            // If the list already exist
-            if (freqListMap.find(minFreq) !=
-                freqListMap.end())
+            // If the list already exists
+            if (freqListMap.find(minFreq) != freqListMap.end())
             {
-                // Update the pointer to already present list
-                listFreq = freqListMap[minFreq];
+                // Update the pointer to the already present list and do not use the newly created one above
+                freqList = freqListMap[minFreq];
             }
 
             // Create the node to store data-item
             Node *node = new Node(key, value);
 
             // Add the node to dummy list
-            listFreq->addFront(node);
+            freqList->addFront(node);
 
             // Add the node to Hashmap
             keyNode[key] = node;
 
             // Update the frequency list map
-            freqListMap[minFreq] = listFreq;
+            freqListMap[minFreq] = freqList;
         }
     }
 };

@@ -88,7 +88,6 @@ public:
         if (m.find(key_) != m.end())
         {
             Node *resNode = m[key_];
-            int res = resNode->val;
             // Remove old mapping
             m.erase(key_);
             // Move accessed node to front
@@ -96,7 +95,7 @@ public:
             addNode(resNode);
             // Update map
             m[key_] = head->next;
-            return res;
+            return resNode->val;
         }
         // If not found
         return -1;
