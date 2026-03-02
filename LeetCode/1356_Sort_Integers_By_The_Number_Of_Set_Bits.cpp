@@ -12,6 +12,8 @@ public:
         while (num > 0)
         {
             weight++;
+            // The below sets ONLY the LSB, where ever it is, to 0
+            // https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/editorial
             num &= (num - 1);
         }
 
