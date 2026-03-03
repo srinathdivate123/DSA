@@ -2,7 +2,7 @@
 using namespace std;
 
 // Reverse an array with one pointer. TC = n/2
-void reverseArray_1_Pointer(int i, int n, int arr[])
+void reverseArray_1_Pointer(int i, int n, vector<int> arr)
 {
     if (i >= n / 2)
         return;
@@ -11,7 +11,7 @@ void reverseArray_1_Pointer(int i, int n, int arr[])
 }
 
 // Reverse array using 2 pointers. TC = n/2
-void reverseArray_2_Pointers(int l, int r, int arr[])
+void reverseArray_2_Pointers(int l, int r, vector<int> arr)
 {
     if (l >= r)
         return;
@@ -32,7 +32,7 @@ bool isStringPalindrome(int i, int n, string str)
 int main()
 {
     int n = 7;
-    int arr[n] = {1, 2, 3, 4, 5, 6, 7};
+    vector<int> arr = {1, 2, 3, 4, 5, 6, 7};
     reverseArray_2_Pointers(0, n - 1, arr);
     cout << endl;
     cout << "After reversing - " << endl;

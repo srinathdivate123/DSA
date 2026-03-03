@@ -6,6 +6,7 @@ void countDigits(int num)
     cout << "Number of digits is : " << floor(log10(num) + 1) << endl;
 }
 
+// https://leetcode.com/problems/reverse-integer/
 void reverseNumber(int n)
 {
     int num = n;
@@ -26,6 +27,7 @@ void reverseNumber(int n)
     cout << "The reverse is : " << reverse << endl;
 }
 
+// https://leetcode.com/problems/palindrome-number/
 void isPalindrome(int n)
 {
     // Just use the reverse function to check
@@ -45,19 +47,20 @@ void GCD(int n1, int n2)
     }
 }
 
+// https://www.geeksforgeeks.org/dsa/euclidean-algorithms-basic-and-extended/
 int GCD_Euclidean(int a, int b)
 {
-    // Intuition: GCD is the greatest number which can divide both a and b. If a number can divide both a and b, then it should also divide b and (a%b) as well
-
-    // Euclidean Algorithm states
-    // GCD (a, b) = GCD (b, a%b) provided a>b
-
-    // You have to go on applying Euclidean in recursion until one of the numbers in the brackets becomes zero. The moment one number becomes zero, the other one is the GCD.
-
-    if (b == 0)
+    while (a > 0 && b > 0)
+    {
+        if (a > b)
+            a = a % b;
+        else
+            b = b % a;
+    }
+    if (a == 0)
+        return b;
+    else
         return a;
-    // return GCD_Euclidean(a % b, b);
-    return GCD_Euclidean(b, a % b);
 }
 
 // An Armstrong number is a number that is equal to the sum of each of its digits each raised to the power of the number of digits.
