@@ -22,7 +22,7 @@ int main()
             slargest = arr[i];
 
         if (arr[i] < smallest)
-        {
+        { 
             ssmallest = smallest;
             smallest = arr[i];
         }
