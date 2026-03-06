@@ -1,3 +1,7 @@
+// Problem Statement: Given two sorted arrays, arr1, and arr2 of size n and m. Find the union of two sorted arrays.
+// The union of two arrays can be defined as the common and distinct elements in the two arrays.
+// NOTE: Elements in the union should be in ascending order.
+
 // TC is o(n1 + n2), sum of size of the arrays
 // SC is (n1 + n2) (in worst case if all elements in both arrays are unique) to return the answer
 
@@ -18,9 +22,14 @@ void Union(int arr1[], int n1, int arr2[], int n2)
     vector<int> unionArr;
 
     while (i < n1 && j < n2)
+    {
         if (arr1[i] <= arr2[j]) // We always want to insert the smallest element because we want the unionArr to be a sorted one.
         {
-            if (unionArr.size() == 0 || unionArr.back() != arr1[i]) // We take arr1[i] only if the last element in the unionArr is not equal to it, in order to avoid repetition in unionArr. Also for the first element being inserted in it, there wouldn't be any unionArr.back, so we just take it when the unionArr is empty.
+            if (unionArr.size() == 0 || unionArr.back() != arr1[i])
+            // We take arr1[i] only if the last element in the unionArr is not equal to it, in order to avoid repetition in unionArr. Also for the first element being inserted in it, there wouldn't be any unionArr.back(), so we just take it when the unionArr is empty.
+            // Since what we're finding is an union of both the arrays, we should not add duplicate elements
+            // It could be possible, that the value of arr1[i] could be inserted into UnionArr by arr2[something]
+            // Hence, we do the check that we're not taking in duplicates
                 unionArr.push_back(arr1[i]);
             i++;
         }
@@ -30,8 +39,9 @@ void Union(int arr1[], int n1, int arr2[], int n2)
                 unionArr.push_back(arr2[j]);
             j++;
         }
+    }
 
-    // Only any one of the below loops wil run because the above loop will quit when i=n1 or when j=n2
+    // Only any one of the below loops will run because the above loop will quit when i=n1 or when j=n2
     while (i < n1)
     {
         if (unionArr.size() == 0 || unionArr.back() != arr1[i])
