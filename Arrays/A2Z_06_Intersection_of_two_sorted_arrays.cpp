@@ -1,4 +1,6 @@
+// Find the inersection of two sorted arrays
 // We're assuming that repetition of elements in the interArr is allowed
+
 #include <bits/stdc++.h>
 using namespace std;
 void printArray(vector<int> &arr, int n);
@@ -14,10 +16,12 @@ void printArray(vector<int> &arr, int n)
 // SC is n2 in worst case
 void IntersectionBrute(int a[], int n1, int b[], int n2)
 {
-    int i = 0, j = 0, vs[n2] = {0}; // vs is visited array to store that the array number has been visited
-    // We can take vs[n1] also but in tht case we'd have to run the outer for loop over the n2 array
+    int i = 0, j = 0;
+    vector<int> vs(n2, 0); // vs is visited array to store that the array number has been visited
+    // We can take vs[n1] also but in that case we'd have to run the outer for loop over the n2 array
     vector<int> interArr;
     for (int i = 0; i < n1; i++)
+    {
         for (j = 0; j < n2; j++)
         {
             if (a[i] == b[j] && vs[j] == 0)
@@ -29,18 +33,20 @@ void IntersectionBrute(int a[], int n1, int b[], int n2)
             if (b[j] > a[i])
                 break; // Because this is a sorted array and you can't find an element equal to it afterwards in the array if you come at an element that is greater than it.
         }
+    }
 
     cout << "Intersection array of brute is - " << endl;
     printArray(interArr, interArr.size());
 }
 
-// Ts in (n1+n2) in worst case
+// TC is (n1 + n2) in worst case
 // SC is (n1 + n2) to return the answer
 void IntersectionOptim(int a[], int n1, int b[], int n2)
 {
     int i = 0, j = 0;
-    vector <int> interArr;
+    vector<int> interArr;
     while (i < n1 && j < n2)
+    {
         if (a[i] < b[j])
             i++;
         else if (b[j] < a[i])
@@ -51,6 +57,7 @@ void IntersectionOptim(int a[], int n1, int b[], int n2)
             i++;
             j++;
         }
+    }
     cout << "Intersection array of optimal is - " << endl;
     printArray(interArr, interArr.size());
 }
