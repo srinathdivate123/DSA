@@ -20,24 +20,33 @@ void movezeroes(int arr[], int n)
     int j = -1;
     // TC of below = x (where the first 0 is found)
     for (int i = 0; i < n; i++) // Loop to get the index of first '0' element
+    {
         if (arr[i] == 0)
         {
             j = i;
             break;
         }
-    // TC of below is n-x 
-    for (int i = j+1; i < n; i++)
+    }
+
+    // If no zero is found in the array
+    if (j == -1)
+        return;
+
+    // TC of below is n-x
+    for (int i = j + 1; i < n; i++)
+    {
         if (arr[i] != 0)
         {
-            swap(arr[i],arr[j]);
+            swap(arr[i], arr[j]);
             j++;
         }
+    }
 }
 
 int main()
 {
-    int arr[] = {0,1,0,0,1,1,1,0,0,1,0,1,0};
-    int n = sizeof(arr)/sizeof(arr[0]);
+    int arr[] = {0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0};
+    int n = sizeof(arr) / sizeof(arr[0]);
     movezeroes(arr, n);
     cout << "After moving zeroes - " << endl;
     printArray(arr, n);

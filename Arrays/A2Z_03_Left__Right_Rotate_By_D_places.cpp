@@ -33,6 +33,7 @@ void leftrotate(int arr[], int n, int d)
 void rightRotate(int arr[], int n, int d)
 {
     d %= n; // Because if we have to rotate the array by d (>n) times it is equivalent to rotating it by d%n times because if you rotate an array by n places, then you get the original array back.
+    // Replace d by n-d
     reverseArray(arr, 0, n - d - 1);
     reverseArray(arr, n - d, n - 1);
     reverseArray(arr, 0, n - 1);
@@ -47,8 +48,7 @@ int main()
     leftrotate(arr, n, d);
     printArray(arr, n);
 
-    cout << "After right rotating - \n"
-         << endl;
+    cout << "After right rotating - \n" << endl;
     rightRotate(arr, n, d);
     rightRotate(arr, n, d); // Doing it twice to cancel the left rotation
     printArray(arr, n);
