@@ -32,7 +32,7 @@ void leftrotate(int arr[], int n, int d)
 
 void rightRotate(int arr[], int n, int d)
 {
-    d %= n;
+    d %= n; // Because if we have to rotate the array by d (>n) times it is equivalent to rotating it by d%n times because if you rotate an array by n places, then you get the original array back.
     reverseArray(arr, 0, n - d - 1);
     reverseArray(arr, n - d, n - 1);
     reverseArray(arr, 0, n - 1);
