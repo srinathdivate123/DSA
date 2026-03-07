@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/remove-duplicates-in-place-from-sorted-array
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+
 // The array given to you is sorted and you cannot use any extra array to solve.
 // You should return the same array as the answer
 #include <bits/stdc++.h>

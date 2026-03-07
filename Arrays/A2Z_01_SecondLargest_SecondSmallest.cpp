@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/find-second-smallest-and-second-largest-element-in-an-array
+// Not on LC
+
 // Brute: sort the array and then find the answer.
 // Better: in first for loop find the largest and in the second for loop find the second largest
 // Best is below!

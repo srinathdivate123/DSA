@@ -1,3 +1,8 @@
+// https://takeuforward.org/data-structure/left-rotate-the-array-by-one
+// https://takeuforward.org/data-structure/rotate-array-by-k-elements
+// https://leetcode.com/problems/rotate-array/description/
+// Left Rotate is not on LC
+
 // Bruteforce approach would be to do d%=n and take a temp array, store elements from 0 to d in it, And pre-shift the remaining elements in the arr by d places. Add the temp elements in the end after pre-shifting. TC = n+d and SC = d
 
 // For below optimal approach TC = 2n and SC = 1
