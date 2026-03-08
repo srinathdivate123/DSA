@@ -55,6 +55,10 @@ void betterHashing(int arr[], int target, int n)
         // If this sum was previously not there, then only enter into map. If it was previously there, then don't enter into map. We do so because we want the longest subarray.
         if (preSumMap.find(sum) == preSumMap.end())
             preSumMap[sum] = i;
+        else
+            // If the sum is found in the map, then DO NOT update the position in the map
+            // Because we want the position to be as towards the left as possible, such that our K is maximum
+            continue;
     }
     cout << maxLen;
 }

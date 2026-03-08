@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/find-the-majority-element-that-occurs-more-than-n-2-times
+// https://leetcode.com/problems/majority-element/description
+
 #include <bits/stdc++.h>
 using namespace std;
 // Given an array, find the element that appears MORE than n/2 times, where n is array length
@@ -19,24 +22,35 @@ void moores_Voting_Algorithm(int arr[], int n)
 {
     int count = 0, element;
     for (int i = 0; i < n; i++)
+    {
         if (count == 0)
         {
             element = arr[i];
             count = 1;
         }
         else if (arr[i] == element)
+        {
             count++;
+        }
         else
+        {
             count--;
-    
+        }
+    }
 
     // If it is stated that there will definitely be a majority element in the array, then we don't need to do the below part. We can just print 'element' then!
     int no_of_times_max_element_occours_in_array = 0;
     for (int i = 0; i < n; i++)
+    {
         if (arr[i] == element)
+        {
             no_of_times_max_element_occours_in_array++;
+        }
+    }
     if (no_of_times_max_element_occours_in_array > n / 2)
+    {
         cout << element;
+    }
 }
 
 int main()

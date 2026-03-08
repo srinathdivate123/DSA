@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/kadanes-algorithm-maximum-subarray-sum-in-an-array
+// https://leetcode.com/problems/maximum-subarray/description
+
 #include <bits/stdc++.h>
 using namespace std;
 // Return the maximum sum formed from any subarray
@@ -12,7 +15,9 @@ void Kadanes_Algo(int arr[], int n)
     for (int i = 0; i < n; i++)
     {
         if (sum == 0)
+        {
             start = i; // starting index
+        }
 
         sum += arr[i];
 
@@ -25,7 +30,9 @@ void Kadanes_Algo(int arr[], int n)
 
         // If sum < 0: discard the sum calculated
         if (sum < 0)
+        {
             sum = 0;
+        }
     }
 
     cout << "The maximum subarray sum is " << maxi << " and the subarray indices are (" << ansStart << ", " << ansEnd << ")";

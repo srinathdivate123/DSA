@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/sort-an-array-of-0s-1s-and-2s
+// https://leetcode.com/problems/sort-colors/description/
+
 #include <bits/stdc++.h>
 using namespace std;
 void printArray(int arr[], int n)
@@ -10,10 +13,10 @@ void printArray(int arr[], int n)
 
 // The Dutch National Flag Algorithm
 // Use three pointers: low, mid & high and follow below rules.
-// From 0 to low-1 we have only 0's
-// From low to mid-1 we have only 1's
-// From mid to high we have 0's, 1's and 2's in an unsorted order.
-// From high+1 to n-1 we have only 2's
+// 0 to low-1 ------> 0's
+// low to mid-1 ----> 1's
+// mid to high -----> 0's, 1's and 2's in an unsorted order.
+// high+1 to n-1 ---> 2's
 // Initially mid=0 and high=n-1 because the entire array is unsorted. Put low=0 as it is starting index
 // When mid is iterating through the array: arr[mid] may be equal to 0, 1, 2.
 // When arr[mid] == 0 -> swap(arr[low], arr[mid]); low++; mid++;
@@ -26,6 +29,7 @@ void Dutch_National_Flag_Algorithm(int arr[], int n)
 {
     int low = 0, mid = 0, high = n - 1;
     while (mid <= high)
+    {
         if (arr[mid] == 0)
         {
             swap(arr[mid], arr[low]);
@@ -33,12 +37,15 @@ void Dutch_National_Flag_Algorithm(int arr[], int n)
             mid++;
         }
         else if (arr[mid] == 1)
+        {
             mid++;
+        }
         else
         {
             swap(arr[mid], arr[high]);
             high--;
         }
+    }
 }
 
 int main()
