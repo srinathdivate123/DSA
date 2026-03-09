@@ -1,3 +1,5 @@
+// https://takeuforward.org/data-structure/leaders-in-an-array
+
 #include <bits/stdc++.h>
 using namespace std;
 // A Leader is an element that is greater than all of the elements on its right side in the array.
@@ -15,7 +17,9 @@ void best(vector<int> arr, int n)
     {
         lastLargest = max(arr[i], lastLargest);
         if (arr[i] >= lastLargest)
+        {
             leaders.insert(leaders.begin(), arr[i]); // Note that we're inserting in the beginning of the vector because we are iterating from back and we want the elements to be in the leaders array in the same order that they were in the arr array
+        }
     }
     for (int it : leaders)
         cout << it << " ";

@@ -1,12 +1,17 @@
+// https://takeuforward.org/arrays/rearrange-array-elements-by-sign
+// https://leetcode.com/problems/rearrange-array-elements-by-sign/description/
+
 #include <bits/stdc++.h>
 using namespace std;
 
 // There’s an array ‘A’ of size ‘N’ with an equal number of positive and negative elements. Without altering the relative order of positive and negative elements, you must return an array of alternately positive and negative values.
+// The below solution will work on leetcode
 void RearrangebySign_Variety_1(vector<int> arr)
 {
     int n = arr.size(), posIndex = 0, negIndex = 1;
     vector<int> answer(n, 0); // Declaring vector with size n and all elements to be 0.
     for (int i = 0; i < n; i++)
+    {
         if (arr[i] > 0)
         {
             answer[posIndex] = arr[i];
@@ -17,6 +22,7 @@ void RearrangebySign_Variety_1(vector<int> arr)
             answer[negIndex] = arr[i];
             negIndex += 2;
         }
+    }
 
     for (int i : answer)
         cout << i << " ";
@@ -32,10 +38,12 @@ void RearrangebySign_Variety_2(vector<int> arr)
     vector<int> pos, neg;
 
     for (int i = 0; i < n; i++)
+    {
         if (arr[i] > 0)
             pos.push_back(arr[i]);
         else
             neg.push_back(arr[i]);
+    }
 
     int posSize = pos.size(), negSize = neg.size(), count = 0;
 

@@ -1,3 +1,7 @@
+// https://takeuforward.org/data-structure/longest-consecutive-sequence-in-an-array
+// https://leetcode.com/problems/longest-consecutive-sequence/editorial
+// https://www.lintcode.com/problem/124
+
 #include <bits/stdc++.h>
 #include <unordered_set>
 using namespace std;
@@ -61,41 +65,6 @@ void best(vector<int> &arr, int n)
     }
     cout << longest;
 }
-
-// TC = n*log(n)
-// SC = 0
-int bestest(vector<int> a)
-{
-    int n = a.size();
-    if (n == 0)
-        return 0;
-
-    // sort the array:
-    sort(a.begin(), a.end());
-    int lastSmaller = INT_MIN;
-    int cnt = 0;
-    int longest = 1;
-
-    // find longest sequence:
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] == lastSmaller + 1)
-        {
-            // a[i] is the next element of the
-            // current sequence.
-            cnt += 1;
-            lastSmaller = a[i];
-        }
-        else if (a[i] != lastSmaller)
-        {
-            cnt = 1;
-            lastSmaller = a[i];
-        }
-        longest = max(longest, cnt);
-    }
-    return longest;
-}
-
 
 int main()
 {
