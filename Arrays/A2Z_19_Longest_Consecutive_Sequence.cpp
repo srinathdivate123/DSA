@@ -6,7 +6,7 @@
 #include <unordered_set>
 using namespace std;
 // This was asked in google interviews!!!
-// You are given an array of ‘N’ integers. You need to find the length of the longest sequence which contains the consecutive elements. The elements may be picked up from array in any order. But they must be consecutive and sorted in the answer array!
+// You are given an array of ‘N’ integers. You need to find the length of the longest sequence which contains the consecutive elements (x, x+1, x+2, x+2, ..., x+n). The elements may be picked up from array in any order. But they must be consecutive and sorted in the answer array!
 
 // Take each element and do a linear search to find if the next consecutive element is in array and if yes then increase the counter
 void brute() {}
@@ -46,7 +46,9 @@ void best(vector<int> &arr, int n)
     int longest = 1;
     unordered_set<int> st;
     for (int it : arr)
+    {
         st.insert(it);
+    }
 
     for (auto element : st)
     {

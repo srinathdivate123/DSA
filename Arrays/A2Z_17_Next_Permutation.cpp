@@ -56,6 +56,7 @@ void best(vector<int> &arr, int n)
             break;
         }
     }
+
     if (breakPoint == -1) // Means all elements are in sorted order
     {
         reverse(arr.begin(), arr.end());
