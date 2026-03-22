@@ -1,7 +1,10 @@
+// https://takeuforward.org/data-structure/merge-overlapping-sub-intervals
+// https://leetcode.com/problems/merge-intervals/description/
+
 #include <bits/stdc++.h>
 using namespace std;
 void print(vector<vector<int>> arr);
-// Given an arr of intervals, merge all the overlapping intervals and return an arr of non-overlapping intervals.
+// Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
 // First Sort
 // TC = n*log(n) for sorting + in total we visit every element twice inside the parent for loop so 2n
@@ -14,13 +17,15 @@ void brute(vector<vector<int>> arr)
     {
         int start = arr[i][0];
         int end = arr[i][1];
-        if (!ans.empty() and end <= ans.back()[1]) // We skip the intervals that lie in the last inserted interval of our answer list.
+        if (!ans.empty() && end <= ans.back()[1]) // We skip the intervals that lie in the last inserted interval of our answer list.
             continue;
         for (int j = i + 1; j < n; j++)
+        {
             if (arr[j][0] <= end)
                 end = max(end, arr[j][1]);
             else
                 break;
+        }
         ans.push_back({start, end});
     }
     print(ans);
@@ -34,10 +39,13 @@ void best(vector<vector<int>> arr)
     sort(arr.begin(), arr.end());
     vector<vector<int>> ans;
     for (int i = 0; i < n; i++)
+    {
         if (ans.empty() || arr[i][0] > ans.back()[1]) // arr[i][0] > ans.back()[1] implies that a new interval is starting, because arr[i][0] is greater than ans.back()[1] and cannot be accomodated in the ans.back()[0] to ans.back()[1] interval.
             ans.push_back(arr[i]);
         else
+            // When arr[i][0] <= ans.back()[1], do not create a new interval, just take the max of ans.back()[1] and arr[i][1]
             ans.back()[1] = max(ans.back()[1], arr[i][1]);
+    }
     print(ans);
 }
 

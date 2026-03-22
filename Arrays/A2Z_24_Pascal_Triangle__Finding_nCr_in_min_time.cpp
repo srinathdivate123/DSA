@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/program-to-generate-pascals-triangle
+// https://leetcode.com/problems/pascals-triangle/description
+
 // In Pascal’s triangle, each number is the sum of the two numbers directly above it as shown below:
 
 //          1
@@ -11,7 +14,7 @@ using namespace std;
 void Variation_2(int n);
 
 // Variation 1: Given row number r and column number c. Print the element at position (r, c) in Pascal’s triangle.
-// The value of element (r,c) is (r-1) C (c-1) = n! / r! * (n-r!)
+// The value of element (r,c) is (r-1) C (c-1) = n! / (r! * (n-r)!)
 // To find the combination 7C2 we have:
 // 7 x 6 x (5 x 4 x 3 x 2 x 1)
 // ---------------------------
@@ -21,6 +24,7 @@ void Variation_2(int n);
 // So the denominator (2) moves 2 places and the numerator also moves 2 places
 // So we do 7/1 * 6/2
 // Numerator goes in descending and denominator goes in ascending, because if we in starting only divide 7/2 then we will not get whole number, after if we divide then somewhere we may get whole number
+// Hence, run the multiplication calculation in descending order and the division calculation in ascending order  
 void Variation_1(int n, int r) // We are finding nCr
 {
     long long result = 1;

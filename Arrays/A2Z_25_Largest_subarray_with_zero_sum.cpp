@@ -1,5 +1,15 @@
+// https://takeuforward.org/data-structure/length-of-the-longest-subarray-with-zero-sum
+
 #include <bits/stdc++.h>
 using namespace std;
+
+// The below is a smaller version of the code
+// sum += A[i];
+// if (mpp.find(sum) == mpp.end()) // if prefix_sum, doesnot exist in hashmap
+//     mpp[sum] = i;               // setting it's first occurance
+
+// int curr_size = i - mpp[sum]; //
+// maxi = max(maxi, curr_size);
 
 int main()
 {
@@ -12,14 +22,22 @@ int main()
     {
         sum += A[i];
         if (sum == 0)
-            maxi = i + 1;
+        {
+            maxi = max(maxi, i + 1);
+        }
+        int remainder = sum - 0;
+
+        if (mpp.find(remainder) != mpp.end())
+        {
+            int len = i - mpp[remainder];
+            maxi = max(maxi, len);
+        }
         else
-            if (mpp.find(sum) != mpp.end())
-                maxi = max(maxi, i - mpp[sum]);
-            else
-                mpp[sum] = i;
+        {
+            mpp[sum] = i;
+        }
     }
 
-    cout<< maxi;
+    cout << maxi;
     return 0;
 }
