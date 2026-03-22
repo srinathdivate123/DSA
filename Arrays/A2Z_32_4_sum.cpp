@@ -1,22 +1,33 @@
-// Given an array of N integers, your task is to find "unique" quads that add up to give a target value. In short, you need to return an array of all the unique quadruplets [arr[a], arr[b], arr[c], arr[d]] such that their sum is equal to a given target. Remember a!=b!=c!=d.
+// https://takeuforward.org/data-structure/4-sum-find-quads-that-add-up-to-a-target-value
+// https://leetcode.com/problems/4sum/description/
+
+// Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+// 0 <= a, b, c, d < n
+// a, b, c, and d are distinct.
+// nums[a] + nums[b] + nums[c] + nums[d] == target
+// You may return the answer in any order
 
 #include <bits/stdc++.h>
 using namespace std;
 
-// TC = n^4
+// Time Complexity: O(N3 * log(no. of unique triplets)), where N = size of the array.
+// Reason: Here, we are mainly using 3 nested loops. And inserting triplets into the set takes O(log(no. of unique triplets)) time complexity. But we are not considering the time complexity of sorting as we are just sorting 3 elements every time.
+// Space Complexity: O(2 * no. of the unique triplets) as we are using a set data structure and a list to store the triplets.
 vector<vector<int>> brute(vector<int> &nums, int target)
 {
     int n = nums.size(); // size of the array
     set<vector<int>> st;
 
-    // checking all possible quadruplets:
+    // checking all possible quadruplets
     for (int i = 0; i < n; i++)
+    {
         for (int j = i + 1; j < n; j++)
+        {
             for (int k = j + 1; k < n; k++)
+            {
                 for (int l = k + 1; l < n; l++)
                 {
-                    // taking bigger data type
-                    // to avoid integer overflow:
+                    // taking bigger data type to avoid integer overflow
                     long long sum = nums[i] + nums[j];
                     sum += nums[k];
                     sum += nums[l];
@@ -28,17 +39,22 @@ vector<vector<int>> brute(vector<int> &nums, int target)
                         st.insert(temp);
                     }
                 }
+            }
+        }
+    }
     vector<vector<int>> ans(st.begin(), st.end());
     return ans;
 }
 
-// TC = n^3
+// Time Complexity: O(N3*log(M)), as we are mainly using 3 nested loops, and inside the loops there are some operations on the set data structure which take log(M) time complexity.
+// Space Complexity: O(2 * no. of the quadruplets) + O(N), as we are using a set data structure and a list to store the quads. This results in the first term. And the second space is taken by the set data structure we are using to store the array elements. At most, the set can contain approximately all the array elements and so the space complexity is O(N).
 vector<vector<int>> better(vector<int> &nums, int target)
 {
     int n = nums.size();
     set<vector<int>> st;
 
     for (int i = 0; i < n; i++)
+    {
         for (int j = i + 1; j < n; j++)
         {
             set<long long> hashset;
@@ -57,13 +73,13 @@ vector<vector<int>> better(vector<int> &nums, int target)
                 hashset.insert(nums[k]);
             }
         }
+    }
     vector<vector<int>> ans(st.begin(), st.end());
     return ans;
 }
 
-
-// TC = (n^2)*n
-// SC = Number of unique quads (to return the answer)
+// Time Complexity: O(N3), as Each of the pointers i and j, is running for approximately N times. And both the pointers k and l combined can run for approximately N times including the operation of skipping duplicates. So the total time complexity will be O(N3). 
+// Space Complexity: O(no. of quadruplets), as This space is only used to store the answer. We are not using any extra space to solve this problem. So, from that perspective, space complexity can be written as O(1).
 vector<vector<int>> best(vector<int> &nums, int target)
 {
     int n = nums.size();
@@ -73,12 +89,16 @@ vector<vector<int>> best(vector<int> &nums, int target)
     {
         // avoid the duplicates while moving i:
         if (i > 0 && nums[i] == nums[i - 1])
+        {
             continue;
+        }
         for (int j = i + 1; j < n; j++)
         {
             // avoid the duplicates while moving j:
             if (j > i + 1 && nums[j] == nums[j - 1])
+            {
                 continue;
+            }
 
             // 2 pointers:
             int k = j + 1;

@@ -1,27 +1,43 @@
+// https://leetcode.com/problems/find-the-duplicate-number/description/
+// https://takeuforward.org/data-structure/find-the-duplicate-in-an-array-of-n1-integers
+// Above link is not included in the sheet
+// https://www.youtube.com/watch?v=32Ll35mhWg
+// Video is not there in the Arrays playlist. It is there in the "Placement Series"
+
 #include <bits/stdc++.h>
 using namespace std;
 
-// Given an array of N + 1 size, where each element is between 1 and N. Assuming there is only one duplicate number, your task is to find the duplicate number.
+// Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
+// There is only one repeated number in nums, return this repeated number.
+// You must solve the problem without modifying the array nums and using only constant extra space.
 
 // Brute is to sort and check for duplicates
 
+// Intuition: Since there is a duplicate number in the list, a cycle will be formed
 // Below is the most optimal method called as the "Linked List Cycle Method"
 int findDuplicate(vector<int> &nums)
 {
     int slow = nums[0];
     int fast = nums[0];
+
+    // Initially move slow by one step and fast by two steps
     do
     {
         slow = nums[slow];
-        fast = nums[nums[fast]];
+        fast = nums[fast];
+        fast = nums[fast];
     } while (slow != fast);
 
+    // Set fast at the beginning of the array
     fast = nums[0];
+
+    // Move both slow and fast by one step. Where they collide will be the duplicate number. For proof, refer the video
     while (slow != fast)
     {
         slow = nums[slow];
         fast = nums[fast];
     }
+    // You can either return slow or fast
     return slow;
 }
 int main()

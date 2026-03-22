@@ -1,4 +1,7 @@
-// Given an array of N integers, your task is to find "unique" triplets that add up to give a sum of zero. In short, you need to return an array of all the unique triplets [arr[a], arr[b], arr[c]] such that i!=j, j!=k, k!=i, and their sum is equal to zero.
+// https://takeuforward.org/data-structure/3-sum-find-triplets-that-add-up-to-a-zero
+// https://leetcode.com/problems/3sum/description/
+
+// Given an array of N integers, your task is to find "unique" triplets that add up to give a sum of zero. In short, you need to return an array of all the unique triplets [arr[a], arr[b], arr[c]] such that i!=j, j!=k, k!=i, and their sum is equal to zero. Notice that the solution set must not contain duplicate triplets.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -9,20 +12,27 @@ vector<vector<int>> brute(int n, vector<int> &arr)
 
     // check all possible triplets:
     for (int i = 0; i < n; i++)
+    {
         for (int j = i + 1; j < n; j++)
+        {
             for (int k = j + 1; k < n; k++)
+            {
                 if (arr[i] + arr[j] + arr[k] == 0)
                 {
                     vector<int> temp = {arr[i], arr[j], arr[k]};
                     sort(temp.begin(), temp.end());
                     st.insert(temp);
                 }
+            }
+        }
+    }
 
     // store the set elements in the answer:
     vector<vector<int>> ans(st.begin(), st.end());
     return ans;
 }
 
+// HashMap based PreSum approach
 // We need : arr[k] + arr[i] + arr[j] = 0
 // => arr[k] = - (arr[i] + arr[j])
 vector<vector<int>> better(int n, vector<int> &arr)
@@ -52,17 +62,20 @@ vector<vector<int>> better(int n, vector<int> &arr)
     return ans;
 }
 
-
 // TC of n*log(n) for sorting and near about n*2 for the loops
+// Note that here we have a for loop and a while loop because we need to find 3 elements
+// In the two sum problem we only had a while loop after sorting because we just had to find 2 elements
 vector<vector<int>> best(int n, vector<int> &num)
 {
     vector<vector<int>> ans;
     sort(num.begin(), num.end());
     for (int i = 0; i < n; i++)
     {
-        // Avoid the duplicates while moving i:
+        // If there are consecutive duplicates, then continue
         if (i > 0 && num[i] == num[i - 1])
+        {
             continue;
+        }
         int j = i + 1; // Assuming j = i + 1 => Left pointer of window
         int k = n - 1; // Assuming k = n - 1 => Right pointer of window
         while (j < k)

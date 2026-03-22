@@ -1,21 +1,23 @@
-// Given an array of N integers. Find the elements that appear more than floor(N/3) times in the array. If no such element exists, return an empty vector
+// https://takeuforward.org/data-structure/majority-elementsn-3-times-find-the-elements-that-appears-more-than-n-3-times-in-the-array
+// https://leetcode.com/problems/majority-element-ii/description
 
-// At max there can be floor(N/3) such integers that appear more than floor(N/3) times in an array.
+// Given an array of N integers. Find the elements that appear more than floor(N/3) times in the array. The output can be returned in nay order
 
-// AT minimum there can be 0 such integers.
+// Note that there can be only 2 such majority elements. Refer to blog for proof.
+
 // Done until here!!
 #include <bits/stdc++.h>
 using namespace std;
 
 vector<int> majorityElement(vector<int> v)
 {
+    int cnt1 = 0, cnt2 = 0;
+    int element_1 = INT_MIN;
+    int element_2 = INT_MIN;
 
-    int cnt1 = 0, cnt2 = 0; // counts
-    int element_1 = INT_MIN;      // element 1
-    int element_2 = INT_MIN;      // element 2
-
-    // applying the Extended Boyer Moore's Voting Algorithm:
+    // Apply the extended Boyer Moore's Voting Algorithm
     for (int i = 0; i < v.size(); i++)
+    {
         if (cnt1 == 0 && element_2 != v[i])
         {
             cnt1 = 1;
@@ -32,6 +34,7 @@ vector<int> majorityElement(vector<int> v)
             cnt2++;
         else
             cnt1--, cnt2--;
+    }
 
     vector<int> ans;
 
@@ -52,6 +55,7 @@ vector<int> majorityElement(vector<int> v)
         ans.push_back(element_2);
     return ans;
 }
+
 int main()
 {
     vector<int> arr = {1, 1, 1, 1, 3, 2, 2, 2};
