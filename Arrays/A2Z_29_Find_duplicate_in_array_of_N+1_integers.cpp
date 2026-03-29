@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/find-the-duplicate-number/description/
 // https://takeuforward.org/data-structure/find-the-duplicate-in-an-array-of-n1-integers
-// Above link is not included in the sheet
-// https://www.youtube.com/watch?v=32Ll35mhWg
+// Above TUF link is not included in the sheet
+// https://www.youtube.com/watch?v=32Ll35mhWg0
 // Video is not there in the Arrays playlist. It is there in the "Placement Series"
 
 #include <bits/stdc++.h>
@@ -10,8 +10,7 @@ using namespace std;
 // Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 // There is only one repeated number in nums, return this repeated number.
 // You must solve the problem without modifying the array nums and using only constant extra space.
-
-// Brute is to sort and check for duplicates
+// Note that you cannot sort the array 
 
 // Intuition: Since there is a duplicate number in the list, a cycle will be formed
 // Below is the most optimal method called as the "Linked List Cycle Method"

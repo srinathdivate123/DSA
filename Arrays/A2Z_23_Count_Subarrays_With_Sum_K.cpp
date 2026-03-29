@@ -21,7 +21,7 @@ int bestUsingHashMap(vector<int> arr, int target)
         preSum += arr[i];
         int remove = preSum - target;
         cnt += mpp[remove];
-        mpp[preSum] += 1;
+        mpp[preSum]++;
     }
     return cnt;
 }

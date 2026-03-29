@@ -15,7 +15,6 @@ using namespace std;
 // x = XR ^ K
 // Hence the XOR of first part must be x = XR ^ K
 
-
 // Brute is to generate all the subarrays and take their XOR
 int main()
 {

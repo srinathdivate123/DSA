@@ -1,8 +1,30 @@
+// https://takeuforward.org/data-structure/count-inversions-in-an-array
+
 // Given an array of N integers, count the inversion of the array (using merge-sort).
-// What is an inversion of an array? Definition: for all i & j < size of array, if i < j then you have to find pair (A[i],A[j]) such that A[j] < A[i].
+// An inversion in an array is defined as a pair of indices (i, j) such that i < j < arraySize and a[i] > a[j]. This measures how far the array is from being sorted.
 
 #include <bits/stdc++.h>
 using namespace std;
+
+// Brute force is to use two nested loops:
+// --> Outer loop runs for each element a[i].
+// --> Inner loop checks all elements a[j] where j > i.
+// --> If a[i] > a[j], increment cnt.
+// After traversing all pairs, return cnt as the number of inversions.
+
+// ---------------------------------------------------------------------------------------------
+
+// Brute force approach compares all pairs, but that takes O(N^2) time. We can optimize this using the merge sort algorithm. While merging two sorted halves, if an element in the left half is greater than an element in the right half, then all remaining elements in the left half will also be greater than that right element. This allows us to count multiple inversions in one step, instead of checking each pair individually.
+
+// --> Apply merge sort recursively to divide the array into two halves.
+// --> During the merge step:
+// -----> If arr[left] <= arr[right], place arr[left] into the temp array and move left++.
+// -----> Otherwise, place arr[right] into the temp array. Since arr[left] > arr[right], all elements from arr[left] to arr[mid] form inversions with arr[right]. So add (mid - left + 1) to the inversion count.
+// --> Copy the merged elements back into the original array.
+// --> The total inversion count is the sum of:
+// -----> Inversions in the left half
+// -----> Inversions in the right half
+// -----> Inversions across the halves (counted during merge)
 
 int merge(vector<int> &arr, int low, int mid, int high)
 {

@@ -1,11 +1,10 @@
 // https://takeuforward.org/data-structure/majority-elementsn-3-times-find-the-elements-that-appears-more-than-n-3-times-in-the-array
 // https://leetcode.com/problems/majority-element-ii/description
 
-// Given an array of N integers. Find the elements that appear more than floor(N/3) times in the array. The output can be returned in nay order
+// Given an array of N integers. Find the elements that appear more than floor(N/3) times in the array. The output can be returned in any order
 
 // Note that there can be only 2 such majority elements. Refer to blog for proof.
 
-// Done until here!!
 #include <bits/stdc++.h>
 using namespace std;
 

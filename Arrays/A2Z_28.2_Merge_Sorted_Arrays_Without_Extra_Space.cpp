@@ -10,6 +10,9 @@ using namespace std;
 void optimal_1(vector<int> arr1, int n, vector<int> arr2, int m)
 {
     // Basically you need to make sure that the correct set of elements are in the correct array
+    // These "correct set" of elements need not necessarily be in the sorted order in the "correct array"
+    // They just have to be in their "correct array" in any order
+    // Because we'll be sorting these two arrays later
 
     int left = n - 1; // last index of the arr1
     int right = 0;    // first index of the arr2
@@ -32,8 +35,8 @@ void optimal_1(vector<int> arr1, int n, vector<int> arr2, int m)
             break;
         }
     }
-    sort(arr1.begin(), arr1.end()); // TC = n*log(n)
     sort(arr2.begin(), arr2.end()); // TC = m*log(m)
+    sort(arr1.begin(), arr1.end()); // TC = n*log(n)
 
     for (int element : arr1)
         cout << element << " ";
@@ -44,7 +47,9 @@ void optimal_1(vector<int> arr1, int n, vector<int> arr2, int m)
 void swapIfGreater(vector<int> &arr1, vector<int> &arr2, int index1, int index2)
 {
     if (arr1[index1] > arr2[index2])
+    {
         swap(arr1[index1], arr2[index2]);
+    }
 }
 
 // This uses GAP method which uses the 'Shell Sort' algorithm
@@ -69,7 +74,7 @@ void optimal_2_gap_method(vector<int> &arr1, vector<int> &arr2, int n, int m)
         {
             // Left is in arr1 & right is in arr2
             if (left < n && right >= n)
-                swapIfGreater(arr1, arr2, left, right - n);
+                swapIfGreater(arr1, arr2, left, right - n); 
 
             // If left is >=n then obv right >= n so no need to write condition for right. Both are in arr2
             else if (left >= n)

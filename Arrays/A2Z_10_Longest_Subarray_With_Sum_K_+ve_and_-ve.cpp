@@ -64,7 +64,7 @@ void betterHashing(int arr[], int target, int n)
 }
 
 // Only for +ves
-// This is the optimal solution for +ves
+// This is the optimal solution only for +ves
 // TC = 2N (N for the outer while loop and N for the inner while loop)
 void optimised(int arr[], int target, int n)
 {
