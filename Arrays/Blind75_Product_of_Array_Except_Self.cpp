@@ -1,1 +1,3 @@
-// https://www.geeksforgeeks.org/a-product-array-puzzle/
+// https://leetcode.com/problems/product-of-array-except-self
+// https://takeuforward.org/arrays/product-of-array-except-itself
+

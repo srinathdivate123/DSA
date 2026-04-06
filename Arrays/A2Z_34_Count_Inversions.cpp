@@ -1,7 +1,10 @@
+// NEED TO STUDY THIS
+
 // https://takeuforward.org/data-structure/count-inversions-in-an-array
+// Need to search similar question on LC
 
 // Given an array of N integers, count the inversion of the array (using merge-sort).
-// An inversion in an array is defined as a pair of indices (i, j) such that i < j < arraySize and a[i] > a[j]. This measures how far the array is from being sorted.
+// An inversion in an array is defined as a pair of indices (i, j) such that i < j and a[i] > a[j]. This measures how far the array is from being sorted.
 
 #include <bits/stdc++.h>
 using namespace std;

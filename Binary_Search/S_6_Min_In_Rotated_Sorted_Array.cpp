@@ -1,3 +1,6 @@
+// https://takeuforward.org/data-structure/minimum-in-rotated-sorted-array
+// https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+
 // Given the sorted rotated array nums of unique elements, return the minimum element of this array.
 
 // Pick the minimum from the sorted half because we're sure the the first element in the sorted half is indeed the minimum element of the sorted half. Then eliminate the sorted half because we have already picked the minimum element in the sorted half, so there is no further need of checking any of the remaining elements in the sorted half.

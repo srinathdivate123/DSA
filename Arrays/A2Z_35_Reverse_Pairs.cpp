@@ -1,3 +1,5 @@
+// NEED TO STUDY THIS
+
 // Given an array of numbers, you need to return the count of reverse pairs. Reverse Pairs are those pairs where i<j and arr[i]>2*arr[j].
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,7 +10,7 @@ int merge(vector<int> &arr, int low, int mid, int high)
     int left = low;      // starting index of left half of arr
     int right = mid + 1; // starting index of right half of arr
 
-    // storing elements in the temporary array in a sorted manner//
+    // storing elements in the temporary array in a sorted manner
     while (left <= mid && right <= high)
     {
         if (arr[left] <= arr[right])

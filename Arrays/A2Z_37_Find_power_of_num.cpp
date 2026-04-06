@@ -1,3 +1,5 @@
+// https://takeuforward.org/data-structure/calculate-the-power-of-a-number-binary-exponentiation
+
 // Given a double x and integer n, calculate x raised to power n.
 // Ask the interviewer if n can be negative!
 #include <bits/stdc++.h>

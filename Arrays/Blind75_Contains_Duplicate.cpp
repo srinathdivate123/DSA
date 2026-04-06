@@ -1,4 +1,5 @@
-// https://leetcode.com/problems/contains-duplicate/
+// https://leetcode.com/problems/contains-duplicate/description/
+// https://takeuforward.org/data-structure/contains-duplicate-check-if-a-value-appears-atleast-twice
 
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
@@ -6,34 +7,37 @@
 // Better is to sort the array & check, suplicate elements will be adjacent
 // Best is below
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-    
-bool containsDuplicate(vector<int> nums) {
- 
+
+bool containsDuplicate(vector<int> nums)
+{
+
     set<int> myset;
-    
-    for(int i = 0; i<nums.size();i++){
+
+    for (int i = 0; i < nums.size(); i++)
+    {
         myset.insert(nums[i]);
     }
-    
-    // if it contains duplicate then the size of 
+
+    // if it contains duplicate then the size of
     // set will not equal to the length of the array
-    if(myset.size() < nums.size())
+    if (myset.size() < nums.size())
         return true;
-    
+
     return false;
 }
-    
-int main () {
-	    
-    vector<int> nums {1, 2, 3, 1};
-    
+
+int main()
+{
+
+    vector<int> nums{1, 2, 3, 1};
+
     bool res = containsDuplicate(nums);
-    
+
     // printing the result
-    if(res== 1)
-        cout<<"true"<<endl;
+    if (res == 1)
+        cout << "true" << endl;
     else
-        cout<<"false"<<endl;
+        cout << "false" << endl;
 }

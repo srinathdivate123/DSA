@@ -42,7 +42,9 @@ void betterHashing(int arr[], int target, int n)
     {
         sum += arr[i];
         if (sum == target)
+        {
             maxLen = max(maxLen, i + 1);
+        }
         long long rem = sum - target;
 
         if (preSumMap.find(rem) != preSumMap.end())
