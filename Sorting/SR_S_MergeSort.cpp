@@ -1,3 +1,5 @@
+// https://takeuforward.org/data-structure/merge-sort-algorithm
+
 #include <bits/stdc++.h>
 using namespace std;
 // Insert an element from the unsorted array to its correct position in the sorted array!
@@ -14,7 +16,7 @@ void printArray(vector<int> &arr, int n)
 // In this function, we are only dividing the arrays. We're not sorting it.
 void mergeSort(vector<int> &arr, int low, int high)
 {
-    if (low == high)
+    if (low >= high)
         return;
     // If low==high, then it means that we have only one element in the array and there's no need to sort it.
 
@@ -23,8 +25,6 @@ void mergeSort(vector<int> &arr, int low, int high)
     mergeSort(arr, mid + 1, high); // mergeSort on right side.
     merge(arr, low, mid, high);
 }
-
-
 
 void merge(vector<int> &arr, int low, int mid, int high)
 {
@@ -48,7 +48,7 @@ void merge(vector<int> &arr, int low, int mid, int high)
         }
     }
 
-    // It doesn't matter if we push the arr[left] first or the arr[right] first because anyways only one of these blocks below is going to get executed.
+    // In below, it doesn't matter if we push the arr[left] first or the arr[right] first because anyways only one of these blocks below is going to get executed.
     // The above while loop will cease to execute even if any one of the conditions are false, so if any one of the conditions are false then that corresponding while loop below will not execute!
 
     // if elements on the left half are still left
@@ -67,8 +67,6 @@ void merge(vector<int> &arr, int low, int mid, int high)
     for (int i = low; i <= high; i++)
         arr[i] = temp[i - low];
 }
-
-
 
 int main()
 {

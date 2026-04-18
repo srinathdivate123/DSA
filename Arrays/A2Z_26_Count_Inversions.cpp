@@ -1,7 +1,6 @@
-// NEED TO STUDY THIS
-
 // https://takeuforward.org/data-structure/count-inversions-in-an-array
-// Need to search similar question on LC
+// No exact simialr question exists on LC.
+// However, other complex variants of this question exist.
 
 // Given an array of N integers, count the inversion of the array (using merge-sort).
 // An inversion in an array is defined as a pair of indices (i, j) such that i < j and a[i] > a[j]. This measures how far the array is from being sorted.
@@ -9,7 +8,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Brute force is to use two nested loops:
+// To count inversions, the brute force is to compare every element with all elements to its right and increment the counter whenever we find an inversion.
 // --> Outer loop runs for each element a[i].
 // --> Inner loop checks all elements a[j] where j > i.
 // --> If a[i] > a[j], increment cnt.
@@ -17,7 +16,7 @@ using namespace std;
 
 // ---------------------------------------------------------------------------------------------
 
-// Brute force approach compares all pairs, but that takes O(N^2) time. We can optimize this using the merge sort algorithm. While merging two sorted halves, if an element in the left half is greater than an element in the right half, then all remaining elements in the left half will also be greater than that right element. This allows us to count multiple inversions in one step, instead of checking each pair individually.
+// Brute force approach compares all pairs, but that takes O(N^2) time. We can optimize this using the merge sort algorithm. While merging two sorted halves, if an element in the left half is greater than an element in the right half, then "all remaining elements in the left half (which are rightwards from this left element) will also be greater than that right element". This allows us to count multiple inversions in one step, instead of checking each pair individually.
 
 // --> Apply merge sort recursively to divide the array into two halves.
 // --> During the merge step:
@@ -35,7 +34,7 @@ int merge(vector<int> &arr, int low, int mid, int high)
     int left = low;      // starting index of left half of arr
     int right = mid + 1; // starting index of right half of arr
 
-    // storing elements in the temporary array in a sorted manner//
+    // storing elements in the temporary array in a sorted manner
     int cnt = 0;
     while (left <= mid && right <= high)
     {
@@ -47,12 +46,12 @@ int merge(vector<int> &arr, int low, int mid, int high)
         else // right is smaller
         {
             temp.push_back(arr[right]);
-            cnt += mid - left + 1;
             right++;
+            cnt += mid - left + 1;
         }
     }
 
-    // if elements on the left half are still left //
+    // if elements on the left half are still left
 
     while (left <= mid)
     {
@@ -60,14 +59,14 @@ int merge(vector<int> &arr, int low, int mid, int high)
         left++;
     }
 
-    //  if elements on the right half are still left //
+    //  if elements on the right half are still left
     while (right <= high)
     {
         temp.push_back(arr[right]);
         right++;
     }
 
-    // transfering all elements from temporary to arr //
+    // transfering all elements from temporary to arr
     for (int i = low; i <= high; i++)
         arr[i] = temp[i - low];
     return cnt;
@@ -91,7 +90,7 @@ int numberOfInversions(vector<int> &arr, int n)
 }
 int main()
 {
-    vector<int> arr = {5, 3, 2, 4, 1};
+    vector<int> arr = {10, 7, 9, 8, 1, 4, 5, 3, 2, 4, 1};
     cout << numberOfInversions(arr, arr.size());
     return 0;
 }

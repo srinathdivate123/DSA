@@ -28,9 +28,9 @@ int main()
     for (int i = 0; i < n; i++)
     {
         XR = XR ^ arr[i];
-        // Find x
-        int x = XR ^ K;
-        cnt += mpp[x];
+        // Find remove
+        int remove = XR ^ K;
+        cnt += mpp[remove];
         mpp[XR]++;
     }
     cout << cnt;

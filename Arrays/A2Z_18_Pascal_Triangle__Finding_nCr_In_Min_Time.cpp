@@ -8,7 +8,7 @@
 //      1   2   1
 //    1   3   3   1
 //  1   4   6   4   1
-//1   5  10  10   5  1
+// 1   5  10  10   5  1
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -24,8 +24,8 @@ void Variation_2(int n);
 // We have 7x6 / 2x1
 // So the denominator (2) moves 2 places and the numerator also moves 2 places
 // So we do 7/1 * 6/2
-// Numerator goes in descending and denominator goes in ascending, because if we in starting only divide 7/2 then we will not get whole number, after if we divide then somewhere we may get whole number
-// Hence, run the multiplication calculation in descending order and the division calculation in ascending order  
+// Numerator goes in descending and denominator goes in ascending, because if we in starting only divide 7/2 then we will not get whole number. Later if we divide then somewhere then we may get whole number
+// Hence, run the multiplication calculation in descending order and the division calculation in ascending order
 void Variation_1(int n, int r) // We are finding nCr
 {
     long long result = 1;
@@ -42,6 +42,11 @@ void Variation_1(int n, int r) // We are finding nCr
 // The brute will be to run a loop from 1 to n, because each row will have n elements, and for each position (row, col) call the func Variation_1(row-1, col-1) and print
 // Best: See https://takeuforward.org/data-structure/program-to-generate-pascals-triangle for explanation
 // We can print a line if the numerator is multiplied by the previous consecutive element, and the denominator is multiplied by the next consecutive element.
+
+// Notes from TUF:
+// To print the Nth row of the pascal triangle we can take advantage of the relationship between Nth element and binomial coefficients.
+// In a pascal's triangle, the Nth row contains the binomial coefficients C(N-1, 0), C(N-1, 1) and so on till C(N-1, N-1). Thus we can simply calculate all these values to return the Nth row of pascal triangle.
+// Instead of computing full factorials, we can start with the first value as 1, and use the relation C(n, k) = C(n, k−1) × (n−k+1) / k to compute the next value from the previous one in constant time.
 void Variation_2(int n)
 {
     int ans = 1;

@@ -60,7 +60,7 @@ void better(int (*arr)[4], int m, int n) // Here 4 is the cols
 // --> firstColZero:Was the first column supposed to be all zero?
 // Then:
 // --> First pass: Mark zeros in the first row and column for any zero found in the rest of the matrix.
-// --> Second pass: Use those markers to set rows and columns to zero.
+// --> Second pass: Use those markers to set other rows and other columns to zero.
 // Finally, handle the first row and column separately based on the flags. This is super space-efficient because we’re reusing the input matrix itself to store markers.
 // --> Check if the first row has any zero and store in a boolean flag.
 // --> Check if the first column has any zero and store in a boolean flag.
