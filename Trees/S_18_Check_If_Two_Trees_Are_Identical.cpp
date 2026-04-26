@@ -3,6 +3,10 @@
 
 // Given the roots of two binary trees p and q, write a function to check if they are the same or not. Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
 
+// Time Complexity: O(N + M) where N is the number of nodes in the first Binary Tree and M is the number of nodes in the second Binary Tree.
+
+// Space Complexity: O(1)
+
 #include <bits/stdc++.h>
 using namespace std;
 
