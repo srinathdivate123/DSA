@@ -20,45 +20,31 @@ class Solution
 public:
     vector<int> inorder(TreeNode *root)
     {
-        // Initialize a stack to track nodes
         stack<TreeNode *> st;
-        // Start from the root node
         TreeNode *node = root;
-        // Initialize a vector to store
-        // inorder traversal result
         vector<int> inorder;
 
-        // Start an infinite
-        // loop for traversal
+        // Start an infinite loop for traversal
         while (true)
         {
-            // If the current node is not NULL
             if (node != NULL)
             {
-                // Push the current
-                // node to the stack
+                // Push the current node to the stack
                 st.push(node);
-                // Move to the left child
-                // of the current node
+                // Move to the left child of the current node
                 node = node->left;
+                // Continue this process until a node with no left child is reached.
             }
             else
             {
-                // If the stack is empty,
-                // break the loop
+                // If the stack is empty, break the loop
                 if (st.empty())
                 {
                     break;
                 }
-                // Retrieve a node from the stack
                 node = st.top();
-                // Remove the node from the stack
                 st.pop();
-                // Add the node's value to
-                // the inorder traversal list
                 inorder.push_back(node->data);
-                // Move to the right child
-                // of the current node
                 node = node->right;
             }
         }

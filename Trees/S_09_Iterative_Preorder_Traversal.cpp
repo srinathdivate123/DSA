@@ -38,6 +38,8 @@ public:
 
             preorder.push_back(root->val); // Add the node's value to the preorder result
 
+            // Push right first on the stack and later left so that left gets processed first
+
             // Push the right child onto the stack if exists
             if (root->right != nullptr)
             {
