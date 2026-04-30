@@ -17,6 +17,10 @@ struct TreeNode
     TreeNode(int v) : val(v), left(NULL), right(NULL) {}
 };
 
+// Time Complexity: O(N) In the worst case, we may visit every node in the binary tree exactly once. This happens when the tree is skewed.
+
+// Space Complexity: O(H), the space complexity depends on the height (H) of the binary tree due to the recursion stack in depth-first traversal (like preorder, inorder, postorder). In a balanced binary tree, the height is log₂N, leading to O(log N) space. However, in the worst case (a skewed tree), the height is N, resulting in O(N) space. So the space complexity is O(H), where H is the height of the tree.
+
 class Solution
 {
 public:
