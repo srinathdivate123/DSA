@@ -1,6 +1,8 @@
 // https://takeuforward.org/data-structure/bottom-view-of-a-binary-tree
 // There is no LeetCode or LintCode question for this
 
+// Given a Binary Tree, return its Bottom View. The Bottom View of a Binary Tree is the set of nodes visible when we see the tree from the bottom.
+
 #include <iostream>
 #include <vector>
 #include <set>
@@ -17,9 +19,8 @@ struct Node
     Node(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
-// Time Complexity: O(N) nodes.
-
-// Space Complexity: O(N) nodes.
+// Time Complexity: O(N) nodes
+// Space Complexity: O(N) nodes
 
 class Solution
 {

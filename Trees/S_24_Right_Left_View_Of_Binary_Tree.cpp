@@ -1,6 +1,8 @@
 // https://takeuforward.org/data-structure/right-left-view-of-binary-tree
 // https://leetcode.com/problems/binary-tree-right-side-view/description
 
+// Given the root of a binary tree, imagine yourself standing on the right or left side of it, return the values of the nodes you can see ordered from top to bottom.
+
 // Brute is iterative solution to do a level order traversal and then the first nodes at each level is left view and the last nodes at each level is right view. But this takes TC=O(N) and SC=O(N) where N=nodes
 // But recursive solutions at the worst can take TC=(N) and SC=O(H) where H=height of tree
 // Hence, recursive solution might be better in most cases
@@ -8,7 +10,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// TreeNode definition
 struct TreeNode
 {
     int val;
@@ -32,7 +33,9 @@ public:
         if (!node)
             return;
 
-        // If this is the first node at the current level
+        // If this is the first time you came at this level
+        // Initially res.size = 0, hence the first node gets pushed
+        // Then after pushing, res.size = 1 and then when we come to level 1 for the first time, the first node (as left as possible) gets pushed
         if (res.size() == level)
             res.push_back(node->val);
 
@@ -50,7 +53,9 @@ public:
         if (!node)
             return;
 
-        // If this is the first time you're coming to this level
+        // If this is the first time you came at this level
+        // Initially res.size = 0, hence the first node gets pushed
+        // Then after pushing, res.size = 1 and then when we come to level 1 for the first time, the first node (as right as possible) gets pushed
         if (res.size() == level)
             res.push_back(node->val);
 
