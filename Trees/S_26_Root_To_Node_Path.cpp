@@ -37,8 +37,7 @@ public:
         }
 
         // Recursively search in left or right subtree
-        if (getPath(root->left, arr, value) ||
-            getPath(root->right, arr, value))
+        if (getPath(root->left, arr, value) || getPath(root->right, arr, value))
         {
             return true;
         }
