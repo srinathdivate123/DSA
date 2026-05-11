@@ -16,6 +16,10 @@
 // If the left height equals right height, it indicates that the last level is completely filled. Or else the last level is not completely filled.
 // When left and right height differ, we can employ a recursive approach. We recursively calculate the number of nodes in the left subtree and in the right subtree, and then return the total count as 1 + leftNodes + rightNodes.
 
+// TC: O(log N * log N) The calculation of leftHeight and rightHeight takes O(log N) time.In the worst case, when encountering the second case (leftHeight != rightHeight), the recursive calls are made at most log N times (the height of the tree) Therefore, the total time complexity is O(log N * log N).
+
+// Space Complexity : O(H). Since the given tree is a complete binary tree, the height will always be log N. Therefore, the space complexity is O(log N).
+
 #include <bits/stdc++.h>
 using namespace std;
 
