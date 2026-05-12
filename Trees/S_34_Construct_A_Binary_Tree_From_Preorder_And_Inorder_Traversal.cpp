@@ -1,6 +1,8 @@
 // https://takeuforward.org/data-structure/construct-a-binary-tree-from-inorder-and-preorder-traversal
 // https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description
 
+// Construct a binary tree from it's preorder and inorder traversals
+
 #include <bits/stdc++.h>
 using namespace std;
 
